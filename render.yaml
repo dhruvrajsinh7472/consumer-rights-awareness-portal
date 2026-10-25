@@ -4,7 +4,7 @@
 services:
   - type: web
     name: consumer-rights-awareness-portal
-    runtime: python
+    env: python
     plan: free
     buildCommand: pip install -r requirements.txt
     startCommand: python init_db.py && gunicorn app:app

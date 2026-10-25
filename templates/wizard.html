@@ -1,0 +1,595 @@
+{% extends "base.html" %}
+
+{% block title %}Consumer Dispute Resolution Wizard — {{ portal_name }}{% endblock %}
+
+{% block meta_description %}Interactive multi-step consumer dispute resolution guide. Select your problem category and follow-up question to access verified remedies, step-by-step procedure, and evidence checklists.{% endblock %}
+
+{% block content %}
+<section class="page-header">
+  <div class="container">
+    <div class="header-with-visual">
+      <div class="page-header-content">
+        <div class="breadcrumbs">
+          <a href="{{ url_for('index') }}">Home</a>
+          <span class="sep">/</span>
+          <a href="{{ url_for('guidance') }}">Guidance</a>
+          <span class="sep">/</span>
+          <span aria-current="page">Resolution Wizard</span>
+        </div>
+        <h1 class="page-title">Interactive Problem Guidance Wizard</h1>
+        <p class="page-subtitle">
+          Identify your consumer problem through rule-based guidance to access verified statutory remedies, step-by-step dispute procedures, and printable evidence checklists.
+        </p>
+      </div>
+      <div class="header-visual-card no-print" style="max-width: 220px;">
+        <img 
+          src="{{ url_for('static', filename='images/digital_complaint.jpg') }}" 
+          alt="Keyboard key for filing consumer dispute complaint" 
+          class="header-visual-img"
+          loading="lazy"
+          width="220"
+          height="165"
+        >
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="container section">
+  <!-- Multi-step Stepper Header -->
+  <nav class="wizard-stepper" aria-label="Wizard Steps" style="margin-bottom: var(--space-8);">
+    <div class="stepper-item {% if step == 1 %}active{% elif step in [2, 3, 'unsupported'] %}completed{% endif %}">
+      <div class="stepper-circle">1</div>
+      <div class="stepper-label">Select Domain</div>
+    </div>
+    <div class="stepper-line {% if step in [2, 3, 'unsupported'] %}active{% endif %}"></div>
+    <div class="stepper-item {% if step == 2 %}active{% elif step == 3 or step == 'unsupported' %}completed{% endif %}">
+      <div class="stepper-circle">2</div>
+      <div class="stepper-label">Clarify Issue</div>
+    </div>
+    <div class="stepper-line {% if step == 3 or step == 'unsupported' %}active{% endif %}"></div>
+    <div class="stepper-item {% if step == 3 or step == 'unsupported' %}active{% endif %}">
+      <div class="stepper-circle">3</div>
+      <div class="stepper-label">Resolution Guide &amp; Evidence</div>
+    </div>
+  </nav>
+
+  <!-- STEP 1: DOMAIN SELECTION -->
+  {% if step == 1 %}
+    <div style="max-width: 900px; margin: 0 auto;">
+      <div style="text-align: center; margin-bottom: var(--space-8);">
+        <span class="badge badge-teal" style="margin-bottom: var(--space-2);">Step 1 of 3</span>
+        <h2 style="font-size: 1.75rem; color: var(--navy-900); margin-bottom: var(--space-2);">
+          What category does your consumer problem fall under?
+        </h2>
+        <p style="color: var(--slate-600); font-size: 1rem; max-width: 600px; margin: 0 auto;">
+          Choose the area where the transaction or dispute occurred. We do not ask for personal details, account passwords, or identity documents.
+        </p>
+      </div>
+
+      <div class="grid-2" style="gap: var(--space-5);">
+        {% for domain in domains %}
+          <div class="card wizard-card" style="padding: var(--space-6); display: flex; flex-direction: column; justify-content: space-between; border: 2px solid var(--border-subtle); transition: all 0.2s ease;">
+            <div>
+              <div style="display: flex; align-items: center; gap: var(--space-3); margin-bottom: var(--space-3);">
+                <div style="width: 44px; height: 44px; border-radius: var(--radius-md); background: var(--teal-50); color: var(--teal-700); display: flex; align-items: center; justify-content: center; font-weight: 700;">
+                  <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    {% if domain.id == 'ecommerce' %}
+                      <path d="M6 2L3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"></path>
+                      <line x1="3" y1="6" x2="21" y2="6"></line>
+                      <path d="M16 10a4 4 0 0 1-8 0"></path>
+                    {% elif domain.id == 'product_quality' %}
+                      <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path>
+                      <polyline points="9 12 11 14 15 10"></polyline>
+                    {% elif domain.id == 'food_safety' %}
+                      <path d="M18 8h1a4 4 0 0 1 0 8h-1"></path>
+                      <path d="M2 8h16v9a4 4 0 0 1-4 4H6a4 4 0 0 1-4-4V8z"></path>
+                      <line x1="6" y1="1" x2="6" y2="4"></line>
+                      <line x1="10" y1="1" x2="10" y2="4"></line>
+                      <line x1="14" y1="1" x2="14" y2="4"></line>
+                    {% elif domain.id == 'billing_pricing' %}
+                      <circle cx="12" cy="12" r="10"></circle>
+                      <line x1="12" y1="8" x2="12" y2="12"></line>
+                      <line x1="12" y1="16" x2="12.01" y2="16"></line>
+                    {% elif domain.id == 'misleading_ads' %}
+                      <circle cx="12" cy="12" r="10"></circle>
+                      <polygon points="12 8 8 12 12 16 12 8"></polygon>
+                    {% else %}
+                      <rect x="2" y="2" width="20" height="8" rx="2" ry="2"></rect>
+                      <rect x="2" y="14" width="20" height="8" rx="2" ry="2"></rect>
+                      <line x1="6" y1="6" x2="6.01" y2="6"></line>
+                      <line x1="6" y1="18" x2="6.01" y2="18"></line>
+                    {% endif %}
+                  </svg>
+                </div>
+                <div>
+                  <span style="font-size: 0.75rem; text-transform: uppercase; font-weight: 700; color: var(--teal-700); letter-spacing: 0.05em;">{{ domain.category }}</span>
+                  <h3 style="font-size: 1.125rem; color: var(--navy-900); margin: 0;">{{ domain.title }}</h3>
+                </div>
+              </div>
+              <p style="color: var(--slate-600); font-size: 0.875rem; line-height: 1.5; margin-bottom: var(--space-4);">
+                {{ domain.description }}
+              </p>
+            </div>
+            <a href="{{ url_for('wizard', domain=domain.id) }}" class="btn btn-outline" style="width: 100%; text-align: center; font-weight: 600;">
+              Select Category &rarr;
+            </a>
+          </div>
+        {% endfor %}
+      </div>
+
+      <!-- Honest fallback footer for domain -->
+      <div class="card" style="margin-top: var(--space-8); padding: var(--space-5); background: var(--slate-100); border: 1px dashed var(--border-strong); text-align: center;">
+        <p style="font-size: 0.9375rem; color: var(--slate-700); margin-bottom: var(--space-3);">
+          Don't see your specific problem category here?
+        </p>
+        <a href="{{ url_for('wizard', unsupported='true') }}" class="btn btn-subtle" style="font-size: 0.875rem;">
+          View General Guidance for Other Sectors
+        </a>
+      </div>
+    </div>
+  {% endif %}
+
+  <!-- STEP 2: FOLLOW-UP CLARIFICATION QUESTION -->
+  {% if step == 2 and selected_domain %}
+    <div style="max-width: 800px; margin: 0 auto;">
+      <div style="margin-bottom: var(--space-4);">
+        <a href="{{ url_for('wizard') }}" style="color: var(--teal-700); font-size: 0.875rem; font-weight: 600; text-decoration: none; display: inline-flex; align-items: center; gap: 4px;">
+          &larr; Back to all problem categories
+        </a>
+      </div>
+
+      <div class="card" style="padding: var(--space-8); margin-bottom: var(--space-6);">
+        <div style="display: flex; align-items: center; gap: var(--space-2); margin-bottom: var(--space-3);">
+          <span class="badge badge-teal">Step 2 of 3</span>
+          <span class="badge badge-subtle">{{ selected_domain.category }}</span>
+        </div>
+
+        <h2 style="font-size: 1.5rem; color: var(--navy-900); margin-bottom: var(--space-3);">
+          {{ selected_domain.question }}
+        </h2>
+        <p style="color: var(--slate-600); font-size: 0.9375rem; line-height: 1.5; margin-bottom: var(--space-6);">
+          Select the option that most closely matches your dispute. This enables our rule-based system to match the exact statutory provisions under the Consumer Protection Act, 2019.
+        </p>
+
+        <div style="display: flex; flex-direction: column; gap: var(--space-4);">
+          {% for opt in selected_domain.options %}
+            <div class="card option-card" style="padding: var(--space-5); border: 2px solid var(--border-subtle); transition: all 0.15s ease;">
+              <div style="display: flex; justify-content: space-between; align-items: flex-start; gap: var(--space-4); flex-wrap: wrap;">
+                <div style="flex: 1; min-width: 260px;">
+                  <h3 style="font-size: 1.0625rem; color: var(--navy-900); margin-bottom: var(--space-1); font-weight: 700;">
+                    {{ opt.label }}
+                  </h3>
+                  <p style="color: var(--slate-600); font-size: 0.875rem; line-height: 1.5; margin: 0;">
+                    {{ opt.desc }}
+                  </p>
+                </div>
+                <div>
+                  {% if opt.slug %}
+                    <a href="{{ url_for('wizard', guide=opt.slug) }}" class="btn btn-primary" style="font-size: 0.875rem; white-space: nowrap;">
+                      Get Verified Guide &rarr;
+                    </a>
+                  {% else %}
+                    <a href="{{ url_for('wizard', unsupported='true') }}" class="btn btn-outline" style="font-size: 0.875rem; white-space: nowrap;">
+                      Check Available Assistance &rarr;
+                    </a>
+                  {% endif %}
+                </div>
+              </div>
+            </div>
+          {% endfor %}
+        </div>
+      </div>
+    </div>
+  {% endif %}
+
+  <!-- STEP 3 & 4: MATCHED RESOLUTION GUIDE WITH CHECKLIST -->
+  {% if step == 3 and guide %}
+    <div style="max-width: 1000px; margin: 0 auto;">
+      <!-- Action Bar (Revisit, Print, Restart) -->
+      <div class="no-print" style="display: flex; justify-content: space-between; align-items: center; margin-bottom: var(--space-6); flex-wrap: wrap; gap: var(--space-3);">
+        <a href="{{ url_for('wizard') }}" class="btn btn-subtle" style="font-size: 0.875rem;">
+          &larr; Revisit Selections / Change Category
+        </a>
+        <div style="display: flex; gap: var(--space-2);">
+          <button type="button" onclick="window.print()" class="btn btn-outline" style="font-size: 0.875rem; display: inline-flex; align-items: center; gap: 6px;">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <polyline points="6 9 6 2 18 2 18 9"></polyline>
+              <path d="M6 18H4a2 2 0 0 1-2-2v-5a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v5a2 2 0 0 1-2 2h-2"></path>
+              <rect x="6" y="14" width="12" height="8"></rect>
+            </svg>
+            Print Guide &amp; Evidence Sheet
+          </button>
+          <a href="{{ url_for('wizard') }}" class="btn btn-primary" style="font-size: 0.875rem;">
+            Start Over
+          </a>
+        </div>
+      </div>
+
+      <!-- Printable Header for physical records -->
+      <div class="print-only" style="margin-bottom: var(--space-6); border-bottom: 2px solid #000; padding-bottom: var(--space-4);">
+        <h1 style="font-size: 1.5rem; margin-bottom: 4px;">Technology for Consumer Rights Awareness — Resolution Worksheet</h1>
+        <p style="font-size: 0.875rem; color: #444;">Academic Community Engagement Project &bull; Verified Legal Framework: Consumer Protection Act, 2019</p>
+      </div>
+
+      <!-- Problem Summary Card -->
+      <article class="card guide-header-card" style="padding: var(--space-8); margin-bottom: var(--space-8); border-left: 4px solid var(--teal-700);">
+        <div style="display: flex; justify-content: space-between; align-items: flex-start; gap: var(--space-3); margin-bottom: var(--space-3); flex-wrap: wrap;">
+          <div style="display: flex; align-items: center; gap: var(--space-2); flex-wrap: wrap;">
+            <span class="badge badge-teal">{{ guide.category }}</span>
+            <span class="badge badge-verified">
+              <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="margin-right: 3px;">
+                <polyline points="20 6 9 17 4 12"></polyline>
+              </svg>
+              Verified Content
+            </span>
+          </div>
+          <span style="font-size: 0.8125rem; color: var(--slate-500);">
+            Source: <strong>{{ guide.source_name }}</strong>
+          </span>
+        </div>
+
+        <h2 style="font-size: 1.875rem; color: var(--navy-900); margin-bottom: var(--space-3); font-weight: 800;">
+          {{ guide.title }}
+        </h2>
+        <p style="font-size: 1.125rem; color: var(--slate-700); line-height: 1.6; margin-bottom: var(--space-5);">
+          {{ guide.summary }}
+        </p>
+
+        <div style="background-color: var(--navy-50); border-radius: var(--radius-md); padding: var(--space-4); border: 1px solid var(--navy-100);">
+          <strong style="color: var(--navy-900); font-size: 0.875rem; text-transform: uppercase; letter-spacing: 0.05em; display: block; margin-bottom: var(--space-1);">
+            Typical Situation Covered:
+          </strong>
+          <p style="color: var(--slate-700); font-size: 0.9375rem; margin: 0; line-height: 1.5;">
+            {{ guide.typical_situation }}
+          </p>
+        </div>
+      </article>
+
+      <!-- Relevant Consumer Rights -->
+      {% if associated_rights %}
+        <div class="card" style="padding: var(--space-6); margin-bottom: var(--space-8); background-color: var(--white);">
+          <h3 style="font-size: 1.125rem; color: var(--navy-900); margin-bottom: var(--space-3); display: flex; align-items: center; gap: var(--space-2);">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="color: var(--teal-700);">
+              <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path>
+              <polyline points="9 12 11 14 15 10"></polyline>
+            </svg>
+            Applicable Statutory Rights (Consumer Protection Act, 2019)
+          </h3>
+          <p style="color: var(--slate-600); font-size: 0.875rem; margin-bottom: var(--space-4);">
+            Under Indian consumer law, the following statutory rights directly protect you in this dispute:
+          </p>
+          <div class="grid-2" style="gap: var(--space-3);">
+            {% for r in associated_rights %}
+              <div style="padding: var(--space-3); border-radius: var(--radius-sm); background-color: var(--slate-50); border: 1px solid var(--border-subtle);">
+                <div style="font-weight: 700; color: var(--navy-900); font-size: 0.9375rem;">
+                  <a href="{{ url_for('right_detail', slug=r.slug) }}" target="_blank" rel="noopener noreferrer" style="color: var(--navy-900); text-decoration: none;">
+                    {{ r.title }} &rarr;
+                  </a>
+                </div>
+                <div style="font-size: 0.8125rem; color: var(--teal-700); font-weight: 600;">
+                  {{ r.statutory_provision }} &bull; {{ r.legal_name }}
+                </div>
+              </div>
+            {% endfor %}
+          </div>
+        </div>
+      {% endif %}
+
+      <!-- Step-by-Step Guidance Roadmap -->
+      <div class="card" style="padding: var(--space-8); margin-bottom: var(--space-8);">
+        <h3 style="font-size: 1.375rem; color: var(--navy-900); margin-bottom: var(--space-2); font-weight: 700;">
+          Step-by-Step Resolution Procedure
+        </h3>
+        <p style="color: var(--slate-600); font-size: 0.9375rem; margin-bottom: var(--space-6);">
+          Follow this chronological procedure to establish an audit trail and escalate through official regulatory channels.
+        </p>
+
+        {% set steps = guide.step_by_step_procedure|from_json %}
+        <div class="timeline" style="display: flex; flex-direction: column; gap: var(--space-6);">
+          {% for st in steps %}
+            <div style="display: flex; gap: var(--space-4); align-items: flex-start;">
+              <div style="width: 36px; height: 36px; border-radius: var(--radius-full); background: var(--teal-700); color: var(--white); display: flex; align-items: center; justify-content: center; font-weight: 800; flex-shrink: 0;">
+                {{ st.step }}
+              </div>
+              <div style="flex: 1;">
+                <h4 style="font-size: 1.125rem; color: var(--navy-900); margin-bottom: var(--space-2); font-weight: 700;">
+                  {{ st.title }}
+                </h4>
+                <p style="color: var(--slate-700); font-size: 0.9375rem; line-height: 1.6; margin-bottom: var(--space-2);">
+                  {{ st.action }}
+                </p>
+                {% if st.timelines_or_turnaround %}
+                  <div style="display: inline-block; font-size: 0.8125rem; background-color: var(--amber-50); border: 1px solid var(--amber-100); color: var(--amber-700); padding: 0.25rem 0.625rem; border-radius: var(--radius-sm); font-weight: 600;">
+                    Turnaround: {{ st.timelines_or_turnaround }}
+                  </div>
+                {% endif %}
+              </div>
+            </div>
+          {% endfor %}
+        </div>
+      </div>
+
+      <!-- 3-Tier Interactive Evidence Checklist -->
+      <div class="card checklist-card" id="evidence-section" style="padding: var(--space-8); margin-bottom: var(--space-8);">
+        <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: var(--space-4); flex-wrap: wrap; gap: var(--space-3);">
+          <div>
+            <h3 style="font-size: 1.375rem; color: var(--navy-900); margin-bottom: var(--space-1); font-weight: 700;">
+              Evidence &amp; Documentation Checklist
+            </h3>
+            <p style="color: var(--slate-600); font-size: 0.875rem; margin: 0;">
+              Tick off documents as you gather them. Data stays strictly in your local browser storage.
+            </p>
+          </div>
+
+          <!-- Progress Counter & Reset -->
+          <div class="no-print" style="display: flex; align-items: center; gap: var(--space-3);">
+            <div style="background-color: var(--teal-50); border: 1px solid var(--teal-100); padding: 0.375rem 0.75rem; border-radius: var(--radius-md); font-size: 0.875rem; color: var(--teal-800); font-weight: 600;">
+              <span id="checklist-progress-text">0 of 0 gathered</span>
+            </div>
+            <button type="button" id="checklist-reset-btn" class="btn btn-subtle" style="font-size: 0.75rem; padding: 0.375rem 0.625rem;">
+              Reset
+            </button>
+          </div>
+        </div>
+
+        <!-- Visual Progress Bar -->
+        <div class="no-print" style="width: 100%; height: 6px; background-color: var(--slate-200); border-radius: var(--radius-full); overflow: hidden; margin-bottom: var(--space-6);">
+          <div id="checklist-progress-bar" style="width: 0%; height: 100%; background-color: var(--teal-600); transition: width 0.3s ease;"></div>
+        </div>
+
+        <!-- Tier 1: Officially Specified Documents -->
+        {% if checklist.officially_specified_documents %}
+          <div style="margin-bottom: var(--space-6);">
+            <h4 style="font-size: 0.9375rem; text-transform: uppercase; letter-spacing: 0.05em; color: var(--crimson-700); margin-bottom: var(--space-3); font-weight: 800; display: flex; align-items: center; gap: var(--space-2);">
+              <span style="width: 8px; height: 8px; border-radius: var(--radius-full); background: var(--crimson-600);"></span>
+              Tier 1: Officially Specified Documents (Statutory Rules)
+            </h4>
+            <div style="display: flex; flex-direction: column; gap: var(--space-2);">
+              {% for doc in checklist.officially_specified_documents %}
+                <label class="checklist-item-row" style="display: flex; align-items: flex-start; gap: var(--space-3); padding: var(--space-3); border-radius: var(--radius-sm); border: 1px solid var(--border-subtle); cursor: pointer; transition: background 0.15s ease;">
+                  <input type="checkbox" class="wizard-checkbox" data-guide="{{ guide.slug }}" style="margin-top: 4px; width: 18px; height: 18px; accent-color: var(--teal-700);">
+                  <span class="checklist-text" style="font-size: 0.9375rem; color: var(--slate-800); line-height: 1.5;">{{ doc }}</span>
+                </label>
+              {% endfor %}
+            </div>
+          </div>
+        {% endif %}
+
+        <!-- Tier 2: Useful to Preserve -->
+        {% if checklist.useful_to_preserve %}
+          <div style="margin-bottom: var(--space-6);">
+            <h4 style="font-size: 0.9375rem; text-transform: uppercase; letter-spacing: 0.05em; color: var(--navy-800); margin-bottom: var(--space-3); font-weight: 800; display: flex; align-items: center; gap: var(--space-2);">
+              <span style="width: 8px; height: 8px; border-radius: var(--radius-full); background: var(--navy-700);"></span>
+              Tier 2: Highly Recommended Supporting Evidence
+            </h4>
+            <div style="display: flex; flex-direction: column; gap: var(--space-2);">
+              {% for doc in checklist.useful_to_preserve %}
+                <label class="checklist-item-row" style="display: flex; align-items: flex-start; gap: var(--space-3); padding: var(--space-3); border-radius: var(--radius-sm); border: 1px solid var(--border-subtle); cursor: pointer; transition: background 0.15s ease;">
+                  <input type="checkbox" class="wizard-checkbox" data-guide="{{ guide.slug }}" style="margin-top: 4px; width: 18px; height: 18px; accent-color: var(--teal-700);">
+                  <span class="checklist-text" style="font-size: 0.9375rem; color: var(--slate-800); line-height: 1.5;">{{ doc }}</span>
+                </label>
+              {% endfor %}
+            </div>
+          </div>
+        {% endif %}
+
+        <!-- Tier 3: Conditional Documents -->
+        {% if checklist.conditional_documents %}
+          <div>
+            <h4 style="font-size: 0.9375rem; text-transform: uppercase; letter-spacing: 0.05em; color: var(--slate-600); margin-bottom: var(--space-3); font-weight: 800; display: flex; align-items: center; gap: var(--space-2);">
+              <span style="width: 8px; height: 8px; border-radius: var(--radius-full); background: var(--slate-500);"></span>
+              Tier 3: Conditional / Escalation Documents
+            </h4>
+            <div style="display: flex; flex-direction: column; gap: var(--space-2);">
+              {% for doc in checklist.conditional_documents %}
+                <label class="checklist-item-row" style="display: flex; align-items: flex-start; gap: var(--space-3); padding: var(--space-3); border-radius: var(--radius-sm); border: 1px solid var(--border-subtle); cursor: pointer; transition: background 0.15s ease;">
+                  <input type="checkbox" class="wizard-checkbox" data-guide="{{ guide.slug }}" style="margin-top: 4px; width: 18px; height: 18px; accent-color: var(--teal-700);">
+                  <span class="checklist-text" style="font-size: 0.9375rem; color: var(--slate-800); line-height: 1.5;">{{ doc }}</span>
+                </label>
+              {% endfor %}
+            </div>
+          </div>
+        {% endif %}
+
+        <!-- Notice: No document uploads -->
+        <div style="margin-top: var(--space-5); padding: var(--space-3); background-color: var(--slate-100); border-radius: var(--radius-sm); font-size: 0.8125rem; color: var(--slate-600);">
+          <strong>Security Notice:</strong> Keep your actual bills, receipts, and bank statements in a dedicated folder on your computer. This portal never requests document uploads or sensitive personal data.
+        </div>
+      </div>
+
+      <!-- Appropriate Official Service & Escalation -->
+      <div class="card" style="padding: var(--space-6); margin-bottom: var(--space-8); border: 2px solid var(--teal-600);">
+        <div style="display: flex; justify-content: space-between; align-items: flex-start; gap: var(--space-4); flex-wrap: wrap;">
+          <div style="width: 80px; height: 80px; border-radius: var(--radius-md); overflow: hidden; border: 1px solid var(--border-subtle); flex-shrink: 0; box-shadow: var(--shadow-sm);">
+            <img src="{{ url_for('static', filename='images/customer_support.jpg') }}" alt="National Consumer Helpline customer support representative" style="width: 100%; height: 100%; object-fit: cover; display: block;" loading="lazy" width="80" height="80">
+          </div>
+          <div style="flex: 1; min-width: 260px;">
+            <span class="badge badge-teal" style="margin-bottom: var(--space-2);">Official Escalation Authority</span>
+            <h3 style="font-size: 1.25rem; color: var(--navy-900); margin-bottom: var(--space-2); font-weight: 700;">
+              {{ guide.official_remedy_channel }}
+            </h3>
+            <p style="color: var(--slate-600); font-size: 0.875rem; line-height: 1.5; margin-bottom: var(--space-3);">
+              If company grievance officers fail to respond or reject legitimate claims, escalate directly to this official government authority.
+            </p>
+            {% if guide.source_url %}
+              <div style="font-size: 0.8125rem; color: var(--slate-500);">
+                Official Link: <a href="{{ guide.source_url }}" target="_blank" rel="noopener noreferrer" style="color: var(--teal-700); font-weight: 600;">
+                  {{ guide.source_url }} (Leaves portal)
+                </a>
+              </div>
+            {% endif %}
+          </div>
+          <div>
+            <a href="{{ url_for('resources') }}" class="btn btn-primary" style="font-size: 0.875rem;">
+              View Official Directory
+            </a>
+          </div>
+        </div>
+      </div>
+
+      <!-- Important Caveats & Legal Disclaimers -->
+      <div class="card" style="padding: var(--space-6); background: var(--amber-50); border: 1px solid var(--amber-100); margin-bottom: var(--space-8);">
+        <h4 style="font-size: 1rem; color: var(--amber-700); margin-bottom: var(--space-2); font-weight: 700; display: flex; align-items: center; gap: var(--space-2);">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"></path>
+            <line x1="12" y1="9" x2="12" y2="13"></line>
+            <line x1="12" y1="17" x2="12.01" y2="17"></line>
+          </svg>
+          Important Caveats &amp; Statutory Limitations
+        </h4>
+        <p style="color: var(--slate-800); font-size: 0.9375rem; line-height: 1.6; margin: 0;">
+          {{ guide.caveats_and_escalation }}
+        </p>
+      </div>
+
+      <!-- Bottom Navigation Flow -->
+      <div class="no-print" style="display: flex; justify-content: space-between; align-items: center; padding-top: var(--space-6); border-top: 1px solid var(--border-subtle); flex-wrap: wrap; gap: var(--space-3);">
+        <a href="{{ url_for('wizard') }}" class="btn btn-outline">
+          &larr; Start New Problem Inquiry
+        </a>
+        <div style="display: flex; gap: var(--space-3);">
+          <button type="button" onclick="window.print()" class="btn btn-outline">
+            Print Worksheet
+          </button>
+          <a href="{{ url_for('guidance', slug=guide.slug) }}" class="btn btn-subtle">
+            Permanent Guide URL
+          </a>
+        </div>
+      </div>
+    </div>
+  {% endif %}
+
+  <!-- UNSUPPORTED / UNVERIFIED GUIDANCE FALLBACK -->
+  {% if step == 'unsupported' %}
+    <div style="max-width: 720px; margin: 0 auto;">
+      <div class="card" style="padding: var(--space-10) var(--space-8); text-align: center;">
+        <div style="width: 56px; height: 56px; border-radius: var(--radius-full); background: var(--amber-100); color: var(--amber-700); display: flex; align-items: center; justify-content: center; margin: 0 auto var(--space-4);">
+          <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <circle cx="12" cy="12" r="10"></circle>
+            <line x1="12" y1="8" x2="12" y2="12"></line>
+            <line x1="12" y1="16" x2="12.01" y2="16"></line>
+          </svg>
+        </div>
+
+        <h2 style="font-size: 1.5rem; color: var(--navy-900); margin-bottom: var(--space-2);">
+          Verified Guide Not Available Yet
+        </h2>
+        <p style="color: var(--slate-600); font-size: 1rem; line-height: 1.6; margin-bottom: var(--space-6);">
+          To protect citizen safety, this educational portal does not invent legal guidance or generate unverified claims. We only publish step-by-step resolution guides that have been rigorously verified against primary government notifications and statutory rules.
+        </p>
+
+        <div style="background-color: var(--teal-50); border: 1px solid var(--teal-100); border-radius: var(--radius-md); padding: var(--space-5); text-align: left; margin-bottom: var(--space-6);">
+          <h3 style="font-size: 1rem; color: var(--teal-800); margin-bottom: var(--space-2); font-weight: 700;">
+            Where to Seek Immediate Official Assistance:
+          </h3>
+          <ul style="padding-left: var(--space-5); color: var(--slate-700); font-size: 0.9375rem; line-height: 1.7;">
+            <li><strong>National Consumer Helpline:</strong> Call <strong>1915</strong> (Toll-free, Ministry of Consumer Affairs) or WhatsApp <strong>8800001915</strong>.</li>
+            <li><strong>Online Grievance Docket:</strong> Register directly on the Department's portal at <a href="https://consumerhelpline.gov.in" target="_blank" rel="noopener noreferrer" style="color: var(--teal-700); font-weight: 600;">consumerhelpline.gov.in</a>.</li>
+            <li><strong>Official Resources Directory:</strong> Review regulatory authorities for banking (RBI Ombudsman), telecom (TRAI), and standards (BIS Care) in our <a href="{{ url_for('resources') }}" style="color: var(--teal-700); font-weight: 600;">Official Service Directory</a>.</li>
+          </ul>
+        </div>
+
+        <div style="display: flex; gap: var(--space-3); justify-content: center; flex-wrap: wrap;">
+          <a href="{{ url_for('wizard') }}" class="btn btn-outline">
+            &larr; Choose Another Category
+          </a>
+          <a href="{{ url_for('resources') }}" class="btn btn-primary">
+            Explore Official Directory
+          </a>
+        </div>
+      </div>
+    </div>
+  {% endif %}
+</div>
+{% endblock %}
+
+{% block extra_scripts %}
+<script>
+document.addEventListener("DOMContentLoaded", function() {
+  // Interactive Checklist Local Persistence & Progress Tracker
+  const checkboxes = document.querySelectorAll(".wizard-checkbox");
+  const progressText = document.getElementById("checklist-progress-text");
+  const progressBar = document.getElementById("checklist-progress-bar");
+  const resetBtn = document.getElementById("checklist-reset-btn");
+
+  if (checkboxes.length > 0) {
+    const guideSlug = checkboxes[0].getAttribute("data-guide") || "general";
+    const storageKey = "cep_checklist_" + guideSlug;
+
+    // Load saved states
+    let saved = {};
+    try {
+      saved = JSON.parse(localStorage.getItem(storageKey) || "{}");
+    } catch(e) {
+      saved = {};
+    }
+
+    checkboxes.forEach((cb, index) => {
+      const isChecked = !!saved[index];
+      cb.checked = isChecked;
+      updateRowStyle(cb);
+
+      cb.addEventListener("change", function() {
+        saved[index] = cb.checked;
+        try {
+          localStorage.setItem(storageKey, JSON.stringify(saved));
+        } catch(e) {}
+        updateRowStyle(cb);
+        calculateProgress();
+      });
+    });
+
+    function updateRowStyle(cb) {
+      const row = cb.closest(".checklist-item-row");
+      const text = row ? row.querySelector(".checklist-text") : null;
+      if (row && text) {
+        if (cb.checked) {
+          row.style.backgroundColor = "var(--teal-50)";
+          row.style.borderColor = "var(--teal-600)";
+          text.style.color = "var(--slate-500)";
+          text.style.textDecoration = "line-through";
+        } else {
+          row.style.backgroundColor = "";
+          row.style.borderColor = "var(--border-subtle)";
+          text.style.color = "var(--slate-800)";
+          text.style.textDecoration = "none";
+        }
+      }
+    }
+
+    function calculateProgress() {
+      const total = checkboxes.length;
+      let checkedCount = 0;
+      checkboxes.forEach(cb => {
+        if (cb.checked) checkedCount++;
+      });
+
+      if (progressText) {
+        progressText.textContent = `${checkedCount} of ${total} gathered`;
+      }
+      if (progressBar) {
+        const pct = total ? (checkedCount / total) * 100 : 0;
+        progressBar.style.width = pct + "%";
+      }
+    }
+
+    if (resetBtn) {
+      resetBtn.addEventListener("click", function() {
+        checkboxes.forEach((cb, index) => {
+          cb.checked = false;
+          updateRowStyle(cb);
+        });
+        try {
+          localStorage.removeItem(storageKey);
+        } catch(e) {}
+        calculateProgress();
+      });
+    }
+
+    // Initial calculation
+    calculateProgress();
+  }
+});
+</script>
+{% endblock %}

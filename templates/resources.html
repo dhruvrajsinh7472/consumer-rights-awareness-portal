@@ -1,0 +1,292 @@
+{% extends "base.html" %}
+
+{% block title %}Official Services Directory — Verified Government Redressal Channels{% endblock %}
+{% block meta_description %}Official directory of legitimate government consumer protection portals, statutory commissions, helplines, and regulatory ombudsmen in India.{% endblock %}
+
+{% block content %}
+<section class="section">
+  <div class="container">
+    <div class="header-with-visual" style="margin-bottom: var(--space-8);">
+      <div>
+        <span class="section-label">Official Service Directory</span>
+        <h1 class="section-title">Verified Government Portals &amp; Redressal Services</h1>
+        <p class="section-desc" style="font-size: 1.0625rem; margin-top: var(--space-2);">
+          Traceable, source-backed directory of official government grievance portals, quasi-judicial consumer commissions, and statutory standard authorities in India.
+        </p>
+        <div style="margin-top: var(--space-3); display: flex; gap: var(--space-2); flex-wrap: wrap;">
+          <span style="font-size: 0.8125rem; background: var(--teal-50); color: var(--teal-800); border: 1px solid var(--teal-100); padding: 4px 10px; border-radius: var(--radius-full); font-weight: 600;">
+            NCH Toll-Free: 1915
+          </span>
+          <span style="font-size: 0.8125rem; background: var(--navy-50); color: var(--navy-800); border: 1px solid var(--navy-100); padding: 4px 10px; border-radius: var(--radius-full); font-weight: 600;">
+            Verified .gov.in Channels
+          </span>
+        </div>
+      </div>
+      <div class="header-visual-card">
+        <img 
+          src="{{ url_for('static', filename='images/customer_support.jpg') }}" 
+          alt="Government consumer helpline and 24/7 dispute resolution assistance" 
+          class="header-visual-img"
+          loading="lazy"
+          width="240"
+          height="180"
+        >
+      </div>
+    </div>
+
+    <!-- Educational Disclaimers & Non-API Notice -->
+    <div class="card" style="background-color: var(--teal-50); border-color: var(--teal-100); margin-bottom: var(--space-8);">
+      <div style="display: flex; gap: var(--space-4); align-items: flex-start;">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="color: var(--teal-700); flex-shrink: 0; margin-top: 2px;" aria-hidden="true">
+          <circle cx="12" cy="12" r="10"></circle>
+          <line x1="12" y1="16" x2="12" y2="12"></line>
+          <line x1="12" y1="8" x2="12" y2="8"></line>
+        </svg>
+        <div>
+          <h2 style="font-size: 1rem; font-weight: 700; color: var(--teal-800); margin-bottom: var(--space-1);">
+            Official Navigation &amp; Non-Intermediary Notice
+          </h2>
+          <p style="font-size: 0.9375rem; color: var(--slate-700); line-height: 1.5; margin-bottom: var(--space-2);">
+            This educational portal does <strong>NOT</strong> act as an API, intermediary agent, or direct filing submission channel for government authorities. All formal consumer grievances and commission filings must be submitted directly by citizens using the authentic government web links listed below.
+          </p>
+          <p style="font-size: 0.8125rem; color: var(--slate-600);">
+            <strong>URL Verification Tip:</strong> Always verify that official Indian government portals end with <code>.gov.in</code> or <code>.nic.in</code> to guard against phishing and duplicate private intermediary platforms.
+          </p>
+        </div>
+      </div>
+    </div>
+
+    <!-- Comparative Explainer: NCH vs Consumer Commissions (Crucial Distinction) -->
+    <div class="card" style="margin-bottom: var(--space-10); border-left: 4px solid var(--navy-800); padding: var(--space-6);">
+      <h2 style="font-size: 1.25rem; font-weight: 700; color: var(--navy-900); margin-bottom: var(--space-2);">
+        Crucial Distinction: National Consumer Helpline (NCH) vs. Consumer Court (e-Jagriti)
+      </h2>
+      <p style="color: var(--slate-600); font-size: 0.9375rem; margin-bottom: var(--space-6);">
+        Understanding when to use pre-litigation grievance assistance versus formal legal court proceedings:
+      </p>
+
+      <div class="grid-2">
+        <div style="background-color: var(--slate-50); padding: var(--space-5); border-radius: var(--radius-md); border: 1px solid var(--border-subtle);">
+          <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: var(--space-2);">
+            <span class="card-badge" style="background-color: var(--teal-100); color: var(--teal-800);">Pre-Litigation Alternative</span>
+            <span style="font-weight: 700; color: var(--teal-700); font-size: 0.875rem;">NCH (1915)</span>
+          </div>
+          <h3 style="font-size: 1.125rem; color: var(--navy-900); margin-bottom: var(--space-2);">National Consumer Helpline</h3>
+          <ul style="padding-left: var(--space-4); color: var(--slate-700); font-size: 0.875rem; line-height: 1.6; display: flex; flex-direction: column; gap: var(--space-2);">
+            <li><strong>Purpose:</strong> Alternate dispute resolution and informal company mediation via corporate convergence.</li>
+            <li><strong>Procedure:</strong> Call 1915 or register ticket on INGRAM portal. Completely free; no evidence affidavits required.</li>
+            <li><strong>Timeline:</strong> Typically processed within 15–30 days.</li>
+            <li><strong>Scope Limits:</strong> Does <em>NOT</em> issue legally binding judgments or order punitive damages. Relies on voluntary corporate settlement.</li>
+          </ul>
+        </div>
+
+        <div style="background-color: var(--slate-50); padding: var(--space-5); border-radius: var(--radius-md); border: 1px solid var(--border-subtle);">
+          <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: var(--space-2);">
+            <span class="card-badge" style="background-color: var(--navy-100); color: var(--navy-800);">Quasi-Judicial Court</span>
+            <span style="font-weight: 700; color: var(--navy-800); font-size: 0.875rem;">e-Jagriti Commissions</span>
+          </div>
+          <h3 style="font-size: 1.125rem; color: var(--navy-900); margin-bottom: var(--space-2);">Consumer Disputes Redressal Commissions</h3>
+          <ul style="padding-left: var(--space-4); color: var(--slate-700); font-size: 0.875rem; line-height: 1.6; display: flex; flex-direction: column; gap: var(--space-2);">
+            <li><strong>Purpose:</strong> Formal judicial litigation before District, State, or National Commissions under CPA 2019.</li>
+            <li><strong>Procedure:</strong> File petition online via e-Jagriti (e-jagriti.gov.in) with verified complaint and evidence index. In-person representation permitted.</li>
+            <li><strong>Filing Fees:</strong> NIL fee for claims up to ₹5 Lakh; tiered nominal fees up to ₹1,000 for ₹50 Lakh.</li>
+            <li><strong>Scope Limits:</strong> Issues legally binding judgments, execution decrees, and enforceable compensation orders.</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <!-- Official Service Entries Grid -->
+    <div class="section-header">
+      <h2 class="section-title" style="font-size: 1.5rem;">Verified Government Services &amp; Portals</h2>
+    </div>
+
+    <div style="display: flex; flex-direction: column; gap: var(--space-6);">
+      <!-- Service 1: NCH -->
+      <div class="card resource-card" id="service-nch">
+        <div class="resource-header">
+          <div>
+            <div style="display: flex; gap: var(--space-2); align-items: center;">
+              <h3 class="card-title" style="font-size: 1.25rem;">National Consumer Helpline (NCH / INGRAM)</h3>
+              <span style="font-size: 0.6875rem; background: var(--emerald-50); color: var(--emerald-700); font-weight: 700; padding: 2px 6px; border-radius: 3px;">VERIFIED: 2026-10-25</span>
+            </div>
+            <div class="resource-authority">Department of Consumer Affairs, Government of India</div>
+          </div>
+          <span class="resource-code">NCH_PORTAL</span>
+        </div>
+
+        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: var(--space-4); margin-bottom: var(--space-4); font-size: 0.875rem;">
+          <div style="background-color: var(--slate-50); padding: var(--space-3); border-radius: var(--radius-sm);">
+            <strong style="color: var(--navy-900);">What This Service Handles:</strong>
+            <p style="color: var(--slate-700); margin-top: 4px;">Pre-litigation consumer complaints against over 800 registered convergence partner companies, e-commerce refund delays, telecom billing errors, and consumer rights awareness guidance.</p>
+          </div>
+          <div style="background-color: var(--slate-50); padding: var(--space-3); border-radius: var(--radius-sm);">
+            <strong style="color: var(--crimson-700);">What This Service Does NOT Do:</strong>
+            <p style="color: var(--slate-700); margin-top: 4px;">Does NOT act as a court; cannot issue binding injunctions, cannot penalize companies, and cannot award monetary compensation. If a company rejects convergence mediation, the dispute must be escalated to a Consumer Commission.</p>
+          </div>
+        </div>
+
+        <div style="margin-bottom: var(--space-4); font-size: 0.875rem;">
+          <strong>Verified Contact Channels:</strong>
+          <span style="color: var(--slate-700);">Toll-Free <strong>1915</strong> (8:00 AM to 8:00 PM, all days except national holidays) • WhatsApp: <strong>+91 8800001915</strong> • SMS: <strong>8800001915</strong> • NCH App &amp; UMANG App.</span>
+        </div>
+
+        <div class="card-footer">
+          <span style="font-size: 0.8125rem; color: var(--slate-500);">Domain: consumerhelpline.gov.in</span>
+          <a href="https://consumerhelpline.gov.in" target="_blank" rel="noopener noreferrer" class="btn btn-teal" style="font-size: 0.8125rem;">
+            <span>Visit Official NCH Portal</span>
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6M15 3h6v6M10 14L21 3"/></svg>
+          </a>
+        </div>
+      </div>
+
+      <!-- Service 2: e-Jagriti -->
+      <div class="card resource-card" id="service-ejagriti">
+        <div class="resource-header">
+          <div>
+            <div style="display: flex; gap: var(--space-2); align-items: center;">
+              <h3 class="card-title" style="font-size: 1.25rem;">e-Jagriti Unified Consumer Court Portal</h3>
+              <span style="font-size: 0.6875rem; background: var(--emerald-50); color: var(--emerald-700); font-weight: 700; padding: 2px 6px; border-radius: 3px;">VERIFIED: 2026-10-25</span>
+            </div>
+            <div class="resource-authority">Department of Consumer Affairs &amp; National Informatics Centre (NIC)</div>
+          </div>
+          <span class="resource-code">E_JAGRITI</span>
+        </div>
+
+        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: var(--space-4); margin-bottom: var(--space-4); font-size: 0.875rem;">
+          <div style="background-color: var(--slate-50); padding: var(--space-3); border-radius: var(--radius-sm);">
+            <strong style="color: var(--navy-900);">What This Service Handles:</strong>
+            <p style="color: var(--slate-700); margin-top: 4px;">Unified digital case filing, electronic fee payment, evidence document uploads, daily cause list tracking, case order access, and virtual hearing video-conferencing across District (DCDRC), State (SCDRC), and National (NCDRC) Commissions.</p>
+          </div>
+          <div style="background-color: var(--slate-50); padding: var(--space-3); border-radius: var(--radius-sm);">
+            <strong style="color: var(--crimson-700);">What This Service Does NOT Do:</strong>
+            <p style="color: var(--slate-700); margin-top: 4px;">Does NOT provide informal customer support chat or instant refunds. Complaints submitted here initiate formal judicial proceedings requiring structured petitions and evidentiary verification.</p>
+          </div>
+        </div>
+
+        <div style="margin-bottom: var(--space-4); font-size: 0.875rem;">
+          <strong>Appropriate Use Cases:</strong>
+          <span style="color: var(--slate-700);">Filing formal legal complaints against defective products, service deficiencies, or product liability injuries when informal pre-litigation resolution fails.</span>
+        </div>
+
+        <div class="card-footer">
+          <span style="font-size: 0.8125rem; color: var(--slate-500);">Domain: e-jagriti.gov.in</span>
+          <a href="https://e-jagriti.gov.in" target="_blank" rel="noopener noreferrer" class="btn btn-primary" style="font-size: 0.8125rem;">
+            <span>Visit e-Jagriti Portal</span>
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6M15 3h6v6M10 14L21 3"/></svg>
+          </a>
+        </div>
+      </div>
+
+      <!-- Service 3: BIS & BIS Care -->
+      <div class="card resource-card" id="service-bis">
+        <div class="resource-header">
+          <div>
+            <div style="display: flex; gap: var(--space-2); align-items: center;">
+              <h3 class="card-title" style="font-size: 1.25rem;">Bureau of Indian Standards (BIS) &amp; BIS Care</h3>
+              <span style="font-size: 0.6875rem; background: var(--emerald-50); color: var(--emerald-700); font-weight: 700; padding: 2px 6px; border-radius: 3px;">VERIFIED: 2026-10-25</span>
+            </div>
+            <div class="resource-authority">Bureau of Indian Standards, Government of India</div>
+          </div>
+          <span class="resource-code">BIS_PORTAL</span>
+        </div>
+
+        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: var(--space-4); margin-bottom: var(--space-4); font-size: 0.875rem;">
+          <div style="background-color: var(--slate-50); padding: var(--space-3); border-radius: var(--radius-sm);">
+            <strong style="color: var(--navy-900);">What This Service Handles:</strong>
+            <p style="color: var(--slate-700); margin-top: 4px;">Verification of ISI marks, electronics CRS R-numbers, 6-digit Hallmark Unique Identification (HUID) on gold jewellery, and citizen grievance registration against counterfeit or sub-standard certified goods.</p>
+          </div>
+          <div style="background-color: var(--slate-50); padding: var(--space-3); border-radius: var(--radius-sm);">
+            <strong style="color: var(--crimson-700);">What This Service Does NOT Do:</strong>
+            <p style="color: var(--slate-700); margin-top: 4px;">Does NOT resolve financial refund disputes or delivery delays between individual consumers and online retailers.</p>
+          </div>
+        </div>
+
+        <div style="margin-bottom: var(--space-4); font-size: 0.875rem;">
+          <strong>Official Verification Tools:</strong>
+          <span style="color: var(--slate-700);">BIS Care Mobile App (Google Play Store &amp; Apple App Store) • Manakonline Portal (manakonline.in) for online licence checks.</span>
+        </div>
+
+        <div class="card-footer">
+          <span style="font-size: 0.8125rem; color: var(--slate-500);">Domain: bis.gov.in</span>
+          <a href="https://www.bis.gov.in" target="_blank" rel="noopener noreferrer" class="btn btn-secondary" style="font-size: 0.8125rem;">
+            <span>Visit Official BIS Website</span>
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6M15 3h6v6M10 14L21 3"/></svg>
+          </a>
+        </div>
+      </div>
+
+      <!-- Service 4: CCPA -->
+      <div class="card resource-card" id="service-ccpa">
+        <div class="resource-header">
+          <div>
+            <div style="display: flex; gap: var(--space-2); align-items: center;">
+              <h3 class="card-title" style="font-size: 1.25rem;">Central Consumer Protection Authority (CCPA)</h3>
+              <span style="font-size: 0.6875rem; background: var(--emerald-50); color: var(--emerald-700); font-weight: 700; padding: 2px 6px; border-radius: 3px;">VERIFIED: 2026-10-25</span>
+            </div>
+            <div class="resource-authority">Statutory Authority under Section 10 of Consumer Protection Act, 2019</div>
+          </div>
+          <span class="resource-code">CCPA_DARK_PATTERNS_2023</span>
+        </div>
+
+        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: var(--space-4); margin-bottom: var(--space-4); font-size: 0.875rem;">
+          <div style="background-color: var(--slate-50); padding: var(--space-3); border-radius: var(--radius-sm);">
+            <strong style="color: var(--navy-900);">What This Service Handles:</strong>
+            <p style="color: var(--slate-700); margin-top: 4px;">Class-action investigations into unfair trade practices affecting consumers as a class, mandatory recall of dangerous goods, penalizing misleading advertisements, and enforcement of the 2023 Dark Patterns Guidelines.</p>
+          </div>
+          <div style="background-color: var(--slate-50); padding: var(--space-3); border-radius: var(--radius-sm);">
+            <strong style="color: var(--crimson-700);">What This Service Does NOT Do:</strong>
+            <p style="color: var(--slate-700); margin-top: 4px;">Does NOT adjudicate individual civil monetary compensation claims. Acts as an executive regulatory watchdog for consumer rights enforcement.</p>
+          </div>
+        </div>
+
+        <div class="card-footer">
+          <span style="font-size: 0.8125rem; color: var(--slate-500);">Email: cp-da@nic.in</span>
+          <a href="https://consumeraffairs.gov.in/central-consumer-protection-authority-ccpa" target="_blank" rel="noopener noreferrer" class="btn btn-secondary" style="font-size: 0.8125rem;">
+            <span>Visit Official CCPA Page</span>
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6M15 3h6v6M10 14L21 3"/></svg>
+          </a>
+        </div>
+      </div>
+
+      <!-- Service 5: RBI Integrated Ombudsman -->
+      <div class="card resource-card" id="service-rbi">
+        <div class="resource-header">
+          <div>
+            <div style="display: flex; gap: var(--space-2); align-items: center;">
+              <h3 class="card-title" style="font-size: 1.25rem;">Reserve Bank Integrated Ombudsman (RBI CMS)</h3>
+              <span style="font-size: 0.6875rem; background: var(--emerald-50); color: var(--emerald-700); font-weight: 700; padding: 2px 6px; border-radius: 3px;">VERIFIED: 2026-10-25</span>
+            </div>
+            <div class="resource-authority">Reserve Bank of India (RBI)</div>
+          </div>
+          <span class="resource-code">RBI_TAT_CIRCULAR_2019</span>
+        </div>
+
+        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: var(--space-4); margin-bottom: var(--space-4); font-size: 0.875rem;">
+          <div style="background-color: var(--slate-50); padding: var(--space-3); border-radius: var(--radius-sm);">
+            <strong style="color: var(--navy-900);">What This Service Handles:</strong>
+            <p style="color: var(--slate-700); margin-top: 4px;">Grievance redressal against banks, NBFCs, and payment system operators for failed UPI transactions, unauthorized electronic debits, and ATM cash non-dispense where the bank failed to resolve within 30 days.</p>
+          </div>
+          <div style="background-color: var(--slate-50); padding: var(--space-3); border-radius: var(--radius-sm);">
+            <strong style="color: var(--crimson-700);">What This Service Does NOT Do:</strong>
+            <p style="color: var(--slate-700); margin-top: 4px;">Does NOT handle commercial disputes regarding product quality of goods bought with the card/UPI.</p>
+          </div>
+        </div>
+
+        <div style="margin-bottom: var(--space-4); font-size: 0.875rem;">
+          <strong>Verified Contact:</strong>
+          <span style="color: var(--slate-700);">Portal: cms.rbi.org.in • Toll-Free Helpline: <strong>14448</strong> (operational 9:30 AM to 5:15 PM).</span>
+        </div>
+
+        <div class="card-footer">
+          <span style="font-size: 0.8125rem; color: var(--slate-500);">Domain: cms.rbi.org.in</span>
+          <a href="https://cms.rbi.org.in" target="_blank" rel="noopener noreferrer" class="btn btn-secondary" style="font-size: 0.8125rem;">
+            <span>Visit RBI CMS Portal</span>
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6M15 3h6v6M10 14L21 3"/></svg>
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+{% endblock %}

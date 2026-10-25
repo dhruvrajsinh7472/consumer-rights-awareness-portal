@@ -1,0 +1,179 @@
+{% extends "base.html" %}
+
+{% block title %}Anonymous Portal Usability Feedback — {{ portal_name }}{% endblock %}
+
+{% block meta_description %}Provide anonymous usability feedback, suggestions, or content corrections. We do not collect names, email addresses, phone numbers, or personal complaint information.{% endblock %}
+
+{% block content %}
+<section class="page-header">
+  <div class="container">
+    <div class="page-header-content">
+      <div class="breadcrumbs">
+        <a href="{{ url_for('index') }}">Home</a>
+        <span class="sep">/</span>
+        <span aria-current="page">Feedback</span>
+      </div>
+      <h1 class="page-title">Anonymous Usability Feedback</h1>
+      <p class="page-subtitle">
+        Help improve the accessibility, clarity, and statutory accuracy of this public educational service. Submissions are strictly anonymous.
+      </p>
+    </div>
+  </div>
+</section>
+
+<div class="container section">
+  <div style="max-width: 680px; margin: 0 auto;">
+
+    <!-- Strict Privacy Disclaimer Box -->
+    <div class="card" style="margin-bottom: var(--space-6); padding: var(--space-5); background-color: var(--teal-50); border: 1px solid var(--teal-100);">
+      <div style="display: flex; gap: var(--space-3); align-items: flex-start;">
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="color: var(--teal-700); flex-shrink: 0; margin-top: 2px;" aria-hidden="true">
+          <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path>
+          <path d="M9 12l2 2 4-4"></path>
+        </svg>
+        <div style="font-size: 0.875rem; color: var(--teal-800); line-height: 1.6;">
+          <strong>Zero Personal Data Collection Policy:</strong>
+          <p style="margin: var(--space-1) 0 0 0;">
+            This form collects <strong>only</strong> an optional rating and your short usability suggestion. Please <strong>never</strong> include names, phone numbers, email addresses, Aadhaar numbers, bank card numbers, or ongoing complaint docket numbers.
+          </p>
+        </div>
+      </div>
+    </div>
+
+    <!-- Feedback Submission Form Card -->
+    <div class="card" style="padding: var(--space-8); box-shadow: var(--shadow-md);">
+      <form action="{{ url_for('feedback') }}" method="POST" id="feedback-form" novalidate>
+        
+        <!-- Feedback Type -->
+        <div class="form-group" style="margin-bottom: var(--space-5);">
+          <label for="feedback_type" class="form-label" style="font-weight: 700; color: var(--navy-900); margin-bottom: var(--space-1); display: block;">
+            Feedback Category <span class="required" aria-hidden="true" style="color: var(--crimson-600);">*</span>
+          </label>
+          <select 
+            id="feedback_type" 
+            name="feedback_type" 
+            class="form-control" 
+            required
+            style="width: 100%; padding: 0.625rem 0.875rem; border: 1px solid var(--border-strong); border-radius: var(--radius-sm); font-size: 0.9375rem; background: var(--white);"
+          >
+            <option value="">-- Select a Category --</option>
+            <option value="usability_suggestion" {% if form_data.get('feedback_type') == 'usability_suggestion' %}selected{% endif %}>
+              Usability or Accessibility Suggestion (Navigation, mobile, fonts)
+            </option>
+            <option value="content_correction" {% if form_data.get('feedback_type') == 'content_correction' %}selected{% endif %}>
+              Content Correction (Statutory citation, timeline, rule update)
+            </option>
+            <option value="portal_compliment" {% if form_data.get('feedback_type') == 'portal_compliment' %}selected{% endif %}>
+              Portal Appreciation / Positive Feedback
+            </option>
+            <option value="general_feedback" {% if form_data.get('feedback_type') == 'general_feedback' %}selected{% endif %}>
+              General Academic Feedback
+            </option>
+          </select>
+        </div>
+
+        <!-- Rating (1 to 5) -->
+        <div class="form-group" style="margin-bottom: var(--space-5);">
+          <label for="rating" class="form-label" style="font-weight: 700; color: var(--navy-900); margin-bottom: var(--space-1); display: block;">
+            Usability Rating <span style="font-weight: 400; color: var(--slate-500); font-size: 0.8125rem;">(Optional, 1–5 stars)</span>
+          </label>
+          <select 
+            id="rating" 
+            name="rating" 
+            class="form-control" 
+            style="max-width: 280px; padding: 0.625rem 0.875rem; border: 1px solid var(--border-strong); border-radius: var(--radius-sm); font-size: 0.9375rem; background: var(--white);"
+          >
+            <option value="">-- No numeric rating --</option>
+            <option value="5" {% if form_data.get('rating') == '5' %}selected{% endif %}>5 - Outstanding (Intuitive &amp; clear)</option>
+            <option value="4" {% if form_data.get('rating') == '4' %}selected{% endif %}>4 - Very Good (Helpful content)</option>
+            <option value="3" {% if form_data.get('rating') == '3' %}selected{% endif %}>3 - Moderate (Fairly usable)</option>
+            <option value="2" {% if form_data.get('rating') == '2' %}selected{% endif %}>2 - Needs Improvement</option>
+            <option value="1" {% if form_data.get('rating') == '1' %}selected{% endif %}>1 - Unsatisfactory</option>
+          </select>
+        </div>
+
+        <!-- Optional Page Context URL -->
+        <div class="form-group" style="margin-bottom: var(--space-5);">
+          <label for="page_url" class="form-label" style="font-weight: 700; color: var(--navy-900); margin-bottom: var(--space-1); display: block;">
+            Page or Guide Context <span style="font-weight: 400; color: var(--slate-500); font-size: 0.8125rem;">(Optional)</span>
+          </label>
+          <input 
+            type="text" 
+            id="page_url" 
+            name="page_url" 
+            class="form-control" 
+            placeholder="e.g. /guidance/e-commerce-refund-delays"
+            maxlength="255"
+            value="{{ form_data.get('page_url', '') }}"
+            style="width: 100%; padding: 0.625rem 0.875rem; border: 1px solid var(--border-strong); border-radius: var(--radius-sm); font-size: 0.9375rem;"
+          >
+        </div>
+
+        <!-- Suggestion / Message -->
+        <div class="form-group" style="margin-bottom: var(--space-6);">
+          <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: var(--space-1);">
+            <label for="message" class="form-label" style="font-weight: 700; color: var(--navy-900); margin: 0;">
+              Your Suggestion or Comment <span class="required" aria-hidden="true" style="color: var(--crimson-600);">*</span>
+            </label>
+            <span id="char-counter" style="font-size: 0.8125rem; color: var(--slate-500);">
+              0 / 1000
+            </span>
+          </div>
+          <textarea 
+            id="message" 
+            name="message" 
+            class="form-control" 
+            rows="5"
+            minlength="5"
+            maxlength="1000"
+            required
+            placeholder="Describe your suggestion, feedback, or verified content correction in detail (between 5 and 1000 characters)..."
+            style="width: 100%; padding: 0.75rem; border: 1px solid var(--border-strong); border-radius: var(--radius-sm); font-size: 0.9375rem; line-height: 1.5; font-family: var(--font-sans);"
+          >{{ form_data.get('message', '') }}</textarea>
+          <div style="font-size: 0.75rem; color: var(--slate-500); margin-top: 4px;">
+            Reminder: Automated filters reject submissions containing Aadhaar, phone numbers, or credit card sequences.
+          </div>
+        </div>
+
+        <!-- Submit Button -->
+        <div>
+          <button type="submit" id="submit-feedback-btn" class="btn btn-primary" style="width: 100%; padding: 0.875rem; font-weight: 700; font-size: 1rem;">
+            Submit Anonymous Feedback
+          </button>
+        </div>
+      </form>
+    </div>
+
+    <!-- Academic Integrity Note -->
+    <div style="text-align: center; margin-top: var(--space-6); font-size: 0.8125rem; color: var(--slate-500);">
+      Submissions are securely stored in the internal SQLite database and reviewed exclusively by authorized academic project evaluators. Submitted feedback is never published publicly.
+    </div>
+
+  </div>
+</div>
+{% endblock %}
+
+{% block extra_scripts %}
+<script>
+document.addEventListener("DOMContentLoaded", function() {
+  const messageArea = document.getElementById("message");
+  const counter = document.getElementById("char-counter");
+
+  if (messageArea && counter) {
+    function updateCount() {
+      const len = messageArea.value.length;
+      counter.textContent = `${len} / 1000`;
+      if (len > 950) {
+        counter.style.color = "var(--crimson-600)";
+        counter.style.fontWeight = "700";
+      } else {
+        counter.style.color = "var(--slate-500)";
+        counter.style.fontWeight = "400";
+      }
+    }
+    messageArea.addEventListener("input", updateCount);
+    updateCount();
+  }
+});
+</script>
+{% endblock %}

@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>{% block title %}Consumer Rights Awareness Portal{% endblock %} — Technology for Consumer Rights</title>
+  <meta name="description" content="{% block meta_description %}An educational, public-service portal empowering Indian citizens with statutory consumer rights, problem-specific resolution guides, evidence checklists, and official grievance directories.{% endblock %}">
+  
+  <!-- Design System Stylesheet -->
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+  {% block extra_head %}{% endblock %}
+</head>
+<body>
+  <!-- Accessibility Skip Link -->
+  <a href="#main-content" class="skip-link">Skip to main content</a>
+
+  <!-- Educational Project Banner -->
+  <div class="official-banner" role="region" aria-label="Educational Project Disclaimer">
+    <div class="container">
+      <div class="banner-badge">
+        <span class="dot" aria-hidden="true"></span>
+        <span><strong>Academic Project:</strong> Technology for Consumer Rights Awareness (CEP)</span>
+      </div>
+      <div class="banner-links">
+        <span>National Consumer Helpline (NCH): <strong>1915</strong></span>
+        <a href="{{ url_for('about') }}">About Project</a>
+        <a href="{{ url_for('privacy') }}">Data &amp; Privacy</a>
+        {% if is_admin %}
+          <a href="{{ url_for('admin_sources') }}" style="color: #38BDF8; font-weight: 700;">★ Admin Review</a>
+        {% elif admin_configured %}
+          <a href="{{ url_for('admin_login') }}">Admin Sign In</a>
+        {% endif %}
+      </div>
+    </div>
+  </div>
+
+  <!-- Global Header -->
+  <header class="site-header" role="banner">
+    <div class="container">
+      <div class="nav-wrapper">
+        <a href="{{ url_for('index') }}" class="brand" aria-label="Consumer Rights Portal Home">
+          <div class="brand-icon" aria-hidden="true">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
+              <path d="M9 12l2 2 4-4"/>
+            </svg>
+          </div>
+          <div class="brand-text">
+            <h1>Consumer Rights Portal</h1>
+            <span>Technology for Consumer Awareness</span>
+          </div>
+        </a>
+
+        <!-- Mobile Menu Toggle Button -->
+        <button class="mobile-toggle" aria-label="Toggle navigation menu" aria-expanded="false" aria-controls="primary-nav">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <line x1="3" y1="12" x2="21" y2="12"></line>
+            <line x1="3" y1="6" x2="21" y2="6"></line>
+            <line x1="3" y1="18" x2="21" y2="18"></line>
+          </svg>
+        </button>
+
+        <!-- Primary Navigation Links -->
+        <nav id="primary-nav" role="navigation" aria-label="Main Navigation">
+          <ul class="nav-menu">
+            <li>
+              <a href="{{ url_for('index') }}" class="nav-link {% if active_endpoint == 'index' %}active{% endif %}">Home</a>
+            </li>
+            <li>
+              <a href="{{ url_for('wizard') }}" class="nav-link {% if active_endpoint == 'wizard' %}active{% endif %}" style="color: var(--teal-700); font-weight: 700;">
+                ✦ Wizard
+              </a>
+            </li>
+            <li>
+              <a href="{{ url_for('rights_list') }}" class="nav-link {% if 'right' in active_endpoint %}active{% endif %}">Rights</a>
+            </li>
+            <li>
+              <a href="{{ url_for('problems') }}" class="nav-link {% if active_endpoint == 'problems' %}active{% endif %}">Common Problems</a>
+            </li>
+            <li>
+              <a href="{{ url_for('guidance') }}" class="nav-link {% if active_endpoint == 'guidance' %}active{% endif %}">Guidance</a>
+            </li>
+            <li>
+              <a href="{{ url_for('resources') }}" class="nav-link {% if active_endpoint == 'resources' %}active{% endif %}">Directory</a>
+            </li>
+            <li>
+              <a href="{{ url_for('faqs') }}" class="nav-link {% if active_endpoint == 'faqs' %}active{% endif %}">FAQs</a>
+            </li>
+            <li>
+              <a href="{{ url_for('quiz') }}" class="nav-link {% if active_endpoint == 'quiz' %}active{% endif %}">Quiz</a>
+            </li>
+            <li>
+              <a href="{{ url_for('search_page') }}" class="nav-link {% if active_endpoint == 'search_page' %}active{% endif %}" aria-label="Search content">
+                <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" style="vertical-align: -2px; margin-right: 2px;"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg>
+                Search
+              </a>
+            </li>
+            <li>
+              <a href="{{ url_for('feedback') }}" class="nav-link nav-cta {% if active_endpoint == 'feedback' %}active{% endif %}">Feedback</a>
+            </li>
+          </ul>
+        </nav>
+      </div>
+    </div>
+  </header>
+
+  <!-- Flash Messages -->
+  {% with messages = get_flashed_messages(with_categories=true) %}
+    {% if messages %}
+      <div class="container flash-container" role="status">
+        {% for category, message in messages %}
+          <div class="alert alert-{{ category }}">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              {% if category == 'success' %}
+                <polyline points="20 6 9 17 4 12"></polyline>
+              {% else %}
+                <circle cx="12" cy="12" r="10"></circle>
+                <line x1="12" y1="8" x2="12" y2="12"></line>
+                <line x1="12" y1="16" x2="12.01" y2="16"></line>
+              {% endif %}
+            </svg>
+            <div>{{ message }}</div>
+          </div>
+        {% endfor %}
+      </div>
+    {% endif %}
+  {% endwith %}
+
+  <!-- Main Landmark -->
+  <main id="main-content">
+    {% block content %}{% endblock %}
+  </main>
+
+  <!-- Footer -->
+  <footer class="site-footer" role="contentinfo">
+    <div class="container">
+      <div class="footer-grid">
+        <!-- Col 1: About & Disclaimer -->
+        <div class="footer-col">
+          <h3>Consumer Rights Awareness Portal</h3>
+          <p class="footer-desc">
+            An open educational initiative developed under the project <strong>Technology for Consumer Rights Awareness</strong> as a college Community Engagement Project (CEP).
+          </p>
+          <div class="footer-disclaimer-box">
+            <strong>Important Educational Notice:</strong> This website is an informational and educational navigation service. It is NOT a government agency, court of law, official complaint-filing portal, or legal practice.
+          </div>
+        </div>
+
+        <!-- Col 2: Navigation -->
+        <div class="footer-col">
+          <h3>Key Sections</h3>
+          <ul class="footer-links">
+            <li><a href="{{ url_for('wizard') }}">Interactive Resolution Wizard</a></li>
+            <li><a href="{{ url_for('search_page') }}">Global Verified Search</a></li>
+            <li><a href="{{ url_for('rights_list') }}">The 6 Statutory Rights</a></li>
+            <li><a href="{{ url_for('problems') }}">Consumer Issue Library</a></li>
+            <li><a href="{{ url_for('guidance') }}">Resolution Roadmap</a></li>
+            <li><a href="{{ url_for('resources') }}">Official Services Directory</a></li>
+            <li><a href="{{ url_for('faqs') }}">Frequently Asked Questions</a></li>
+            <li><a href="{{ url_for('quiz') }}">Test Your Awareness</a></li>
+          </ul>
+        </div>
+
+        <!-- Col 3: Academic & Policies -->
+        <div class="footer-col">
+          <h3>Project &amp; Ethics</h3>
+          <ul class="footer-links">
+            <li><a href="{{ url_for('about') }}">About the Project</a></li>
+            <li><a href="{{ url_for('sources_registry') }}">Source Provenance Audit</a></li>
+            <li><a href="{{ url_for('privacy') }}">Privacy &amp; Data Ethics</a></li>
+            <li><a href="{{ url_for('feedback') }}">Anonymous Feedback</a></li>
+            <li><a href="{{ url_for('api_guides') }}">Open Guidance API</a></li>
+            <li><a href="{{ url_for('admin_login') }}">Admin Provenance Review</a></li>
+          </ul>
+        </div>
+
+        <!-- Col 4: Official Helpline -->
+        <div class="footer-col">
+          <h3>Official Helpline</h3>
+          <div class="footer-helpline">
+            <div class="footer-helpline-label">National Consumer Helpline</div>
+            <div class="footer-helpline-num">1915</div>
+            <p style="font-size: 0.8125rem; color: var(--slate-300);">
+              Toll-free national grievance assistance operated by Dept. of Consumer Affairs (9:30 AM to 5:30 PM, all days except National Holidays).
+            </p>
+          </div>
+        </div>
+      </div>
+
+      <div class="footer-bottom">
+        <div>
+          &copy; {{ current_year }} Consumer Rights Awareness Portal — Community Engagement Project.
+        </div>
+        <div>
+          Built with Python, Flask &amp; Semantic Web Standards.
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Main JavaScript File -->
+  <script src="{{ url_for('static', filename='js/main.js') }}"></script>
+  {% block extra_scripts %}{% endblock %}
+</body>
+</html>

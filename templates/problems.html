@@ -1,0 +1,129 @@
+{% extends "base.html" %}
+
+{% block title %}Common Consumer Problems &amp; Resolution Directory{% endblock %}
+{% block meta_description %}Browse documented resolution guides and statutory dispute procedures for common Indian consumer problems.{% endblock %}
+
+{% block content %}
+<section class="section">
+  <div class="container">
+    <div class="header-with-visual" style="margin-bottom: var(--space-6);">
+      <div>
+        <span class="section-label">Problem Resolution Directory</span>
+        <h1 class="section-title">Common Consumer Problems &amp; Redressal Guides</h1>
+        <p class="section-desc" style="font-size: 1.0625rem; margin-top: var(--space-2);">
+          Step-by-step resolution roadmaps based on Indian consumer law, regulatory timelines, and official grievance escalation channels.
+        </p>
+        <div style="margin-top: var(--space-3); display: flex; gap: var(--space-2); flex-wrap: wrap;">
+          <span style="font-size: 0.8125rem; background: var(--teal-50); color: var(--teal-800); border: 1px solid var(--teal-100); padding: 4px 10px; border-radius: var(--radius-full); font-weight: 600;">
+            9 Documented Procedures
+          </span>
+          <span style="font-size: 0.8125rem; background: var(--navy-50); color: var(--navy-800); border: 1px solid var(--navy-100); padding: 4px 10px; border-radius: var(--radius-full); font-weight: 600;">
+            Statutory Escalation Roadmaps
+          </span>
+        </div>
+      </div>
+      <div class="header-visual-card">
+        <img 
+          src="{{ url_for('static', filename='images/digital_complaint.jpg') }}" 
+          alt="Computer keyboard with highlighted red complaint key" 
+          class="header-visual-img"
+          loading="lazy"
+          width="240"
+          height="180"
+        >
+      </div>
+    </div>
+
+    <!-- Category Filter Bar -->
+    <div class="filter-bar" role="toolbar" aria-label="Category filters">
+      <a href="{{ url_for('problems') }}" class="filter-btn {% if not selected_category %}active{% endif %}">
+        All Categories
+      </a>
+      {% for cat in categories %}
+      <a href="{{ url_for('problems', category=cat.category) }}" class="filter-btn {% if selected_category == cat.category %}active{% endif %}">
+        {{ cat.category }} ({{ cat.guide_count }})
+      </a>
+      {% endfor %}
+    </div>
+
+    <!-- Guides Grid -->
+    {% if guides %}
+    <div class="grid-2">
+      {% for guide in guides %}
+      <div class="card" style="display: flex; flex-direction: column; overflow: hidden; padding: 0;">
+        {% if guide.category == 'Online Shopping & E-Commerce' %}
+          <div class="cat-thumb-wrapper" style="height: 140px;">
+            <img src="{{ url_for('static', filename='images/online_shopping.jpg') }}" alt="Online shopping dispute guidance" class="cat-thumb" loading="lazy" width="400" height="140">
+          </div>
+        {% elif 'Electronics' in guide.category or 'Quality' in guide.category %}
+          <div class="cat-thumb-wrapper" style="height: 140px;">
+            <img src="{{ url_for('static', filename='images/product_quality.jpg') }}" alt="Product quality and warranty compliance" class="cat-thumb" loading="lazy" width="400" height="140">
+          </div>
+        {% endif %}
+        
+        <div style="padding: var(--space-6); display: flex; flex-direction: column; flex-grow: 1;">
+          <div style="display: flex; justify-content: space-between; align-items: flex-start; gap: var(--space-2); margin-bottom: var(--space-2);">
+            <span class="card-badge">{{ guide.category }}</span>
+          </div>
+
+          <h2 class="card-title" style="font-size: 1.25rem;">
+            {{ guide.title }}
+          </h2>
+
+          <p class="card-body" style="font-size: 0.9375rem; margin-bottom: var(--space-3);">
+            {{ guide.summary }}
+          </p>
+
+          <div style="background-color: var(--slate-50); border-left: 3px solid var(--teal-700); padding: var(--space-3); border-radius: 0 var(--radius-sm) var(--radius-sm) 0; margin-bottom: var(--space-4); font-size: 0.875rem;">
+            <strong style="color: var(--navy-900);">Issue Scenario:</strong>
+            <span style="color: var(--slate-600);">{{ guide.problem_statement }}</span>
+          </div>
+
+          <div class="card-footer" style="padding-top: var(--space-4); margin-top: auto;">
+            <span style="font-size: 0.8125rem; color: var(--slate-500);">Authority: {{ guide.source_authority }}</span>
+            <a href="{{ url_for('guidance', slug=guide.slug) }}" class="btn btn-teal" style="font-size: 0.8125rem; padding: var(--space-2) var(--space-4);">
+              <span>View Step-by-Step Guide</span>
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+            </a>
+          </div>
+        </div>
+      </div>
+      {% endfor %}
+    </div>
+    {% else %}
+    <!-- Honest Empty State -->
+    <div class="empty-state">
+      <div class="empty-state-icon" aria-hidden="true">
+        <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+          <circle cx="12" cy="12" r="10"></circle>
+          <line x1="12" y1="8" x2="12" y2="12"></line>
+          <line x1="12" y1="16" x2="12.01" y2="16"></line>
+        </svg>
+      </div>
+      <h3 class="empty-state-title">No Guides Found in this Category Yet</h3>
+      <p class="empty-state-desc">
+        We are systematically compiling verified, source-backed consumer guides under Phase 2 of our Community Engagement Project.
+      </p>
+      <a href="{{ url_for('problems') }}" class="btn btn-secondary">
+        View All Categories
+      </a>
+    </div>
+    {% endif %}
+
+    <!-- Guidance Suggestion Banner -->
+    <div style="margin-top: var(--space-12); background-color: var(--slate-100); border: 1px solid var(--border-subtle); border-radius: var(--radius-lg); padding: var(--space-6); display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: var(--space-4);">
+      <div>
+        <h3 style="font-size: 1.125rem; font-weight: 700; color: var(--navy-900); margin-bottom: var(--space-1);">
+          Have you faced an unlisted consumer dispute?
+        </h3>
+        <p style="font-size: 0.875rem; color: var(--slate-600);">
+          Submit an anonymous suggestion to help our research team document relevant statutory guidelines and procedures.
+        </p>
+      </div>
+      <a href="{{ url_for('feedback') }}" class="btn btn-secondary" style="font-size: 0.875rem;">
+        Submit Anonymous Suggestion
+      </a>
+    </div>
+  </div>
+</section>
+{% endblock %}

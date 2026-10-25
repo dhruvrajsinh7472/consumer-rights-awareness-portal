@@ -1,0 +1,115 @@
+{% extends "base.html" %}
+
+{% block title %}Administrator Sign In — Content Provenance Review{% endblock %}
+
+{% block meta_description %}Protected administrative portal for content provenance auditing, link health verification, and legal source maintenance.{% endblock %}
+
+{% block content %}
+<section class="page-header">
+  <div class="container">
+    <div class="page-header-content">
+      <div class="breadcrumbs">
+        <a href="{{ url_for('index') }}">Home</a>
+        <span class="sep">/</span>
+        <span aria-current="page">Admin Access</span>
+      </div>
+      <h1 class="page-title">Administrative Source Review</h1>
+      <p class="page-subtitle">
+        Internal dashboard for verifying canonical government citations, monitoring endpoint health, and recording content provenance audit trails.
+      </p>
+    </div>
+  </div>
+</section>
+
+<div class="container section">
+  <div style="max-width: 520px; margin: 0 auto;">
+
+    {% if disabled %}
+      <!-- Gated Security Notice when credentials are not configured -->
+      <div class="card" style="padding: var(--space-8); border-top: 4px solid var(--amber-600); text-align: center;">
+        <div style="width: 56px; height: 56px; border-radius: var(--radius-full); background: var(--amber-100); color: var(--amber-700); display: flex; align-items: center; justify-content: center; margin: 0 auto var(--space-4);">
+          <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <rect x="3" y="11" width="18" height="11" rx="2" ry="2"></rect>
+            <path d="M7 11V7a5 5 0 0 1 10 0v4"></path>
+          </svg>
+        </div>
+
+        <h2 style="font-size: 1.375rem; color: var(--navy-900); margin-bottom: var(--space-2);">
+          Administrative Access Disabled
+        </h2>
+        
+        <p style="color: var(--slate-600); font-size: 0.9375rem; line-height: 1.6; margin-bottom: var(--space-5);">
+          Administrative login is locked because credentials have not been configured via environment variables. Per project security policy, this application never ships with default production credentials.
+        </p>
+
+        <div style="background-color: var(--slate-100); border-radius: var(--radius-sm); padding: var(--space-4); text-align: left; font-family: var(--font-mono); font-size: 0.8125rem; color: var(--slate-800); margin-bottom: var(--space-5); overflow-x: auto;">
+          # To enable administrator access, set:<br>
+          ADMIN_USERNAME="your-admin-user"<br>
+          ADMIN_PASSWORD="your-strong-password"
+        </div>
+
+        <p style="font-size: 0.8125rem; color: var(--slate-500); margin-bottom: var(--space-6);">
+          All statutory content and source audit records remain publicly accessible for citizen review on the public <a href="{{ url_for('sources_registry') }}" style="color: var(--teal-700); font-weight: 600;">Source Registry</a>.
+        </p>
+
+        <a href="{{ url_for('index') }}" class="btn btn-outline" style="width: 100%;">
+          Return to Public Portal
+        </a>
+      </div>
+
+    {% else %}
+      <!-- Configured Login Form -->
+      <div class="card" style="padding: var(--space-8); box-shadow: var(--shadow-md);">
+        <div style="display: flex; align-items: center; gap: var(--space-3); margin-bottom: var(--space-6);">
+          <div style="width: 44px; height: 44px; border-radius: var(--radius-md); background: var(--teal-50); color: var(--teal-700); display: flex; align-items: center; justify-content: center;">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path>
+            </svg>
+          </div>
+          <div>
+            <h2 style="font-size: 1.25rem; color: var(--navy-900); margin: 0;">Sign In as Administrator</h2>
+            <span style="font-size: 0.8125rem; color: var(--slate-500);">Review content registry &amp; provenance logs</span>
+          </div>
+        </div>
+
+        <form action="{{ url_for('admin_login') }}" method="POST">
+          <div class="form-group" style="margin-bottom: var(--space-4);">
+            <label for="username" class="form-label" style="font-weight: 700; color: var(--navy-900); margin-bottom: var(--space-1); display: block;">
+              Administrator Username
+            </label>
+            <input 
+              type="text" 
+              id="username" 
+              name="username" 
+              class="form-control" 
+              required 
+              autocomplete="username"
+              style="width: 100%; padding: 0.625rem 0.875rem; border: 1px solid var(--border-strong); border-radius: var(--radius-sm); font-size: 0.9375rem;"
+            >
+          </div>
+
+          <div class="form-group" style="margin-bottom: var(--space-6);">
+            <label for="password" class="form-label" style="font-weight: 700; color: var(--navy-900); margin-bottom: var(--space-1); display: block;">
+              Administrator Password
+            </label>
+            <input 
+              type="password" 
+              id="password" 
+              name="password" 
+              class="form-control" 
+              required 
+              autocomplete="current-password"
+              style="width: 100%; padding: 0.625rem 0.875rem; border: 1px solid var(--border-strong); border-radius: var(--radius-sm); font-size: 0.9375rem;"
+            >
+          </div>
+
+          <button type="submit" class="btn btn-primary" style="width: 100%; padding: 0.75rem; font-weight: 700;">
+            Sign In to Dashboard &rarr;
+          </button>
+        </form>
+      </div>
+    {% endif %}
+
+  </div>
+</div>
+{% endblock %}

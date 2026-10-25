@@ -1,0 +1,28 @@
+{% extends "base.html" %}
+
+{% block title %}Page Not Found (404) — Consumer Rights Portal{% endblock %}
+
+{% block content %}
+<section class="section">
+  <div class="container" style="text-align: center; max-width: 600px; padding: var(--space-12) var(--space-4);">
+    <div style="font-size: 4rem; font-weight: 800; color: var(--navy-800); line-height: 1; margin-bottom: var(--space-4);">
+      404
+    </div>
+    <h1 style="font-size: 1.5rem; font-weight: 700; color: var(--navy-900); margin-bottom: var(--space-3);">
+      Page or Resource Not Found
+    </h1>
+    <p style="color: var(--slate-600); font-size: 1rem; line-height: 1.6; margin-bottom: var(--space-6);">
+      The consumer right, issue guide, or page you were looking for does not exist or may have been updated.
+    </p>
+
+    <div style="display: flex; justify-content: center; gap: var(--space-4); flex-wrap: wrap;">
+      <a href="{{ url_for('index') }}" class="btn btn-primary">
+        Return to Home
+      </a>
+      <a href="{{ url_for('rights_list') }}" class="btn btn-secondary">
+        Browse Consumer Rights
+      </a>
+    </div>
+  </div>
+</section>
+{% endblock %}

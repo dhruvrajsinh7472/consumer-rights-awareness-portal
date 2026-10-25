@@ -1,0 +1,514 @@
+{% extends "base.html" %}
+
+{% block title %}
+  {%- if is_detail -%}
+    {{ guide.title }} — Consumer Resolution Guidance
+  {%- else -%}
+    Interactive Guidance — Step-by-Step Consumer Resolution
+  {%- endif -%}
+{% endblock %}
+
+{% block meta_description %}
+  {%- if is_detail -%}
+    {{ guide.summary }}
+  {%- else -%}
+    Step-by-step consumer dispute resolution guides, evidence preparation checklists, and statutory complaint procedures for Indian consumers.
+  {%- endif -%}
+{% endblock %}
+
+{% block content %}
+{% if is_detail %}
+<!-- DETAIL MODE: SPECIFIC ISSUE GUIDANCE -->
+<section class="section" style="padding-top: var(--space-8);">
+  <div class="container">
+    <!-- Breadcrumb -->
+    <nav aria-label="Breadcrumb" style="margin-bottom: var(--space-4); font-size: 0.875rem;">
+      <a href="{{ url_for('index') }}" style="color: var(--teal-700); text-decoration: none;">Home</a>
+      <span style="color: var(--slate-400); margin: 0 var(--space-1);">/</span>
+      <a href="{{ url_for('guidance') }}" style="color: var(--teal-700); text-decoration: none;">Guidance Directory</a>
+      <span style="color: var(--slate-400); margin: 0 var(--space-1);">/</span>
+      <span style="color: var(--slate-600);">{{ guide.title }}</span>
+    </nav>
+
+    <div style="display: grid; grid-template-columns: 2fr 1fr; gap: var(--space-8); align-items: start;">
+      <!-- Main Content -->
+      <div>
+        <div style="margin-bottom: var(--space-6);">
+          <div style="display: flex; gap: var(--space-2); align-items: center; flex-wrap: wrap; margin-bottom: var(--space-2);">
+            <span class="card-badge">{{ guide.category }}</span>
+            {% if guide.verification_status == 'verified' %}
+              <span style="font-size: 0.75rem; background-color: var(--emerald-50); color: var(--emerald-700); border: 1px solid #A7F3D0; padding: 2px 8px; border-radius: var(--radius-sm); font-weight: 600;">
+                ✓ Verified Source: {{ guide.last_reviewed_at }}
+              </span>
+            {% else %}
+              <span style="font-size: 0.75rem; background-color: var(--amber-50); color: var(--amber-700); border: 1px solid #FDE68A; padding: 2px 8px; border-radius: var(--radius-sm); font-weight: 600;">
+                ⚠ Pending Verification
+              </span>
+            {% endif %}
+          </div>
+          <h1 class="section-title" style="margin-bottom: var(--space-2);">
+            {{ guide.title }}
+          </h1>
+          <p style="font-size: 1.0625rem; color: var(--slate-600); line-height: 1.6;">
+            {{ guide.summary }}
+          </p>
+        </div>
+
+        <!-- Typical Situation / Problem Statement Box -->
+        <div class="card" style="border-left: 4px solid var(--amber-600); background-color: var(--amber-50); margin-bottom: var(--space-8);">
+          <h2 style="font-size: 0.9375rem; text-transform: uppercase; letter-spacing: 0.05em; color: var(--amber-700); margin-bottom: var(--space-2);">
+            Typical Consumer Dispute Scenario
+          </h2>
+          <p style="color: var(--slate-800); font-size: 0.9375rem; line-height: 1.6;">
+            {{ guide.typical_situation or guide.problem_statement }}
+          </p>
+        </div>
+
+        <!-- Step-by-Step Procedure -->
+        <div style="margin-bottom: var(--space-8);">
+          <h2 style="font-size: 1.375rem; font-weight: 700; color: var(--navy-900); margin-bottom: var(--space-2);">
+            Step-by-Step Suggested Actions
+          </h2>
+          <p style="font-size: 0.875rem; color: var(--slate-500); margin-bottom: var(--space-4);">
+            Follow these sequential escalation stages to maximize dispute resolution chances before initiating formal commission trials:
+          </p>
+
+          <div class="step-list">
+            {% for step in guide.step_by_step_procedure | from_json %}
+            <div class="step-item">
+              <div class="step-num">{{ step.step_number }}</div>
+              <div class="step-content">
+                <h4>{{ step.title }}</h4>
+                <p>{{ step.description }}</p>
+                {% if step.timeline %}
+                <div class="step-timeline">
+                  <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 16 14"></polyline></svg>
+                  <span>Timeline: {{ step.timeline }}</span>
+                </div>
+                {% endif %}
+              </div>
+            </div>
+            {% endfor %}
+          </div>
+        </div>
+
+        <!-- Structured Evidence Checklist (Carefully Distinguishing Categories) -->
+        <div class="card" style="margin-bottom: var(--space-8);">
+          <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: var(--space-3); flex-wrap: wrap; gap: var(--space-2);">
+            <div>
+              <h2 style="font-size: 1.25rem; font-weight: 700; color: var(--navy-900); margin-bottom: 2px;">
+                Document &amp; Evidence Checklist
+              </h2>
+              <p style="font-size: 0.8125rem; color: var(--slate-500); margin: 0;">
+                Carefully distinguished between officially mandatory filings and useful supporting records:
+              </p>
+            </div>
+            <div class="no-print" style="display: flex; align-items: center; gap: var(--space-2);">
+              <span id="detail-checklist-status" style="font-size: 0.8125rem; font-weight: 600; color: var(--teal-800); background: var(--teal-50); border: 1px solid var(--teal-100); padding: 2px 8px; border-radius: var(--radius-sm);">
+                0 of 0 gathered
+              </span>
+              <button type="button" id="detail-checklist-reset" class="btn btn-subtle" style="font-size: 0.75rem; padding: 2px 6px;">
+                Reset
+              </button>
+              <button type="button" onclick="window.print()" class="btn btn-outline" style="font-size: 0.75rem; padding: 2px 8px;">
+                Print
+              </button>
+            </div>
+          </div>
+
+          <div class="no-print" style="width: 100%; height: 5px; background: var(--slate-200); border-radius: 9999px; overflow: hidden; margin-bottom: var(--space-4);">
+            <div id="detail-checklist-bar" style="width: 0%; height: 100%; background: var(--teal-600); transition: width 0.2s ease;"></div>
+          </div>
+
+          {% if checklist and checklist.officially_specified_documents %}
+            <!-- Officially Required Documents -->
+            <div style="margin-bottom: var(--space-4);">
+              <h3 style="font-size: 0.875rem; font-weight: 700; color: var(--navy-900); display: flex; align-items: center; gap: var(--space-2); margin-bottom: var(--space-2);">
+                <span style="background-color: var(--crimson-700); color: var(--white); font-size: 0.6875rem; padding: 2px 6px; border-radius: 3px; font-weight: 800;">Tier 1 Mandatory</span>
+                <span>Documents Officially Specified as Required (for e-Jagriti Commission filing):</span>
+              </h3>
+              <div style="display: flex; flex-direction: column; gap: var(--space-2);">
+                {% for item in checklist.officially_specified_documents %}
+                <label class="detail-check-row" style="display: flex; align-items: flex-start; gap: var(--space-3); padding: var(--space-2) var(--space-3); border-radius: var(--radius-sm); border: 1px solid var(--border-subtle); cursor: pointer; transition: background 0.15s ease;">
+                  <input type="checkbox" class="guide-check-box" data-guide="{{ guide.slug }}" style="margin-top: 3px; width: 17px; height: 17px; accent-color: var(--teal-700);">
+                  <span class="detail-check-text" style="font-size: 0.875rem; color: var(--slate-800); line-height: 1.5;"><strong>{{ item }}</strong></span>
+                </label>
+                {% endfor %}
+              </div>
+            </div>
+          {% endif %}
+
+          {% if checklist and checklist.useful_to_preserve %}
+            <!-- Useful Evidence to Preserve -->
+            <div style="margin-bottom: var(--space-4);">
+              <h3 style="font-size: 0.875rem; font-weight: 700; color: var(--teal-800); display: flex; align-items: center; gap: var(--space-2); margin-bottom: var(--space-2);">
+                <span style="background-color: var(--teal-700); color: var(--white); font-size: 0.6875rem; padding: 2px 6px; border-radius: 3px; font-weight: 700;">Tier 2 Recommended</span>
+                <span>Evidence That is Highly Useful to Preserve:</span>
+              </h3>
+              <div style="display: flex; flex-direction: column; gap: var(--space-2);">
+                {% for item in checklist.useful_to_preserve %}
+                <label class="detail-check-row" style="display: flex; align-items: flex-start; gap: var(--space-3); padding: var(--space-2) var(--space-3); border-radius: var(--radius-sm); border: 1px solid var(--border-subtle); cursor: pointer; transition: background 0.15s ease;">
+                  <input type="checkbox" class="guide-check-box" data-guide="{{ guide.slug }}" style="margin-top: 3px; width: 17px; height: 17px; accent-color: var(--teal-700);">
+                  <span class="detail-check-text" style="font-size: 0.875rem; color: var(--slate-800); line-height: 1.5;">{{ item }}</span>
+                </label>
+                {% endfor %}
+              </div>
+            </div>
+          {% endif %}
+
+          {% if checklist and checklist.conditional_documents %}
+            <!-- Conditional Documents -->
+            <div>
+              <h3 style="font-size: 0.875rem; font-weight: 700; color: var(--slate-700); display: flex; align-items: center; gap: var(--space-2); margin-bottom: var(--space-2);">
+                <span style="background-color: var(--slate-600); color: var(--white); font-size: 0.6875rem; padding: 2px 6px; border-radius: 3px; font-weight: 700;">Tier 3 Conditional</span>
+                <span>Documents Applicable in Particular Circumstances:</span>
+              </h3>
+              <div style="display: flex; flex-direction: column; gap: var(--space-2);">
+                {% for item in checklist.conditional_documents %}
+                <label class="detail-check-row" style="display: flex; align-items: flex-start; gap: var(--space-3); padding: var(--space-2) var(--space-3); border-radius: var(--radius-sm); border: 1px solid var(--border-subtle); cursor: pointer; transition: background 0.15s ease;">
+                  <input type="checkbox" class="guide-check-box" data-guide="{{ guide.slug }}" style="margin-top: 3px; width: 17px; height: 17px; accent-color: var(--teal-700);">
+                  <span class="detail-check-text" style="font-size: 0.875rem; color: var(--slate-800); line-height: 1.5;">{{ item }}</span>
+                </label>
+                {% endfor %}
+              </div>
+            </div>
+          {% endif %}
+
+          {% if not checklist %}
+            <!-- Fallback checklist if raw json -->
+            <div style="display: flex; flex-direction: column; gap: var(--space-2);">
+              {% for evidence in guide.required_evidence | from_json %}
+              <label class="detail-check-row" style="display: flex; align-items: flex-start; gap: var(--space-3); padding: var(--space-2) var(--space-3); border-radius: var(--radius-sm); border: 1px solid var(--border-subtle); cursor: pointer;">
+                <input type="checkbox" class="guide-check-box" data-guide="{{ guide.slug }}" style="margin-top: 3px; width: 17px; height: 17px; accent-color: var(--teal-700);">
+                <span class="detail-check-text" style="font-size: 0.875rem; color: var(--slate-800);">{{ evidence }}</span>
+              </label>
+              {% endfor %}
+            </div>
+          {% endif %}
+
+          <div class="no-print" style="margin-top: var(--space-4); font-size: 0.75rem; color: var(--slate-500);">
+            Checklist selections persist automatically in your browser's private storage. No files are uploaded.
+          </div>
+        </div>
+
+        <!-- Caveats and Escalation Guidance -->
+        {% if guide.caveats_and_escalation %}
+        <div class="card" style="margin-bottom: var(--space-8); background-color: var(--slate-50); border-left: 4px solid var(--navy-800);">
+          <h2 style="font-size: 1rem; font-weight: 700; color: var(--navy-900); margin-bottom: var(--space-2);">
+            Statutory Caveats &amp; Escalation Guidance
+          </h2>
+          <p style="color: var(--slate-700); font-size: 0.9375rem; line-height: 1.6;">
+            {{ guide.caveats_and_escalation }}
+          </p>
+        </div>
+        {% endif %}
+
+        <!-- Invoked Statutory Rights -->
+        {% if associated_rights %}
+        <div style="margin-bottom: var(--space-8);">
+          <h2 style="font-size: 1.25rem; font-weight: 700; color: var(--navy-900); margin-bottom: var(--space-4);">
+            Statutory Legal Basis (CPA 2019)
+          </h2>
+          <div class="grid-2">
+            {% for right in associated_rights %}
+            <div class="card" style="padding: var(--space-4);">
+              <span class="card-badge" style="font-size: 0.75rem;">{{ right.statutory_provision }}</span>
+              <h3 style="font-size: 1.0625rem; font-weight: 700; color: var(--navy-900); margin-top: var(--space-1); margin-bottom: var(--space-1);">
+                {{ right.title }}
+              </h3>
+              <p style="font-size: 0.8125rem; color: var(--slate-600); margin-bottom: var(--space-3);">
+                {{ right.legal_name }}
+              </p>
+              <a href="{{ url_for('right_detail', slug=right.slug) }}" class="section-action" style="font-size: 0.8125rem;">
+                <span>Review statutory provisions</span>
+                <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+              </a>
+            </div>
+            {% endfor %}
+          </div>
+        </div>
+        {% endif %}
+      </div>
+
+      <!-- Sidebar -->
+      <aside aria-label="Official Remedy and Navigation">
+        <!-- Topic Relevant Media Card -->
+        <div class="sidebar-media-card">
+          {% if guide.category == 'Online Shopping & E-Commerce' %}
+            <img 
+              src="{{ url_for('static', filename='images/online_shopping.jpg') }}" 
+              alt="E-Commerce retail packages and shopping laptop" 
+              class="sidebar-media-img"
+              loading="lazy"
+              width="320"
+              height="180"
+            >
+            <div class="sidebar-media-body">
+              <strong>E-Commerce Protection:</strong> Governed by Consumer Protection (E-Commerce) Rules, 2020.
+            </div>
+          {% elif 'Electronics' in guide.category or 'Quality' in guide.category %}
+            <img 
+              src="{{ url_for('static', filename='images/product_quality.jpg') }}" 
+              alt="Quality control testing and certification seal" 
+              class="sidebar-media-img"
+              loading="lazy"
+              width="320"
+              height="180"
+            >
+            <div class="sidebar-media-body">
+              <strong>Quality Assurance:</strong> Mandatory ISI marks and statutory warranty standards under CPA 2019.
+            </div>
+          {% else %}
+            <img 
+              src="{{ url_for('static', filename='images/digital_complaint.jpg') }}" 
+              alt="Documented consumer complaint procedure" 
+              class="sidebar-media-img"
+              loading="lazy"
+              width="320"
+              height="180"
+            >
+            <div class="sidebar-media-body">
+              <strong>Documented Escalation:</strong> Follow pre-litigation notice before formal consumer commission filing.
+            </div>
+          {% endif %}
+        </div>
+
+        <!-- Official Remedy Channel Card -->
+        <div class="card" style="border-left: 4px solid var(--teal-700); margin-bottom: var(--space-6);">
+          <h3 style="font-size: 0.8125rem; text-transform: uppercase; letter-spacing: 0.05em; color: var(--slate-500); margin-bottom: var(--space-1);">
+            Designated Official Channel
+          </h3>
+          <div style="font-size: 1.0625rem; font-weight: 700; color: var(--navy-900); margin-bottom: var(--space-3);">
+            {{ guide.official_remedy_channel }}
+          </div>
+          <div style="font-size: 0.8125rem; color: var(--slate-600); margin-bottom: var(--space-4);">
+            Follow pre-litigation resolution (NCH 1915) first before formal commission filing (e-Jagriti).
+          </div>
+          <a href="{{ url_for('resources') }}" class="btn btn-teal" style="font-size: 0.8125rem; width: 100%;">
+            <span>Access Official Portal Directory</span>
+          </a>
+        </div>
+
+        <!-- Legal Source Citation Card -->
+        <div class="card" style="margin-bottom: var(--space-6); background-color: var(--slate-50);">
+          <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: var(--space-2);">
+            <h3 style="font-size: 0.8125rem; text-transform: uppercase; letter-spacing: 0.05em; color: var(--slate-500);">
+              Official Source &amp; Verification
+            </h3>
+            {% if guide.verification_status == 'verified' %}
+              <span style="font-size: 0.6875rem; background: var(--emerald-50); color: var(--emerald-700); font-weight: 700; padding: 2px 6px; border-radius: 3px;">
+                VERIFIED
+              </span>
+            {% else %}
+              <span style="font-size: 0.6875rem; background: var(--amber-50); color: var(--amber-700); font-weight: 700; padding: 2px 6px; border-radius: 3px;">
+                PENDING
+              </span>
+            {% endif %}
+          </div>
+          <div style="font-size: 0.9375rem; font-weight: 700; color: var(--navy-900); margin-bottom: var(--space-1);">
+            {{ guide.source_name }}
+          </div>
+          <div style="font-size: 0.8125rem; color: var(--slate-600); margin-bottom: var(--space-2);">
+            {{ guide.source_org or guide.source_authority }}
+          </div>
+          <div style="font-size: 0.75rem; color: var(--slate-500); margin-bottom: var(--space-3);">
+            Last Verified on Official Page: <strong>{{ guide.source_v_date or guide.last_reviewed_at }}</strong>
+          </div>
+          {% if guide.source_url %}
+          <a href="{{ guide.source_url }}" target="_blank" rel="noopener noreferrer" class="section-action" style="font-size: 0.8125rem;">
+            <span>Verify Canonical Source</span>
+            <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6M15 3h6v6M10 14L21 3"/></svg>
+          </a>
+          {% endif %}
+        </div>
+
+        <!-- Other Guides -->
+        <div class="card">
+          <h3 style="font-size: 0.9375rem; font-weight: 700; color: var(--navy-900); margin-bottom: var(--space-3);">
+            Other Issue Guides
+          </h3>
+          <ul style="list-style: none; display: flex; flex-direction: column; gap: var(--space-2);">
+            {% for other in other_guides %}
+            <li>
+              <a href="{{ url_for('guidance', slug=other.slug) }}" style="color: var(--slate-700); text-decoration: none; font-size: 0.875rem; display: block; padding: var(--space-2) 0; border-bottom: 1px solid var(--slate-100);">
+                <div style="font-size: 0.75rem; color: var(--teal-700); font-weight: 600;">{{ other.category }}</div>
+                <div>{{ other.title }}</div>
+              </a>
+            </li>
+            {% endfor %}
+          </ul>
+        </div>
+      </aside>
+    </div>
+  </div>
+</section>
+
+{% else %}
+<!-- OVERVIEW / WIZARD ENTRY POINT MODE -->
+<section class="section">
+  <div class="container">
+    <div class="header-with-visual" style="margin-bottom: var(--space-8);">
+      <div>
+        <span class="section-label">Interactive Resolution System</span>
+        <h1 class="section-title">Consumer Dispute Guidance System</h1>
+        <p class="section-desc" style="font-size: 1.0625rem; margin-top: var(--space-2);">
+          Select your dispute domain below to view exact procedural roadmaps, necessary evidentiary documents, and official escalation contact channels.
+        </p>
+      </div>
+      <div class="header-visual-card no-print" style="max-width: 200px;">
+        <img 
+          src="{{ url_for('static', filename='images/digital_complaint.jpg') }}" 
+          alt="Keyboard key for filing consumer dispute complaint" 
+          class="header-visual-img"
+          loading="lazy"
+          width="200"
+          height="150"
+        >
+      </div>
+    </div>
+
+    <!-- Interactive Wizard Callout Card -->
+    <div class="card no-print" style="padding: var(--space-6); background: linear-gradient(135deg, var(--teal-800), var(--navy-800)); color: var(--white); margin-bottom: var(--space-6); display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: var(--space-4);">
+      <div>
+        <span class="badge" style="background: rgba(255,255,255,0.2); color: #fff; margin-bottom: var(--space-2);">Recommended Multi-Step Flow</span>
+        <h2 style="font-size: 1.25rem; font-weight: 700; color: #fff; margin-bottom: var(--space-1);">Interactive Resolution Wizard</h2>
+        <p style="color: var(--teal-100); font-size: 0.9375rem; margin: 0;">Unsure which specific guide applies? Answer targeted questions to match with verified statutory remedies.</p>
+      </div>
+      <a href="{{ url_for('wizard') }}" class="btn btn-teal" style="background: #fff; color: var(--navy-900); font-weight: 700; border: none;">Launch Wizard &rarr;</a>
+    </div>
+
+    <!-- Quick Guide Selector Widget -->
+    <div class="card" style="padding: var(--space-6); background: var(--navy-900); color: var(--white); margin-bottom: var(--space-10);">
+      <h2 style="font-size: 1.25rem; font-weight: 700; color: var(--white); margin-bottom: var(--space-2);">
+        Jump to Your Specific Dispute
+      </h2>
+      <p style="color: var(--slate-300); font-size: 0.9375rem; margin-bottom: var(--space-4);">
+        Choose a documented issue below to access verified timelines and evidence requirements immediately:
+      </p>
+
+      <div style="display: flex; gap: var(--space-3); flex-wrap: wrap;">
+        <select id="quick-issue-select" class="form-control" style="max-width: 440px;" aria-label="Select consumer dispute topic">
+          <option value="">-- Choose a Consumer Issue --</option>
+          {% for g in guides %}
+          <option value="{{ url_for('guidance', slug=g.slug) }}">{{ g.category }}: {{ g.title }}</option>
+          {% endfor %}
+        </select>
+        <button type="button" class="btn btn-teal" onclick="const s = document.getElementById('quick-issue-select'); if(s.value) window.location.href = s.value;">
+          Open Guide
+        </button>
+      </div>
+    </div>
+
+    <!-- Categorized Guides Directory -->
+    <div class="section-header">
+      <h2 class="section-title" style="font-size: 1.5rem;">All Documented Resolution Guides</h2>
+    </div>
+
+    <div class="grid-2">
+      {% for g in guides %}
+      <div class="card" style="display: flex; flex-direction: column;">
+        <div style="display: flex; justify-content: space-between; align-items: flex-start; gap: var(--space-2); margin-bottom: var(--space-2);">
+          <span class="card-badge">{{ g.category }}</span>
+          {% if g.verification_status == 'verified' %}
+            <span style="font-size: 0.6875rem; background: var(--emerald-50); color: var(--emerald-700); font-weight: 700; padding: 2px 6px; border-radius: 3px;">
+              VERIFIED
+            </span>
+          {% else %}
+            <span style="font-size: 0.6875rem; background: var(--amber-50); color: var(--amber-700); font-weight: 700; padding: 2px 6px; border-radius: 3px;">
+              PENDING
+            </span>
+          {% endif %}
+        </div>
+        <h3 class="card-title" style="font-size: 1.1875rem;">{{ g.title }}</h3>
+        <p class="card-body">{{ g.summary }}</p>
+        <div class="card-footer">
+          <a href="{{ url_for('guidance', slug=g.slug) }}" class="section-action">
+            <span>Read Step-by-Step Procedure &rarr;</span>
+          </a>
+        </div>
+      </div>
+      {% endfor %}
+    </div>
+  </div>
+</section>
+{% endif %}
+{% endblock %}
+
+{% block extra_scripts %}
+<script>
+document.addEventListener("DOMContentLoaded", function() {
+  const checkboxes = document.querySelectorAll(".guide-check-box");
+  const statusEl = document.getElementById("detail-checklist-status");
+  const barEl = document.getElementById("detail-checklist-bar");
+  const resetBtn = document.getElementById("detail-checklist-reset");
+
+  if (checkboxes.length > 0) {
+    const slug = checkboxes[0].getAttribute("data-guide") || "guide";
+    const storageKey = "cep_guide_checklist_" + slug;
+
+    let saved = {};
+    try {
+      saved = JSON.parse(localStorage.getItem(storageKey) || "{}");
+    } catch(e) {
+      saved = {};
+    }
+
+    checkboxes.forEach((cb, idx) => {
+      cb.checked = !!saved[idx];
+      updateRow(cb);
+
+      cb.addEventListener("change", function() {
+        saved[idx] = cb.checked;
+        try {
+          localStorage.setItem(storageKey, JSON.stringify(saved));
+        } catch(e) {}
+        updateRow(cb);
+        updateProgress();
+      });
+    });
+
+    function updateRow(cb) {
+      const row = cb.closest(".detail-check-row");
+      const text = row ? row.querySelector(".detail-check-text") : null;
+      if (row && text) {
+        if (cb.checked) {
+          row.style.backgroundColor = "var(--teal-50)";
+          row.style.borderColor = "var(--teal-600)";
+          text.style.color = "var(--slate-500)";
+          text.style.textDecoration = "line-through";
+        } else {
+          row.style.backgroundColor = "";
+          row.style.borderColor = "var(--border-subtle)";
+          text.style.color = "var(--slate-800)";
+          text.style.textDecoration = "none";
+        }
+      }
+    }
+
+    function updateProgress() {
+      const total = checkboxes.length;
+      let count = 0;
+      checkboxes.forEach(cb => { if (cb.checked) count++; });
+      if (statusEl) statusEl.textContent = `${count} of ${total} gathered`;
+      if (barEl) {
+        const pct = total ? (count / total) * 100 : 0;
+        barEl.style.width = pct + "%";
+      }
+    }
+
+    if (resetBtn) {
+      resetBtn.addEventListener("click", function() {
+        checkboxes.forEach((cb, idx) => {
+          cb.checked = false;
+          updateRow(cb);
+        });
+        try { localStorage.removeItem(storageKey); } catch(e) {}
+        updateProgress();
+      });
+    }
+
+    updateProgress();
+  }
+});
+</script>
+{% endblock %}

@@ -1,0 +1,72 @@
+{% extends "base.html" %}
+
+{% block title %}Privacy &amp; Data Ethics Policy — Consumer Rights Portal{% endblock %}
+{% block meta_description %}Privacy and data ethics statement for the Consumer Rights Awareness Portal: zero tracking, no cookies, and anonymous feedback.{% endblock %}
+
+{% block content %}
+<section class="section">
+  <div class="container" style="max-width: 860px;">
+    <div style="margin-bottom: var(--space-8);">
+      <span class="section-label">Public Ethics &amp; Transparency</span>
+      <h1 class="section-title">Privacy and Data Handling Policy</h1>
+      <p class="section-desc" style="font-size: 1.0625rem; margin-top: var(--space-2);">
+        Our commitment to public privacy, data minimization, and ethical educational technology.
+      </p>
+    </div>
+
+    <!-- Core Commitments Card -->
+    <div class="card" style="margin-bottom: var(--space-6); padding: var(--space-6);">
+      <h2 style="font-size: 1.25rem; color: var(--navy-900); font-weight: 700; margin-bottom: var(--space-3);">
+        1. Zero Tracking and No Commercial Cookies
+      </h2>
+      <p style="color: var(--slate-700); line-height: 1.7; font-size: 0.9375rem; margin-bottom: var(--space-3);">
+        As an educational Community Engagement Project, our architecture strictly respects visitor privacy:
+      </p>
+      <ul style="padding-left: var(--space-5); color: var(--slate-700); font-size: 0.9375rem; line-height: 1.8;">
+        <li>We do <strong>NOT</strong> use tracking cookies, commercial analytics scripts, or behavioral pixel trackers.</li>
+        <li>We do <strong>NOT</strong> require account registration, phone numbers, or email addresses to access guides, rights, or quiz assessments.</li>
+        <li>All search queries performed through the live search bar are processed locally on this server without transmitting terms to third-party advertising brokers.</li>
+      </ul>
+    </div>
+
+    <!-- Feedback Handling -->
+    <div class="card" style="margin-bottom: var(--space-6); padding: var(--space-6);">
+      <h2 style="font-size: 1.25rem; color: var(--navy-900); font-weight: 700; margin-bottom: var(--space-3);">
+        2. Anonymous Feedback Collection
+      </h2>
+      <p style="color: var(--slate-700); line-height: 1.7; font-size: 0.9375rem; margin-bottom: var(--space-3);">
+        When you submit comments or corrections through our <strong>Feedback Form</strong>, we only store:
+      </p>
+      <ul style="padding-left: var(--space-5); color: var(--slate-700); font-size: 0.9375rem; line-height: 1.8;">
+        <li>The chosen category (e.g., Content Correction, Usability Suggestion).</li>
+        <li>The text message you write.</li>
+        <li>The optional 1–5 rating.</li>
+        <li>A timestamp of submission.</li>
+      </ul>
+      <p style="color: var(--slate-700); line-height: 1.7; font-size: 0.9375rem; margin-top: var(--space-3);">
+        We do <strong>NOT</strong> record IP addresses, user agents, or personal identifiers in the feedback database table.
+      </p>
+    </div>
+
+    <!-- External Links -->
+    <div class="card" style="margin-bottom: var(--space-6); padding: var(--space-6);">
+      <h2 style="font-size: 1.25rem; color: var(--navy-900); font-weight: 700; margin-bottom: var(--space-3);">
+        3. External Government Portals
+      </h2>
+      <p style="color: var(--slate-700); line-height: 1.7; font-size: 0.9375rem;">
+        This website provides navigational outbound links to official Indian government dispute websites (such as <code>consumerhelpline.gov.in</code> and <code>edaakhil.nic.in</code>). Once you navigate away from our educational portal, the respective privacy and term policies of those government agencies govern your interactions.
+      </p>
+    </div>
+
+    <!-- Questions -->
+    <div class="card" style="padding: var(--space-6); background-color: var(--slate-50);">
+      <h2 style="font-size: 1.125rem; color: var(--navy-900); font-weight: 700; margin-bottom: var(--space-2);">
+        Questions Regarding Academic Privacy Practices
+      </h2>
+      <p style="color: var(--slate-600); font-size: 0.875rem; line-height: 1.6;">
+        For inquiries regarding this Community Engagement Project or data ethics practices, submit a note through our <a href="{{ url_for('feedback') }}" style="color: var(--teal-700); font-weight: 600;">Feedback page</a>.
+      </p>
+    </div>
+  </div>
+</section>
+{% endblock %}

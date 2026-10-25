@@ -1,0 +1,353 @@
+{% extends "base.html" %}
+
+{% block title %}Home — Empowering Indian Consumers{% endblock %}
+
+{% block content %}
+<!-- Hero Section -->
+<section class="hero" aria-labelledby="hero-title">
+  <div class="container">
+    <div class="hero-split-grid">
+      <!-- Left Column: Search & Guidance -->
+      <div class="hero-text-side">
+        <div class="hero-tag">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <circle cx="12" cy="12" r="10"></circle>
+            <line x1="12" y1="16" x2="12" y2="12"></line>
+            <line x1="12" y1="8" x2="12.01" y2="8"></line>
+          </svg>
+          <span>Consumer Protection Act, 2019 • Educational Resource</span>
+        </div>
+
+        <h1 id="hero-title" class="hero-title" style="text-align: left;">
+          Know Your Rights. Resolve Consumer Disputes. Navigate Official Remedies.
+        </h1>
+
+        <p class="hero-subtitle" style="text-align: left;">
+          An educational public portal to help Indian consumers identify marketplace violations, prepare admissible evidence, follow structured complaint workflows, and navigate to verified government authorities.
+        </p>
+
+        <!-- Search Box with Live Autocomplete -->
+        <div class="search-box-wrapper" role="search" aria-label="Search consumer issues and legal rights" style="margin: 0 0 var(--space-5) 0;">
+          <form action="{{ url_for('search_page') }}" method="GET" class="search-form" style="position: relative; display: flex; align-items: center;">
+            <svg class="search-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <circle cx="11" cy="11" r="8"></circle>
+              <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+            </svg>
+            <input 
+              type="search" 
+              name="q"
+              id="global-search-input" 
+              class="search-input" 
+              placeholder="Search consumer problems, e.g., 'refund delay', 'warranty denial', 'overcharging'..." 
+              autocomplete="off"
+              aria-autocomplete="list"
+              aria-controls="search-dropdown"
+            >
+            <button type="submit" class="btn btn-teal" style="margin-right: 6px; padding: 0.5rem 1rem; border-radius: var(--radius-sm); font-size: 0.875rem; white-space: nowrap;">
+              Search
+            </button>
+            <div id="search-dropdown" class="search-dropdown" role="listbox" aria-label="Search suggestions"></div>
+          </form>
+        </div>
+
+        <!-- Quick Search Suggestions & Wizard CTA -->
+        <div class="quick-tags" style="display: flex; align-items: center; flex-wrap: wrap; gap: var(--space-2);">
+          <a href="{{ url_for('wizard') }}" class="btn btn-secondary" style="font-size: 0.8125rem; padding: 0.375rem 0.75rem; font-weight: 700; background: var(--teal-700); color: var(--white); border: none;">
+            ⚡ Launch Interactive Problem Wizard &rarr;
+          </a>
+          <span style="color: var(--slate-300); font-size: 0.875rem;">Common:</span>
+          <a href="{{ url_for('guidance', slug='e-commerce-refund-delays') }}" class="quick-tag-pill">E-Commerce Refund</a>
+          <a href="{{ url_for('guidance', slug='defective-goods-warranty') }}" class="quick-tag-pill">Defective Warranty</a>
+          <a href="{{ url_for('guidance', slug='overcharging-above-mrp') }}" class="quick-tag-pill">Overcharging MRP</a>
+          <a href="{{ url_for('guidance', slug='digital-payment-failures') }}" class="quick-tag-pill">Failed UPI</a>
+          <a href="{{ url_for('guidance', slug='misleading-advertisements') }}" class="quick-tag-pill">Misleading Ads</a>
+        </div>
+      </div>
+
+      <!-- Right Column: Hero Visual Asset -->
+      <div class="hero-image-side">
+        <div class="hero-image-wrapper">
+          <img 
+            src="{{ url_for('static', filename='images/hero_backgroun.jpg') }}" 
+            alt="Consumer Protection Act law book with legal judge gavel and shopping cart icon" 
+            class="hero-img" 
+            loading="eager" 
+            fetchpriority="high"
+            width="640" 
+            height="480"
+          >
+          <div class="hero-img-badge">
+            <span style="background: var(--teal-600); width: 8px; height: 8px; border-radius: 50%; display: inline-block;"></span>
+            <span>CPA 2019 • Act No. 35</span>
+          </div>
+          <div class="hero-img-caption">
+            <span>Statutory Consumer Law Framework</span>
+            <span style="font-weight: 600; color: #38BDF8;">India Code Verified</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Issue Categories Section -->
+<section class="section" aria-labelledby="cat-title">
+  <div class="container">
+    <div class="section-header">
+      <div>
+        <span class="section-label">Categorized Assistance</span>
+        <h2 id="cat-title" class="section-title">Common Consumer Problem Domains</h2>
+      </div>
+      <a href="{{ url_for('problems') }}" class="section-action">
+        <span>View all problem guides</span>
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+      </a>
+    </div>
+
+    <div class="grid-3">
+      {% for cat in categories %}
+      <a href="{{ url_for('problems', category=cat.category) }}" class="cat-card">
+        {% if cat.category == 'Online Shopping & E-Commerce' %}
+          <div style="width: 50px; height: 50px; border-radius: var(--radius-md); overflow: hidden; flex-shrink: 0; box-shadow: var(--shadow-sm); border: 1px solid var(--border-subtle);">
+            <img src="{{ url_for('static', filename='images/online_shopping.jpg') }}" alt="E-Commerce retail packages and shopping laptop" style="width: 100%; height: 100%; object-fit: cover; display: block;" loading="lazy" width="50" height="50">
+          </div>
+        {% elif cat.category == 'Electronics & Consumer Goods' %}
+          <div style="width: 50px; height: 50px; border-radius: var(--radius-md); overflow: hidden; flex-shrink: 0; box-shadow: var(--shadow-sm); border: 1px solid var(--border-subtle);">
+            <img src="{{ url_for('static', filename='images/product_quality.jpg') }}" alt="Quality control testing and certification seal" style="width: 100%; height: 100%; object-fit: cover; display: block;" loading="lazy" width="50" height="50">
+          </div>
+        {% else %}
+          <div class="cat-icon" aria-hidden="true">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <rect x="2" y="3" width="20" height="14" rx="2" ry="2"></rect>
+              <line x1="8" y1="21" x2="16" y2="21"></line>
+              <line x1="12" y1="17" x2="12" y2="21"></line>
+            </svg>
+          </div>
+        {% endif %}
+        <div>
+          <div class="cat-title">{{ cat.category }}</div>
+          <div class="cat-count">{{ cat.guide_count }} documented resolution procedure{% if cat.guide_count != 1 %}s{% endif %}</div>
+        </div>
+      </a>
+      {% endfor %}
+    </div>
+  </div>
+</section>
+
+<!-- Consumer Rights Preview Section -->
+<section class="section section-subtle" aria-labelledby="rights-title">
+  <div class="container">
+    <div class="section-header">
+      <div>
+        <span class="section-label">Statutory Foundation</span>
+        <h2 id="rights-title" class="section-title">The 6 Statutory Consumer Rights</h2>
+        <p class="section-desc">Defined under Section 2(9) of the Consumer Protection Act, 2019.</p>
+      </div>
+      <a href="{{ url_for('rights_list') }}" class="section-action">
+        <span>Explore all rights in depth</span>
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+      </a>
+    </div>
+
+    <!-- Editorial Spotlight on Legal Foundation with Lady Justice -->
+    <div class="editorial-spotlight">
+      <div class="spotlight-img-panel">
+        <img 
+          src="{{ url_for('static', filename='images/justice_background.jpg') }}" 
+          alt="Lady Justice holding scales of justice and legal sword" 
+          class="spotlight-img"
+          loading="lazy"
+          width="280"
+          height="220"
+        >
+      </div>
+      <div class="spotlight-content">
+        <span class="section-label" style="margin-bottom: var(--space-1);">Judicial Protection</span>
+        <h3 style="font-size: 1.25rem; color: var(--navy-900); margin-bottom: var(--space-2); font-weight: 700;">
+          Enforceable Protections Under Indian Law
+        </h3>
+        <p style="color: var(--slate-600); font-size: 0.9375rem; line-height: 1.6; margin-bottom: var(--space-4);">
+          Section 2(9) of the Consumer Protection Act, 2019 codifies 6 foundational rights protecting citizens against hazardous products, unfair trade practices, misleading advertisements, and deficiencies in service. These protections apply equally across physical brick-and-mortar retail and digital marketplaces.
+        </p>
+        <div>
+          <a href="{{ url_for('rights_list') }}" class="btn btn-teal" style="font-size: 0.8125rem;">
+            Explore Rights Directory &rarr;
+          </a>
+        </div>
+      </div>
+    </div>
+
+    <div class="grid-3">
+      {% for right in rights %}
+      <div class="card">
+        <div class="card-badge">{{ right.code if right.code else 'CPA 2019' }}</div>
+        <h3 class="card-title">{{ right.title }}</h3>
+        <div class="card-subtitle">{{ right.statutory_provision }}</div>
+        <p class="card-body">{{ right.summary }}</p>
+        <div class="card-footer">
+          <a href="{{ url_for('right_detail', slug=right.slug) }}" class="section-action">
+            <span>Read full provisions</span>
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+          </a>
+        </div>
+      </div>
+      {% endfor %}
+    </div>
+  </div>
+</section>
+
+<!-- Guided Resolution Workflow Banner -->
+<section class="section" style="background-color: var(--navy-900); color: var(--white);" aria-labelledby="workflow-title">
+  <div class="container">
+    <div style="max-width: 820px; margin: 0 auto; text-align: center;">
+      <div style="display: flex; align-items: center; justify-content: center; gap: var(--space-4); margin-bottom: var(--space-4); flex-wrap: wrap;">
+        <div style="width: 72px; height: 54px; border-radius: var(--radius-md); overflow: hidden; border: 1px solid rgba(255,255,255,0.2); box-shadow: var(--shadow-md); flex-shrink: 0;">
+          <img src="{{ url_for('static', filename='images/digital_complaint.jpg') }}" alt="Computer keyboard showing red complaint key" style="width: 100%; height: 100%; object-fit: cover; display: block;" loading="lazy" width="72" height="54">
+        </div>
+        <div style="text-align: left;">
+          <span class="section-label" style="color: #38BDF8; margin-bottom: 2px;">Structured Dispute Methodology</span>
+          <h2 id="workflow-title" class="section-title" style="color: var(--white); margin: 0; font-size: 1.625rem;">
+            Facing a marketplace dispute? Follow the 4-step framework.
+          </h2>
+        </div>
+      </div>
+      <p style="color: var(--slate-300); font-size: 1.0625rem; line-height: 1.6; margin-bottom: var(--space-8);">
+        Most consumer grievances in India can be resolved without costly court litigation when you follow documented escalation procedures and gather the correct evidence upfront.
+      </p>
+
+      <div class="grid-4" style="text-align: left; margin-bottom: var(--space-8);">
+        <div style="background: rgba(255,255,255,0.05); padding: var(--space-4); border-radius: var(--radius-md); border: 1px solid rgba(255,255,255,0.1);">
+          <div style="color: #38BDF8; font-weight: 700; font-size: 1.25rem; margin-bottom: var(--space-1);">01</div>
+          <div style="color: var(--white); font-weight: 600; margin-bottom: var(--space-1);">Identify Violation</div>
+          <div style="color: var(--slate-300); font-size: 0.8125rem;">Pinpoint the exact right violated under CPA 2019.</div>
+        </div>
+
+        <div style="background: rgba(255,255,255,0.05); padding: var(--space-4); border-radius: var(--radius-md); border: 1px solid rgba(255,255,255,0.1);">
+          <div style="color: #38BDF8; font-weight: 700; font-size: 1.25rem; margin-bottom: var(--space-1);">02</div>
+          <div style="color: var(--white); font-weight: 600; margin-bottom: var(--space-1);">Collect Evidence</div>
+          <div style="color: var(--slate-300); font-size: 0.8125rem;">Preserve bills, job sheets, chats, and photo/video proof.</div>
+        </div>
+
+        <div style="background: rgba(255,255,255,0.05); padding: var(--space-4); border-radius: var(--radius-md); border: 1px solid rgba(255,255,255,0.1);">
+          <div style="color: #38BDF8; font-weight: 700; font-size: 1.25rem; margin-bottom: var(--space-1);">03</div>
+          <div style="color: var(--white); font-weight: 600; margin-bottom: var(--space-1);">Company Notice &amp; NCH</div>
+          <div style="color: var(--slate-300); font-size: 0.8125rem;">Escalate to Grievance Officer and call NCH 1915.</div>
+        </div>
+
+        <div style="background: rgba(255,255,255,0.05); padding: var(--space-4); border-radius: var(--radius-md); border: 1px solid rgba(255,255,255,0.1);">
+          <div style="color: #38BDF8; font-weight: 700; font-size: 1.25rem; margin-bottom: var(--space-1);">04</div>
+          <div style="color: var(--white); font-weight: 600; margin-bottom: var(--space-1);">e-Daakhil Filing</div>
+          <div style="color: var(--slate-300); font-size: 0.8125rem;">File online before the District Consumer Commission.</div>
+        </div>
+      </div>
+
+      <a href="{{ url_for('guidance') }}" class="btn btn-teal" style="font-size: 1rem; padding: var(--space-3) var(--space-6);">
+        <span>Launch Interactive Guidance</span>
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- Official Grievance Portals Preview -->
+<section class="section" aria-labelledby="official-title">
+  <div class="container">
+    <div class="section-header">
+      <div>
+        <span class="section-label">Official Infrastructure</span>
+        <h2 id="official-title" class="section-title">Authoritative Government Services</h2>
+        <p class="section-desc">Legitimate public authorities for pre-litigation mediation and judicial redressal.</p>
+      </div>
+      <a href="{{ url_for('resources') }}" class="section-action">
+        <span>View all official directories</span>
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+      </a>
+    </div>
+
+    <div class="grid-3">
+      <div class="card resource-card">
+        <div class="resource-header">
+          <div class="card-title">National Consumer Helpline</div>
+          <span class="resource-code">NCH / INGRAM</span>
+        </div>
+        <div class="resource-authority">Department of Consumer Affairs, Govt. of India</div>
+        <p class="card-body">
+          Pre-litigation grievance redressal through convergence with over 800 registered companies. Toll-free helpline 1915 or portal registration.
+        </p>
+        <div class="card-footer">
+          <a href="https://consumerhelpline.gov.in" target="_blank" rel="noopener noreferrer" class="section-action">
+            <span>Visit portal (1915)</span>
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6M15 3h6v6M10 14L21 3"/></svg>
+          </a>
+        </div>
+      </div>
+
+      <div class="card resource-card">
+        <div class="resource-header">
+          <div class="card-title">e-Daakhil Portal</div>
+          <span class="resource-code">NCDRC / NIC</span>
+        </div>
+        <div class="resource-authority">National Consumer Disputes Redressal Commission</div>
+        <p class="card-body">
+          Official digital filing system allowing citizens to file formal consumer lawsuits before District, State, and National commissions online.
+        </p>
+        <div class="card-footer">
+          <a href="https://edaakhil.nic.in" target="_blank" rel="noopener noreferrer" class="section-action">
+            <span>Visit e-Daakhil</span>
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6M15 3h6v6M10 14L21 3"/></svg>
+          </a>
+        </div>
+      </div>
+
+      <div class="card resource-card">
+        <div class="resource-header">
+          <div class="card-title">Reserve Bank Ombudsman</div>
+          <span class="resource-code">CMS.RBI</span>
+        </div>
+        <div class="resource-authority">Reserve Bank of India</div>
+        <p class="card-body">
+          Integrated Ombudsman Scheme for deficiency in banking, digital payment wallets, UPI transactions, and NBFC lending malpractices.
+        </p>
+        <div class="card-footer">
+          <a href="https://cms.rbi.org.in" target="_blank" rel="noopener noreferrer" class="section-action">
+            <span>Visit RBI CMS</span>
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6M15 3h6v6M10 14L21 3"/></svg>
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Quick FAQ Preview Section -->
+<section class="section section-subtle" aria-labelledby="faq-preview-title">
+  <div class="container">
+    <div class="section-header">
+      <div>
+        <span class="section-label">Common Questions</span>
+        <h2 id="faq-preview-title" class="section-title">Frequently Asked Consumer Questions</h2>
+      </div>
+      <a href="{{ url_for('faqs') }}" class="section-action">
+        <span>View all FAQs</span>
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+      </a>
+    </div>
+
+    <div class="faq-list">
+      {% for faq in faqs %}
+      <div class="faq-item">
+        <button class="faq-question" aria-expanded="false">
+          <span>{{ faq.question }}</span>
+          <svg class="faq-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <polyline points="6 9 12 15 18 9"></polyline>
+          </svg>
+        </button>
+        <div class="faq-answer">
+          <p>{{ faq.answer }}</p>
+        </div>
+      </div>
+      {% endfor %}
+    </div>
+  </div>
+</section>
+{% endblock %}

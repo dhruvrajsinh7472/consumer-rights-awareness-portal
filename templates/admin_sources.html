@@ -1,0 +1,279 @@
+{% extends "base.html" %}
+
+{% block title %}Protected Source Review &amp; Provenance Dashboard — {{ portal_name }}{% endblock %}
+
+{% block meta_description %}Internal administrator dashboard for legal source registry review, link health checks, and provenance verification.{% endblock %}
+
+{% block content %}
+<section class="page-header" style="background: var(--navy-900); color: var(--white); padding: var(--space-8) 0;">
+  <div class="container">
+    <div style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: var(--space-4);">
+      <div>
+        <div class="breadcrumbs" style="color: var(--slate-300);">
+          <a href="{{ url_for('index') }}" style="color: var(--teal-100);">Home</a>
+          <span class="sep" style="color: var(--slate-400);">/</span>
+          <span aria-current="page" style="color: var(--white);">Admin Source Audit</span>
+        </div>
+        <h1 class="page-title" style="color: var(--white); margin-top: var(--space-2);">
+          Content Source &amp; Provenance Dashboard
+        </h1>
+        <p style="color: var(--slate-300); margin: 0; font-size: 0.9375rem;">
+          Authenticated Administrative Session &bull; Strictly Gated Internal Review
+        </p>
+      </div>
+
+      <div>
+        <form action="{{ url_for('admin_logout') }}" method="POST" style="margin: 0;">
+          <button type="submit" class="btn btn-outline" style="border-color: rgba(255,255,255,0.4); color: var(--white); font-size: 0.875rem;">
+            Sign Out
+          </button>
+        </form>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="container section">
+
+  <!-- CRITICAL ARCHITECTURAL DISTINCTION CALLOUT -->
+  <div class="card" style="margin-bottom: var(--space-8); padding: var(--space-5); background-color: var(--amber-50); border: 2px solid var(--amber-600);">
+    <div style="display: flex; gap: var(--space-3); align-items: flex-start;">
+      <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="color: var(--amber-700); flex-shrink: 0; margin-top: 2px;" aria-hidden="true">
+        <path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"></path>
+        <line x1="12" y1="9" x2="12" y2="13"></line>
+        <line x1="12" y1="17" x2="12.01" y2="17"></line>
+      </svg>
+      <div>
+        <h2 style="font-size: 1.0625rem; font-weight: 800; color: var(--amber-700); margin-bottom: var(--space-1);">
+          Essential Distinction: Network Reachability &ne; Content Verification
+        </h2>
+        <p style="color: var(--slate-800); font-size: 0.9375rem; line-height: 1.6; margin: 0;">
+          A <code>200 OK</code> response from an official website only proves network reachability. It <strong>never</strong> verifies legal accuracy. Official government gazettes, notifications, or statutory portals frequently change URL paths or restructure sub-pages. Legal content is verified exclusively when an authorized evaluator inspects the actual statutory text against the Consumer Protection Act, 2019.
+        </p>
+      </div>
+    </div>
+  </div>
+
+  <!-- Source Registry Metrics Overview -->
+  <div class="grid-4" style="margin-bottom: var(--space-8);">
+    <div class="card" style="padding: var(--space-5); text-align: center;">
+      <div style="font-size: 0.75rem; text-transform: uppercase; letter-spacing: 0.05em; color: var(--slate-500); font-weight: 700;">Total Sources</div>
+      <div style="font-size: 2rem; font-weight: 800; color: var(--navy-900); margin-top: 4px;">{{ metrics.total_sources }}</div>
+    </div>
+    <div class="card" style="padding: var(--space-5); text-align: center; border-bottom: 3px solid var(--emerald-600);">
+      <div style="font-size: 0.75rem; text-transform: uppercase; letter-spacing: 0.05em; color: var(--emerald-700); font-weight: 700;">Verified</div>
+      <div style="font-size: 2rem; font-weight: 800; color: var(--emerald-700); margin-top: 4px;">{{ metrics.verified }}</div>
+    </div>
+    <div class="card" style="padding: var(--space-5); text-align: center; border-bottom: 3px solid var(--amber-600);">
+      <div style="font-size: 0.75rem; text-transform: uppercase; letter-spacing: 0.05em; color: var(--amber-700); font-weight: 700;">Needs Review</div>
+      <div style="font-size: 2rem; font-weight: 800; color: var(--amber-700); margin-top: 4px;">{{ metrics.needs_review }}</div>
+    </div>
+    <div class="card" style="padding: var(--space-5); text-align: center; border-bottom: 3px solid var(--crimson-600);">
+      <div style="font-size: 0.75rem; text-transform: uppercase; letter-spacing: 0.05em; color: var(--crimson-700); font-weight: 700;">Unavailable / Pending</div>
+      <div style="font-size: 2rem; font-weight: 800; color: var(--crimson-700); margin-top: 4px;">{{ metrics.unavailable + metrics.pending }}</div>
+    </div>
+  </div>
+
+  <!-- Sources Table -->
+  <div class="card" style="margin-bottom: var(--space-10); overflow: hidden; padding: 0;">
+    <div style="padding: var(--space-5); border-bottom: 1px solid var(--border-subtle); display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: var(--space-3);">
+      <div>
+        <h2 style="font-size: 1.25rem; font-weight: 800; color: var(--navy-900); margin: 0;">
+          Official Source Registry Records
+        </h2>
+        <span style="font-size: 0.8125rem; color: var(--slate-500);">
+          Review official URLs, statutory provisions, and network ping telemetry
+        </span>
+      </div>
+      <div>
+        <span style="font-size: 0.8125rem; color: var(--slate-600); background: var(--slate-100); padding: 4px 10px; border-radius: var(--radius-sm);">
+          Link checking script: <code>python scripts/check_source_links.py --test</code>
+        </span>
+      </div>
+    </div>
+
+    <div style="overflow-x: auto;">
+      <table style="width: 100%; border-collapse: collapse; font-size: 0.875rem;">
+        <thead>
+          <tr style="background-color: var(--slate-100); text-align: left; border-bottom: 1px solid var(--border-subtle);">
+            <th style="padding: var(--space-3) var(--space-4); font-weight: 700; color: var(--slate-700);">Code / Source</th>
+            <th style="padding: var(--space-3) var(--space-4); font-weight: 700; color: var(--slate-700);">Organisation &amp; Authority</th>
+            <th style="padding: var(--space-3) var(--space-4); font-weight: 700; color: var(--slate-700);">Verification Status</th>
+            <th style="padding: var(--space-3) var(--space-4); font-weight: 700; color: var(--slate-700);">Last Network Ping</th>
+            <th style="padding: var(--space-3) var(--space-4); font-weight: 700; color: var(--slate-700);">Linked Items</th>
+            <th style="padding: var(--space-3) var(--space-4); font-weight: 700; color: var(--slate-700); text-align: right;">Action</th>
+          </tr>
+        </thead>
+        <tbody>
+          {% for s in sources %}
+            <tr style="border-bottom: 1px solid var(--border-subtle); transition: background 0.15s ease;">
+              <!-- Code & Name -->
+              <td style="padding: var(--space-4);">
+                <span class="badge badge-subtle" style="font-size: 0.75rem; margin-bottom: 4px;">{{ s.code }}</span>
+                <div style="font-weight: 700; color: var(--navy-900); font-size: 0.9375rem;">{{ s.name }}</div>
+                <div style="font-size: 0.75rem; margin-top: 2px;">
+                  <a href="{{ s.url }}" target="_blank" rel="noopener noreferrer" style="color: var(--teal-700); word-break: break-all;">
+                    {{ s.url }} &nearr;
+                  </a>
+                </div>
+              </td>
+
+              <!-- Org -->
+              <td style="padding: var(--space-4); color: var(--slate-700);">
+                <div style="font-weight: 600;">{{ s.organisation }}</div>
+                <div style="font-size: 0.75rem; color: var(--slate-500);">{{ s.authority }}</div>
+              </td>
+
+              <!-- Status -->
+              <td style="padding: var(--space-4);">
+                {% if s.verification_status == 'verified' %}
+                  <span class="badge badge-verified">
+                    <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="margin-right: 3px;"><polyline points="20 6 9 17 4 12"></polyline></svg>
+                    Verified
+                  </span>
+                {% elif s.verification_status == 'needs_review' %}
+                  <span class="badge" style="background: var(--amber-100); color: var(--amber-700); font-weight: 700;">Needs Review</span>
+                {% elif s.verification_status == 'unavailable' %}
+                  <span class="badge" style="background: var(--crimson-50); color: var(--crimson-700); border: 1px solid var(--crimson-700); font-weight: 700;">Unavailable</span>
+                {% else %}
+                  <span class="badge" style="background: var(--slate-200); color: var(--slate-700);">Pending</span>
+                {% endif %}
+                <div style="font-size: 0.75rem; color: var(--slate-500); margin-top: 4px;">
+                  Reviewed: {{ s.last_verified_at or 'Never' }}
+                </div>
+              </td>
+
+              <!-- Network ping -->
+              <td style="padding: var(--space-4);">
+                {% if s.last_status_code %}
+                  <div style="display: flex; align-items: center; gap: 6px;">
+                    <span style="display: inline-block; width: 8px; height: 8px; border-radius: 9999px; background-color: {% if s.last_status_code >= 200 and s.last_status_code < 400 %}var(--emerald-600){% else %}var(--crimson-600){% endif %};"></span>
+                    <strong style="color: {% if s.last_status_code >= 200 and s.last_status_code < 400 %}var(--emerald-700){% else %}var(--crimson-700){% endif %};">
+                      HTTP {{ s.last_status_code }}
+                    </strong>
+                  </div>
+                  <div style="font-size: 0.75rem; color: var(--slate-500); margin-top: 2px;">
+                    {{ s.last_response_time_ms or 0 }}ms &bull; {{ s.last_checked_at[:16] if s.last_checked_at else '' }}
+                  </div>
+                {% else %}
+                  <span style="font-size: 0.75rem; color: var(--slate-400);">Not pinged yet</span>
+                {% endif %}
+              </td>
+
+              <!-- Linked items -->
+              <td style="padding: var(--space-4); color: var(--slate-700);">
+                <div style="display: flex; gap: 4px; flex-wrap: wrap;">
+                  <span class="badge" style="background: var(--navy-50); color: var(--navy-800); font-size: 0.6875rem;">{{ s.rights_count }} Rights</span>
+                  <span class="badge" style="background: var(--teal-50); color: var(--teal-800); font-size: 0.6875rem;">{{ s.guides_count }} Guides</span>
+                  <span class="badge" style="background: var(--amber-50); color: var(--amber-700); font-size: 0.6875rem;">{{ s.faqs_count }} FAQs</span>
+                </div>
+              </td>
+
+              <!-- Edit Action -->
+              <td style="padding: var(--space-4); text-align: right;">
+                <button type="button" class="btn btn-outline" style="font-size: 0.75rem; padding: 4px 8px;" onclick="openUpdateModal('{{ s.id }}', '{{ s.code }}', '{{ s.name|escape }}', '{{ s.verification_status }}', '{{ (s.notes or '')|escape }}')">
+                  Update Status
+                </button>
+              </td>
+            </tr>
+          {% endfor %}
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <!-- Audit Trail History -->
+  <div class="card" style="padding: var(--space-6);">
+    <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: var(--space-4);">
+      <h2 style="font-size: 1.125rem; font-weight: 800; color: var(--navy-900); margin: 0;">
+        Recent Verification Audit Logs
+      </h2>
+      <span style="font-size: 0.8125rem; color: var(--slate-500);">
+        Persisted immutable history in SQLite
+      </span>
+    </div>
+
+    {% if audit_logs %}
+      <div style="display: flex; flex-direction: column; gap: var(--space-3);">
+        {% for log in audit_logs %}
+          <div style="padding: var(--space-3) var(--space-4); border: 1px solid var(--border-subtle); border-radius: var(--radius-sm); background: var(--slate-50); display: flex; justify-content: space-between; align-items: flex-start; flex-wrap: wrap; gap: var(--space-3);">
+            <div>
+              <div style="font-weight: 700; color: var(--navy-900); font-size: 0.875rem;">
+                [{{ log.source_code }}] {{ log.source_name }}
+              </div>
+              <div style="font-size: 0.8125rem; color: var(--slate-600); margin-top: 2px;">
+                Changed status from <code>{{ log.previous_status }}</code> &rarr; <code>{{ log.new_status }}</code>
+                {% if log.notes %} &bull; <em>"{{ log.notes }}"</em>{% endif %}
+              </div>
+            </div>
+            <div style="font-size: 0.75rem; color: var(--slate-500);">
+              by <strong>{{ log.action_by }}</strong> on {{ log.created_at }}
+            </div>
+          </div>
+        {% endfor %}
+      </div>
+    {% else %}
+      <div style="text-align: center; padding: var(--space-6); color: var(--slate-500); font-size: 0.875rem;">
+        No status modifications logged yet. All sources retain their initial verification state from seed files.
+      </div>
+    {% endif %}
+  </div>
+
+</div>
+
+<!-- Modal for safe status updates -->
+<div id="update-modal" style="display: none; position: fixed; top: 0; left: 0; right: 0; bottom: 0; background: rgba(15, 23, 42, 0.6); z-index: 9999; align-items: center; justify-content: center; padding: var(--space-4);">
+  <div class="card" style="max-width: 520px; width: 100%; padding: var(--space-6); background: var(--white); border-radius: var(--radius-lg); box-shadow: var(--shadow-lg);">
+    <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: var(--space-4);">
+      <h3 id="modal-title" style="font-size: 1.125rem; color: var(--navy-900); margin: 0;">Update Source Verification</h3>
+      <button type="button" onclick="closeUpdateModal()" style="border: none; background: transparent; font-size: 1.25rem; cursor: pointer; color: var(--slate-500);">&times;</button>
+    </div>
+
+    <form action="{{ url_for('admin_source_update') }}" method="POST">
+      <input type="hidden" id="modal-source-id" name="source_id" value="">
+
+      <div class="form-group" style="margin-bottom: var(--space-4);">
+        <label class="form-label" style="font-weight: 700; color: var(--navy-900); margin-bottom: var(--space-1); display: block;">
+          Verification Status
+        </label>
+        <select id="modal-status" name="verification_status" class="form-control" style="width: 100%; padding: 0.5rem; border: 1px solid var(--border-strong); border-radius: var(--radius-sm);">
+          <option value="verified">Verified (Primary official authority confirmed)</option>
+          <option value="pending_verification">Pending Verification</option>
+          <option value="needs_review">Needs Review (URL or content requires re-check)</option>
+          <option value="unavailable">Unavailable (Link broken or discontinued)</option>
+        </select>
+      </div>
+
+      <div class="form-group" style="margin-bottom: var(--space-5);">
+        <label class="form-label" style="font-weight: 700; color: var(--navy-900); margin-bottom: var(--space-1); display: block;">
+          Justification / Review Audit Notes <span class="required" style="color: var(--crimson-600);">*</span>
+        </label>
+        <textarea id="modal-notes" name="notes" rows="3" required placeholder="Explain the basis of this verification update (e.g. verified gazette notification S.O. 4926(E))..." style="width: 100%; padding: 0.5rem; border: 1px solid var(--border-strong); border-radius: var(--radius-sm); font-size: 0.875rem;"></textarea>
+      </div>
+
+      <div style="display: flex; justify-content: flex-end; gap: var(--space-3);">
+        <button type="button" onclick="closeUpdateModal()" class="btn btn-outline">Cancel</button>
+        <button type="submit" class="btn btn-primary">Save &amp; Log Action</button>
+      </div>
+    </form>
+  </div>
+</div>
+{% endblock %}
+
+{% block extra_scripts %}
+<script>
+function openUpdateModal(id, code, name, status, notes) {
+  document.getElementById("modal-source-id").value = id;
+  document.getElementById("modal-title").textContent = `Update [${code}] Status`;
+  document.getElementById("modal-status").value = status;
+  document.getElementById("modal-notes").value = notes || "";
+  const modal = document.getElementById("update-modal");
+  modal.style.display = "flex";
+}
+
+function closeUpdateModal() {
+  const modal = document.getElementById("update-modal");
+  modal.style.display = "none";
+}
+</script>
+{% endblock %}

@@ -1,0 +1,22 @@
+# Render Blueprint configuration for Consumer Rights Awareness Portal
+# Documentation: https://render.com/docs/blueprint-spec
+
+services:
+  - type: web
+    name: consumer-rights-awareness-portal
+    runtime: python
+    plan: free
+    buildCommand: pip install -r requirements.txt
+    startCommand: python init_db.py && gunicorn app:app
+    healthCheckPath: /healthz
+    envVars:
+      - key: FLASK_ENV
+        value: production
+      - key: DATABASE_URL
+        sync: false
+      - key: SECRET_KEY
+        generateValue: true
+      - key: ADMIN_USERNAME
+        sync: false
+      - key: ADMIN_PASSWORD
+        sync: false

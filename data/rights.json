@@ -1,0 +1,213 @@
+[
+  {
+    "slug": "right-to-safety",
+    "title": "Right to Safety",
+    "legal_name": "Protection Against Goods, Products, or Services Hazardous to Life and Property",
+    "statutory_provision": "Section 2(9)(i), Consumer Protection Act, 2019",
+    "source_code": "CPA_2019",
+    "additional_sources": ["BIS_PORTAL"],
+    "summary": "The right to be protected against the marketing of goods, products, or services that are hazardous or perilous to life, health, and property.",
+    "plain_language_explanation": "Every consumer in India has the legal right to expect that products and services available in the marketplace meet mandatory safety benchmarks. Manufacturers and sellers have an affirmative legal duty not to introduce dangerous, contaminated, sub-standard, or hazardous items into commerce.",
+    "full_description": "Under Section 2(9)(i) of the Consumer Protection Act, 2019, the Right to Safety guarantees that citizens can insist on quality certification and standard safety compliance before purchase. This right covers physical products (including consumer electronics, domestic appliances, automotive parts, food, pharmaceuticals, and kitchen gas accessories) as well as commercial services (such as public transport, amusement rides, and healthcare). Under Chapter VI of the 2019 Act, manufacturers, service providers, and product sellers face strict product liability for harm, bodily injury, or property damage caused by defective design, substandard manufacturing, or failure to provide adequate warnings.",
+    "why_it_matters": "Without safety standards, consumers would bear the physical, financial, and emotional risks of dangerous products. The Right to Safety creates legally enforceable accountability, empowers regulators to issue mandatory recalls of hazardous batches, and provides victims with statutory compensation through consumer commissions.",
+    "practical_application": "Illustrative Scenario: An individual purchases an electrical immersion rod or water heater that lacks mandatory ISI certification and develops severe electrical insulation leakage during normal use, causing electrical shock. Under the Right to Safety and Product Liability provisions of CPA 2019, the consumer is entitled to replacement, refund, and compensation for medical expenses and distress.",
+    "illustrative_scenario": "A consumer buys a certified kitchen pressure cooker that suffers catastrophic lid failure during standard domestic cooking due to a manufacturing metallurgy defect, causing thermal burn injuries. The consumer can bring a product liability action before the District Consumer Commission against both the manufacturer and the retail distributor for full medical reimbursement and statutory compensation.",
+    "related_consumer_issues": [
+      "Substandard or uncertified electrical appliances without BIS/ISI markings",
+      "Adulterated, contaminated, or expired food and beverage products",
+      "Spurious, misbranded, or toxic pharmaceuticals and cosmetics",
+      "Defective automotive parts prone to sudden mechanical or braking failure",
+      "Domestic LPG cylinder gas leakage or faulty regulator valves"
+    ],
+    "consumer_responsibilities": [
+      "Always inspect goods for official quality certification marks (ISI mark for industrial/electrical items, AGMARK for agricultural products, FSSAI licence number on food items)",
+      "Verify licence and registration numbers using the official BIS Care mobile application before purchase",
+      "Read instruction manuals, voltage ratings, and safety warnings carefully prior to operating appliances",
+      "Retain original tax invoices and warranty cards as essential evidence of authentic purchase"
+    ],
+    "key_protections": [
+      "Mandatory adherence to Bureau of Indian Standards (BIS) safety specifications for regulated goods",
+      "Statutory Product Liability claims (Sections 82–87 CPA 2019) against manufacturers and distributors for physical harm or property damage",
+      "Power of Central Consumer Protection Authority (CCPA) to mandate immediate product recalls and reimbursement of purchase price",
+      "Absolute prohibition against marketing expired, adulterated, or hazardous consumables"
+    ],
+    "verification_status": "verified",
+    "last_verified_at": "2026-10-25"
+  },
+  {
+    "slug": "right-to-be-informed",
+    "title": "Right to be Informed",
+    "legal_name": "Right to be Informed on Quality, Quantity, Potency, Purity, Standard, and Price",
+    "statutory_provision": "Section 2(9)(ii), Consumer Protection Act, 2019",
+    "source_code": "CPA_2019",
+    "additional_sources": ["LEGAL_METROLOGY_2011", "ECOMM_RULES_2020"],
+    "summary": "The right to be informed about the quality, quantity, potency, purity, standard, and accurate pricing of goods or services to protect consumers against unfair trade practices.",
+    "plain_language_explanation": "Consumers are entitled to clear, truthful, and complete information regarding products and services prior to purchasing. Sellers, manufacturers, and service providers cannot conceal essential product details, levy undisclosed fees, or print misleading claims.",
+    "full_description": "Section 2(9)(ii) of CPA 2019, read in harmony with the Legal Metrology (Packaged Commodities) Rules, 2011 and the Consumer Protection (E-Commerce) Rules, 2020, establishes the Right to be Informed. Every packaged commodity sold in India must visibly declare the Maximum Retail Price (MRP inclusive of all taxes), net quantity or weight, manufacturing date, expiry/use-by date, complete ingredient disclosures with allergen warnings, consumer care contact coordinates, and manufacturer/packer identity. For imported or online marketplace goods, country of origin and seller identity must be disclosed upfront.",
+    "why_it_matters": "Information asymmetry allows unscrupulous traders to exploit buyers through hidden charges, deceptive pack-sizing, or false health claims. Truthful information empowers citizens to compare products rationally, calculate real unit costs, and avoid dangerous ingredients.",
+    "practical_application": "Illustrative Scenario: A retail vendor attempts to charge ₹45 for a bottled beverage with a printed MRP of ₹40, claiming an extra ₹5 for 'cooling or refrigeration charges'. Under Rule 18(2) of the Legal Metrology Rules, charging above MRP for chilling is strictly prohibited, violating the consumer's Right to be Informed.",
+    "illustrative_scenario": "An online shopper orders a nutritional supplement advertised as '100% natural and sugar-free'. Upon arrival, the fine-print ingredient list reveals high fructose corn syrup and artificial preservatives not disclosed in the listing. The buyer can demand a full refund and report the listing for misleading representation under CPA 2019.",
+    "related_consumer_issues": [
+      "Overcharging above the stamped Maximum Retail Price (MRP)",
+      "Deceptive or unreadable packaging labels concealing expiration dates or allergens",
+      "Hidden booking fees, platform charges, or undisclosed restaurant service charges",
+      "Concealed country of origin or fake seller credentials on e-commerce platforms",
+      "Misleading advertisements claiming scientifically unproven therapeutic benefits"
+    ],
+    "consumer_responsibilities": [
+      "Scrutinize packaged commodity labels for printed MRP, net weight, expiry date, and batch number before paying",
+      "Insist on an itemized tax bill clearly reflecting the rate, quantity, and GST breakdown",
+      "Review platform cancellation and return policies before completing digital checkout",
+      "Report overcharging or obliterated MRP labels to the District Legal Metrology Inspector or National Consumer Helpline"
+    ],
+    "key_protections": [
+      "Strict statutory ban under Rule 18(2) Legal Metrology Rules on charging even one rupee above the printed MRP",
+      "Prohibition against dual/differential MRP labels on identical pre-packaged goods across different retail channels",
+      "Mandatory disclosure of net quantity, ingredients, date of packing, and consumer care details on pre-packaged goods",
+      "Mandatory country-of-origin disclosure and seller details across all Indian e-commerce marketplace listings"
+    ],
+    "verification_status": "verified",
+    "last_verified_at": "2026-10-25"
+  },
+  {
+    "slug": "right-to-choose",
+    "title": "Right to Choose",
+    "legal_name": "Assurance of Access to a Variety of Goods and Services at Competitive Prices",
+    "statutory_provision": "Section 2(9)(iii), Consumer Protection Act, 2019",
+    "source_code": "CPA_2019",
+    "additional_sources": ["CCPA_DARK_PATTERNS_2023"],
+    "summary": "Assurance of access to a competitive variety of goods and services at fair prices without coercive tie-in arrangements, artificial scarcity, or deceptive interface manipulation.",
+    "plain_language_explanation": "Consumers have the right to freely select the product or service that best suits their needs and budget. Sellers cannot force consumers to buy unwanted secondary items as a condition for purchasing a primary good, nor use manipulative online interfaces to trick them.",
+    "full_description": "The Right to Choose guarantees marketplace freedom and protects consumer autonomy. Under Section 2(9)(iii) of CPA 2019 and the CCPA Guidelines for Prevention and Regulation of Dark Patterns, 2023, anti-competitive bundling, coercive tie-in sales, and manipulative digital interface designs (such as basket sneaking, subscription traps, and pre-ticked add-on boxes) are prohibited. In sectors with natural monopolies (such as municipal utilities), this right guarantees fair, non-discriminatory service standards at regulated tariffs.",
+    "why_it_matters": "Monopolistic practices and digital dark patterns undermine consumer sovereignty, nudging citizens into buying products they never wanted or locking them into recurring subscriptions without straightforward exit paths.",
+    "practical_application": "Illustrative Scenario: A school administration mandates that parents purchase text books, stationery, and uniforms exclusively from one specific commercial vendor at double the open market rate. This coercive exclusive dealing restricts consumer choice and constitutes an unfair trade practice.",
+    "illustrative_scenario": "While booking a bus or flight ticket online, the digital platform automatically adds a ₹150 travel insurance package to the shopping cart using a pre-ticked checkbox without explicit affirmative consent. This constitutes 'Basket Sneaking', a prohibited dark pattern violating the consumer's Right to Choose under CCPA 2023 Guidelines.",
+    "related_consumer_issues": [
+      "Forced bundling of unrelated products or services (tying arrangements)",
+      "Exclusive vendor tie-ups by educational institutions or housing societies",
+      "Dark patterns including basket sneaking, drip pricing, and confirm shaming on digital platforms",
+      "Subscription traps making service cancellation deliberately tedious or concealed",
+      "Predatory anti-competitive exclusive dealing designed to create artificial regional monopolies"
+    ],
+    "consumer_responsibilities": [
+      "Carefully inspect digital checkout summaries to uncheck pre-selected add-ons and optional insurance packages",
+      "Compare prices, specifications, and warranty coverage across multiple competing vendors before committing to purchase",
+      "Refuse conditional sales that mandate purchasing unwanted auxiliary goods",
+      "Report platforms employing manipulative dark patterns to the Central Consumer Protection Authority (CCPA)"
+    ],
+    "key_protections": [
+      "Statutory prohibition on coercive tie-in sales and forced product bundling",
+      "Prohibition of 13 specific dark patterns under CCPA Guidelines 2023, including basket sneaking and subscription traps",
+      "Entitlement to transparent, unbiased choice without algorithmic self-preferencing by platform operators",
+      "Protection from manipulative confirm-shaming and false countdown urgency banners"
+    ],
+    "verification_status": "verified",
+    "last_verified_at": "2026-10-25"
+  },
+  {
+    "slug": "right-to-be-heard",
+    "title": "Right to be Heard",
+    "legal_name": "Right to be Heard and Assured of Due Consideration in Appropriate Forums",
+    "statutory_provision": "Section 2(9)(iv), Consumer Protection Act, 2019",
+    "source_code": "CPA_2019",
+    "additional_sources": ["ECOMM_RULES_2020", "NCH_PORTAL"],
+    "summary": "The right to voice legitimate grievances and be assured that consumer interests receive due consideration in judicial forums, corporate grievance desks, and policy deliberations.",
+    "plain_language_explanation": "Consumers are entitled to reachable, responsive channels where complaints are formally acknowledged and processed within defined timeframes. Companies cannot simply ignore aggrieved customers or shut down communication channels.",
+    "full_description": "Under Section 2(9)(iv) of CPA 2019, the Right to be Heard guarantees that consumer grievances will receive prompt, meaningful consideration. For digital commerce, Rule 4(5) of the Consumer Protection (E-Commerce) Rules, 2020 mandates that every e-commerce entity appoint a designated Grievance Officer whose contact details are publicly visible, must acknowledge consumer complaints within 48 hours, and must resolve the grievance within one month. Furthermore, consumer organizations have the statutory right to participate in public regulatory consultations (such as TRAI, electricity, and water tariff hearings) to advocate for public interests.",
+    "why_it_matters": "A right without a voice is meaningless. The Right to be Heard obligates corporate entities to maintain reachable dispute resolution infrastructure and provides consumers the standing to represent themselves in court without mandatory lawyer retainers.",
+    "practical_application": "Illustrative Scenario: A broadband provider terminates a customer's internet connection without explanation, continues billing monthly rentals, and provides only automated chatbot loops with no human escalation or complaint ticket. The consumer's Right to be Heard is violated, entitling them to escalate to the appellate desk and register a grievance on NCH 1915.",
+    "illustrative_scenario": "An e-commerce marketplace receives a formal written complaint regarding a defective delivery but fails to acknowledge the email or issue a reference number within 48 hours. Under Rule 4(5) of the E-Commerce Rules, 2020, this non-compliance breaches the consumer's statutory right to be heard.",
+    "related_consumer_issues": [
+      "Unresponsive customer care services and lack of ticket/docket tracking numbers",
+      "Failure of e-commerce platforms to acknowledge grievances within the mandatory 48-hour window",
+      "Arbitrary account suspensions or cancellation of buyer tickets without opportunity to respond",
+      "Exclusion of consumer representatives from public regulatory tariff hearings",
+      "Non-availability of designated company Grievance Redressal Officers"
+    ],
+    "consumer_responsibilities": [
+      "Submit complaints through formal, documented channels (email, official portal, registered ticket) rather than casual verbal discussions",
+      "Always note down the unique complaint ticket, docket, or reference number along with timestamps",
+      "Escalate complaints through the documented hierarchy (Customer Care -> Grievance Officer -> NCH -> Consumer Commission)",
+      "Articulate facts clearly, attaching invoice numbers and evidence without emotional hyperbole"
+    ],
+    "key_protections": [
+      "Mandatory statutory appointment of a Grievance Redressal Officer under Rule 4(5) E-Commerce Rules, 2020",
+      "Mandatory 48-hour complaint acknowledgment timeline and one-month maximum resolution window",
+      "Statutory standing to draft, file, and argue complaints in person before Consumer Commissions without an advocate",
+      "Right of registered consumer associations to file representative class-action petitions before the CCPA and Commissions"
+    ],
+    "verification_status": "verified",
+    "last_verified_at": "2026-10-25"
+  },
+  {
+    "slug": "right-to-seek-redressal",
+    "title": "Right to Seek Redressal",
+    "legal_name": "Right to Seek Redressal Against Unfair Trade Practices or Unscrupulous Exploitation",
+    "statutory_provision": "Section 2(9)(v), Consumer Protection Act, 2019",
+    "source_code": "CPA_2019",
+    "additional_sources": ["E_JAGRITI", "PECUNIARY_RULES_2021", "COMMISSION_FEE_REGULATIONS"],
+    "summary": "The right to seek fair legal remedies, defect rectification, replacement, full refund with interest, and compensation against defective goods, deficient services, or unfair trade practices.",
+    "plain_language_explanation": "When goods fail to work as promised or services fall short of reasonable standards, consumers are entitled to concrete remedies: free repair, identical replacement, full return of money, and financial compensation for mental agony and hardship.",
+    "full_description": "The Right to Seek Redressal is the enforcement pillar of the Consumer Protection Act, 2019. Under Section 2(9)(v) and Section 39, Consumer Commissions have wide statutory powers to grant comprehensive remedies: order removal of defects, replacement of goods with new defect-free equivalents, return of the purchase price with interest, discontinuation of unfair trade practices, and payment of compensation for injury, loss, mental agony, and legal costs. The 2019 Act established accessible pecuniary jurisdictions (District Commission up to ₹50 Lakh, State Commission ₹50 Lakh–₹2 Crore, National Commission above ₹2 Crore), complete court fee exemption for claims up to ₹5 Lakh, and digital filing via e-Jagriti.",
+    "why_it_matters": "Consumers often suffer direct financial loss and severe mental distress when products malfunction or companies breach agreements. The Right to Seek Redressal levels the playing field against large corporations by providing a quasi-judicial court system that operates quickly without excessive formal legal formalities.",
+    "practical_application": "Illustrative Scenario: An airline cancels a scheduled domestic flight without weather or force majeure grounds and refuses to refund passenger fares within statutory timeframes. The passenger can seek full refund with interest and statutory compensation for consequential loss through the Consumer Commission via e-Jagriti.",
+    "illustrative_scenario": "A consumer buys a new laptop with a 1-year comprehensive warranty. Within two months, the motherboard fails. The authorized service center keeps the laptop for 90 days without repair, claiming spare parts unavailability, and refuses a replacement. Under Section 39 of CPA 2019, the consumer can file a complaint for product replacement or full refund plus compensation for loss of study/work hours.",
+    "related_consumer_issues": [
+      "Denial of warranty repairs or unjustified service center delay on consumer goods",
+      "Refusal or unreasonable stalling of monetary refunds for returned e-commerce merchandise",
+      "Deficiency in banking, digital payment, insurance claim settlement, or healthcare services",
+      "Delivery of wrong, used, or damaged items without exchange options",
+      "Real estate handover delays and unfair forfeiture of buyer booking advances"
+    ],
+    "consumer_responsibilities": [
+      "File consumer complaints within the statutory TWO-YEAR limitation period (Section 69 CPA 2019) from the date of cause of action",
+      "Issue a formal written notice to the company giving a reasonable period (typically 7–15 days) to rectify the defect",
+      "Gather and preserve all admissible documents (tax invoice, job sheets, emails, chat transcripts, payment debit slips)",
+      "Attempt pre-litigation alternate dispute resolution through National Consumer Helpline (1915) before instituting formal court cases"
+    ],
+    "key_protections": [
+      "Comprehensive statutory remedies under Section 39: repair, replacement, full refund with interest, and damages for mental agony",
+      "Complete court fee exemption (NIL fee) for consumer complaints claiming consideration up to ₹5 Lakh at the District Commission",
+      "Three-tier pecuniary jurisdiction: District (up to ₹50 Lakh), State (₹50 Lakh–₹2 Crore), National (above ₹2 Crore)",
+      "Digital electronic filing, document upload, fee payment, and virtual video hearings via the e-Jagriti portal",
+      "Access to court-annexed mediation cells for fast, voluntary, amicable dispute settlement without trial"
+    ],
+    "verification_status": "verified",
+    "last_verified_at": "2026-10-25"
+  },
+  {
+    "slug": "right-to-consumer-education",
+    "title": "Right to Consumer Education",
+    "legal_name": "Right to Acquire the Knowledge and Skill to be an Informed Consumer Throughout Life",
+    "statutory_provision": "Section 2(9)(vi), Consumer Protection Act, 2019",
+    "source_code": "CPA_2019",
+    "additional_sources": ["NCH_PORTAL", "E_JAGRITI"],
+    "summary": "The right to acquire lifelong knowledge, awareness, and skills to make informed consumer decisions, understand statutory protections, and recognize deceptive marketplace practices.",
+    "plain_language_explanation": "Citizens have the right to accessible, transparent educational resources that explain their legal rights, dispute mechanisms, and consumer remedies in plain language without requiring a law degree.",
+    "full_description": "Under Section 2(9)(vi) of the Consumer Protection Act, 2019, the Right to Consumer Education mandates state and civic initiatives to spread consumer literacy across rural and urban India. Initiatives like the Central Government's 'Jago Grahak Jago' campaign, consumer literacy programs in educational institutions, and student-led Community Engagement Projects embody this statutory right. Consumer education equips citizens to understand complex financial contracts, recognize digital dark patterns, know their right to in-person representation, and navigate official platforms like NCH (1915) and e-Jagriti.",
+    "why_it_matters": "Marketplace exploitation flourishes when consumers do not know their legal entitlements or assume that legal remedies are expensive and inaccessible. An educated consumer acts as an active watchdog, holding corporations accountable and elevating overall market standards.",
+    "practical_application": "Illustrative Scenario: A student learns through a consumer awareness workshop that hiring an advocate is not mandatory in consumer commissions and that complaints up to ₹5 Lakh incur zero filing fees. When confronted with an unfair coaching institute refund forfeiture, the student confidently drafts an in-person petition on e-Jagriti.",
+    "illustrative_scenario": "A senior citizen receives an automated text message claiming their electricity connection will be disconnected unless they download a third-party APK file. Having learned about cyber scams and official payment channels through consumer awareness initiatives, the citizen identifies the phishing attempt, avoids financial loss, and reports the number on the national cybercrime portal.",
+    "related_consumer_issues": [
+      "Lack of awareness regarding the 2-year limitation period for filing consumer complaints",
+      "Widespread misconception that hiring an advocate is mandatory in Consumer Commissions",
+      "Confusion between pre-litigation grievance helplines (NCH 1915) and consumer court filing (e-Jagriti)",
+      "Inability to verify BIS ISI marks or gold HUID authenticity via official tools",
+      "Susceptibility to online payment frauds, phishing links, and deceptive e-commerce offers"
+    ],
+    "consumer_responsibilities": [
+      "Proactively learn about consumer rights and relevant regulatory guidelines (DoCA, RBI, TRAI, BIS)",
+      "Verify seller credentials, warranty terms, and return guidelines before committing to high-value transactions",
+      "Share verified consumer rights knowledge and grievance channels with family, friends, and community members",
+      "Check official government publications (.gov.in / .nic.in) rather than relying on unverified social media advice"
+    ],
+    "key_protections": [
+      "Public-service consumer awareness programs sponsored by the Department of Consumer Affairs and State Governments",
+      "Transparent public access to consumer commission case laws, daily orders, and judgments on e-Jagriti",
+      "Educational guidance on identifying and resisting digital dark patterns and online shopping scams",
+      "Free access to National Consumer Helpline awareness guides, FAQs, and multilingual grievance assistance"
+    ],
+    "verification_status": "verified",
+    "last_verified_at": "2026-10-25"
+  }
+]

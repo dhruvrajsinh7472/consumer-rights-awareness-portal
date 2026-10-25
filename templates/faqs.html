@@ -1,0 +1,144 @@
+{% extends "base.html" %}
+
+{% block title %}Frequently Asked Questions — Consumer Rights FAQs{% endblock %}
+{% block meta_description %}Common questions and authoritative legal answers regarding Indian consumer protection laws, jurisdiction limits, filing procedures, and e-Daakhil.{% endblock %}
+
+{% block content %}
+<section class="section">
+  <div class="container">
+    <div class="header-with-visual" style="margin-bottom: var(--space-8);">
+      <div>
+        <span class="section-label">Knowledge Base &amp; Consumer Education</span>
+        <h1 class="section-title">Frequently Asked Questions</h1>
+        <p class="section-desc" style="font-size: 1.0625rem; margin-top: var(--space-2);">
+          Reliable, source-backed answers explaining the practical operation of Indian consumer protection laws, commission procedures, and statutory limits.
+        </p>
+        <div style="margin-top: var(--space-4); display: flex; gap: var(--space-3); flex-wrap: wrap;">
+          <a href="{{ url_for('quiz') }}" class="btn btn-teal" style="font-size: 0.8125rem;">
+            Test Awareness in Interactive Quiz &rarr;
+          </a>
+          <span style="font-size: 0.8125rem; background: var(--teal-50); color: var(--teal-800); border: 1px solid var(--teal-100); padding: 4px 10px; border-radius: var(--radius-full); font-weight: 600; display: inline-flex; align-items: center;">
+            {{ faqs | length }} Verified Legal FAQs
+          </span>
+        </div>
+      </div>
+      <div class="header-visual-card" style="border: 1px solid var(--border-subtle); max-width: 200px;">
+        <img 
+          src="{{ url_for('static', filename='images/consumer_awareness.jpg') }}" 
+          alt="Consumer awareness education and public outreach poster" 
+          class="header-visual-img portrait"
+          loading="lazy"
+          width="200"
+          height="280"
+        >
+      </div>
+    </div>
+
+    <!-- In-page FAQ Search and Filter -->
+    <div style="margin-bottom: var(--space-4); max-width: 540px; position: relative;">
+      <input 
+        type="search" 
+        id="faq-search-input" 
+        placeholder="Filter questions by keywords (e.g. limitation, e-Daakhil, fees)..." 
+        aria-label="Filter frequently asked questions"
+        style="width: 100%; padding: 0.625rem 1rem 0.625rem 2.5rem; border: 1px solid var(--border-strong); border-radius: var(--radius-md); font-size: 0.9375rem;"
+      >
+      <svg style="position: absolute; left: 12px; top: 50%; transform: translateY(-50%); color: var(--slate-400); pointer-events: none;" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+        <circle cx="11" cy="11" r="8"></circle>
+        <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+      </svg>
+    </div>
+
+    <!-- Category Filter Bar (Client-side filtering via data-category) -->
+    <div class="filter-bar" role="toolbar" aria-label="FAQ categories">
+      <button class="filter-btn active" data-category="all">
+        All Questions ({{ faqs | length }})
+      </button>
+      {% for cat in categories %}
+      <button class="filter-btn" data-category="{{ cat }}">
+        {{ cat }}
+      </button>
+      {% endfor %}
+    </div>
+
+    <!-- Empty State for filtered FAQs -->
+    <div id="faq-empty-state" class="card" style="display: none; padding: var(--space-8); text-align: center; margin: var(--space-6) 0;">
+      <div style="color: var(--slate-500); margin-bottom: var(--space-2);">
+        <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <circle cx="11" cy="11" r="8"></circle>
+          <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+        </svg>
+      </div>
+      <h3 style="font-size: 1.125rem; color: var(--navy-900); margin-bottom: var(--space-1);">No matching FAQs found</h3>
+      <p style="font-size: 0.875rem; color: var(--slate-600); margin-bottom: var(--space-4);">
+        Try clearing your search term or selecting another category.
+      </p>
+      <button type="button" id="faq-reset-filter-btn" class="btn btn-outline" style="font-size: 0.8125rem;">
+        Clear FAQ Filter
+      </button>
+    </div>
+
+    <!-- FAQ Accordion List -->
+    <div class="faq-list" role="region" aria-label="Frequently Asked Questions">
+      {% for faq in faqs %}
+      <div class="faq-item" data-item-category="{{ faq.category }}">
+        <button class="faq-question" aria-expanded="false" id="faq-q-{{ faq.id }}" aria-controls="faq-a-{{ faq.id }}">
+          <div style="display: flex; flex-direction: column; gap: 4px;">
+            <span style="font-size: 0.75rem; color: var(--teal-700); font-weight: 600; text-transform: uppercase; letter-spacing: 0.05em;">
+              {{ faq.category }}
+            </span>
+            <span>{{ faq.question }}</span>
+          </div>
+          <svg class="faq-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <polyline points="6 9 12 15 18 9"></polyline>
+          </svg>
+        </button>
+        <div class="faq-answer" id="faq-a-{{ faq.id }}" role="region" aria-labelledby="faq-q-{{ faq.id }}">
+          <p style="margin-top: var(--space-3); line-height: 1.7; color: var(--slate-700);">
+            {{ faq.answer }}
+          </p>
+          {% if faq.source_name %}
+          <div style="margin-top: var(--space-4); padding-top: var(--space-3); border-top: 1px solid var(--border-subtle); display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: var(--space-2); font-size: 0.8125rem;">
+            <div style="display: flex; align-items: center; gap: var(--space-2); color: var(--slate-600);">
+              <span class="source-citation" style="font-size: 0.75rem; padding: 2px 6px;">{{ faq.source_code }}</span>
+              <span>Statutory Source: <strong>{{ faq.source_name }}</strong> ({{ faq.source_org }})</span>
+              {% if faq.last_verified_at %}
+              <span style="color: var(--slate-400);">&bull; Verified: {{ faq.last_verified_at }}</span>
+              {% endif %}
+            </div>
+            <div style="display: flex; align-items: center; gap: var(--space-2);">
+              {% if faq.verification_status == 'verified' %}
+              <span class="badge badge-success" style="font-size: 0.75rem;">Verified Primary Source</span>
+              {% else %}
+              <span class="badge" style="background-color: #FEF3C7; color: #92400E; font-size: 0.75rem;">Pending Verification</span>
+              {% endif %}
+              {% if faq.source_url %}
+              <a href="{{ faq.source_url }}" target="_blank" rel="noopener noreferrer" style="color: var(--teal-700); text-decoration: underline; font-weight: 500;">
+                Verify at Official Source &rarr;
+              </a>
+              {% endif %}
+            </div>
+          </div>
+          {% endif %}
+        </div>
+      </div>
+      {% endfor %}
+    </div>
+
+    <!-- Questions Box -->
+    <div style="margin-top: var(--space-12); background-color: var(--slate-100); border: 1px solid var(--border-subtle); border-radius: var(--radius-lg); padding: var(--space-6); display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: var(--space-4);">
+      <div>
+        <h2 style="font-size: 1.125rem; font-weight: 700; color: var(--navy-900); margin-bottom: var(--space-1);">
+          Have a question not addressed here?
+        </h2>
+        <p style="font-size: 0.875rem; color: var(--slate-600);">
+          Send us your question via anonymous feedback. Our student research team regularly reviews submissions to expand the FAQ repository.
+        </p>
+      </div>
+      <a href="{{ url_for('feedback') }}" class="btn btn-secondary">
+        Ask a Question
+      </a>
+    </div>
+  </div>
+</section>
+{% endblock %}

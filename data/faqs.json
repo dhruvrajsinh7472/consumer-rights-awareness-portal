@@ -1,0 +1,122 @@
+[
+  {
+    "id": 1,
+    "category": "Basic Concepts & Legal Rights",
+    "question": "What are statutory consumer rights and where are they defined in Indian law?",
+    "answer": "In India, consumer rights are defined under Section 2(9) of the Consumer Protection Act, 2019 (Act No. 35 of 2019). The statute codifies six fundamental consumer rights: (1) Right to Safety, (2) Right to be Informed, (3) Right to Choose, (4) Right to be Heard, (5) Right to Seek Redressal, and (6) Right to Consumer Education. These rights protect buyers in both physical retail and digital e-commerce transactions.",
+    "source_code": "CPA_2019",
+    "verification_status": "verified",
+    "last_verified_at": "2026-10-25",
+    "sort_order": 1
+  },
+  {
+    "id": 2,
+    "category": "Grievance Channels & Official Portals",
+    "question": "What is the difference between grievance assistance (NCH 1915) and a formal Consumer Commission case (e-Jagriti)?",
+    "answer": "The National Consumer Helpline (NCH / 1915) is an informal, alternate pre-litigation grievance redressal service operated by the Department of Consumer Affairs. It uses a convergence model with over 800 partner companies to facilitate fast resolutions (typically 15–30 days) without court filing fees or evidentiary hearings. In contrast, e-Jagriti (e-jagriti.gov.in) is the official electronic judicial filing portal for formal cases before the District, State, and National Consumer Disputes Redressal Commissions. Consumer Commissions conduct quasi-judicial proceedings and issue legally binding judgements, replacement orders, and monetary compensation decrees.",
+    "source_code": "NCH_PORTAL",
+    "verification_status": "verified",
+    "last_verified_at": "2026-10-25",
+    "sort_order": 2
+  },
+  {
+    "id": 3,
+    "category": "Grievance Channels & Official Portals",
+    "question": "How can I contact the National Consumer Helpline and what are its operational hours?",
+    "answer": "The National Consumer Helpline can be contacted through multiple verified official channels: (1) Call toll-free shortcode 1915 (or legacy 1800-11-4000); (2) Operational hours are from 8:00 AM to 8:00 PM on all days except national holidays; (3) Register online at consumerhelpline.gov.in; (4) Send a WhatsApp message to +91 8800001915; (5) Send an SMS to 8800001915; or (6) Use the official NCH mobile app or UMANG app. Assistance is available across multiple Indian languages.",
+    "source_code": "NCH_PORTAL",
+    "verification_status": "verified",
+    "last_verified_at": "2026-10-25",
+    "sort_order": 3
+  },
+  {
+    "id": 4,
+    "category": "Filing Procedures & Commission Jurisdiction",
+    "question": "What are the pecuniary jurisdiction limits of District, State, and National Consumer Commissions?",
+    "answer": "Under the Consumer Protection (Jurisdiction of the District Commission, the State Commission and the National Commission) Rules, 2021, the pecuniary jurisdictions are determined strictly by the value of goods or services paid as consideration: (1) District Commission (DCDRC): Entertains complaints where consideration paid does not exceed ₹50 Lakh; (2) State Commission (SCDRC): Entertains complaints where consideration paid exceeds ₹50 Lakh up to ₹2 Crore; (3) National Commission (NCDRC): Entertains complaints where consideration paid exceeds ₹2 Crore. Crucially, jurisdiction is governed by the actual amount paid, not speculative compensation claims.",
+    "source_code": "PECUNIARY_RULES_2021",
+    "verification_status": "verified",
+    "last_verified_at": "2026-10-25",
+    "sort_order": 4
+  },
+  {
+    "id": 5,
+    "category": "Filing Procedures & Commission Jurisdiction",
+    "question": "What is the time limit (limitation period) to file a consumer complaint?",
+    "answer": "Under Section 69 of the Consumer Protection Act, 2019, a complaint must be filed before a Consumer Commission within TWO (2) YEARS from the date on which the cause of action arose (e.g., date of product defect discovery, denial of refund, or deficient service incident). A commission may entertain a complaint after two years only if the complainant satisfies the commission that there was sufficient and reasonable cause for the delay.",
+    "source_code": "CPA_2019",
+    "verification_status": "verified",
+    "last_verified_at": "2026-10-25",
+    "sort_order": 5
+  },
+  {
+    "id": 6,
+    "category": "Filing Procedures & Commission Jurisdiction",
+    "question": "Is it mandatory to hire an advocate or lawyer to file a case in a Consumer Commission?",
+    "answer": "No. The consumer dispute redressal mechanism in India is explicitly designed to be quasi-judicial, accessible, and consumer-friendly. A consumer, their legal heir, or an authorized representative can draft, file, and argue their own case before the District, State, or National Commission in person without engaging an advocate. In-person representation is fully recognized by the Consumer Protection Act, 2019.",
+    "source_code": "CPA_2019",
+    "verification_status": "verified",
+    "last_verified_at": "2026-10-25",
+    "sort_order": 6
+  },
+  {
+    "id": 7,
+    "category": "Filing Procedures & Commission Jurisdiction",
+    "question": "What are the court filing fees for consumer complaints in the District Commission?",
+    "answer": "Under the Consumer Protection (Consumer Commission Procedure) Regulations, complaints filed before the District Commission where the value of goods or services paid as consideration is up to ₹5 Lakh enjoy a COMPLETE FEE EXEMPTION (NIL Fee). For higher amounts, the fees are nominal: ₹200 for claims above ₹5 Lakh up to ₹10 Lakh; ₹400 for claims above ₹10 Lakh up to ₹20 Lakh; and ₹1,000 for claims above ₹20 Lakh up to ₹50 Lakh. Fees can be paid electronically via the e-Jagriti portal.",
+    "source_code": "COMMISSION_FEE_REGULATIONS",
+    "verification_status": "verified",
+    "last_verified_at": "2026-10-25",
+    "sort_order": 7
+  },
+  {
+    "id": 8,
+    "category": "Evidence & Dispute Documentation",
+    "question": "What evidence should I preserve when a marketplace or transaction dispute occurs?",
+    "answer": "Preserving admissible documentation is essential for both NCH convergence and e-Jagriti commission cases: (1) Officially specified documents: Original retail tax invoice/cash memo showing seller GSTIN, date, and order ID; (2) Useful evidence to preserve: Delivery package label showing courier airway bill (AWB) barcode, unboxing video recorded continuously upon package opening, high-resolution photographs of defects or mismatches, written customer support emails and chat transcripts with complaint ticket IDs, and bank/card statements proving payment debit; (3) Conditional evidence: Authorized service center job sheets for electronics, or written refusal notices from company grievance officers.",
+    "source_code": "ECOMM_RULES_2020",
+    "verification_status": "verified",
+    "last_verified_at": "2026-10-25",
+    "sort_order": 8
+  },
+  {
+    "id": 9,
+    "category": "Standards, Safety & Hallmarking",
+    "question": "Where can I find official information about product standards, ISI certification, and gold hallmarking?",
+    "answer": "Official product standards and certification details are administered by the Bureau of Indian Standards (BIS) through its portal bis.gov.in and the official 'BIS Care' mobile application. Through the BIS Care App, consumers can verify: (1) ISI Mark and electronics CRS registration by entering the manufacturer's licence CML/R-number; (2) Gold and silver jewellery authenticity by entering the 6-digit alphanumeric Hallmark Unique Identification (HUID) laser-marked on the article; and (3) File complaints directly with BIS regarding sub-standard products or counterfeit standard marks.",
+    "source_code": "BIS_PORTAL",
+    "verification_status": "verified",
+    "last_verified_at": "2026-10-25",
+    "sort_order": 9
+  },
+  {
+    "id": 10,
+    "category": "Digital Payments & Banking",
+    "question": "What is the turnaround time and compensation for failed UPI / digital payment transactions?",
+    "answer": "Under RBI Circular DPSS.CO.PD No.629/02.01.014/2019-20 on Harmonisation of Turn Around Time (TAT), a failed UPI transaction where the remitter account was debited but the merchant was not credited must be auto-reversed by the bank within T+1 business day. If the reversal takes longer than T+1 day, the bank is statutorily mandated to pay compensation of ₹100 per day of delay directly into the customer's account suo motu (automatically, without requiring a separate claim). If unresolved after 30 days, the customer can escalate to the RBI Integrated Ombudsman (cms.rbi.org.in / 14448).",
+    "source_code": "RBI_TAT_CIRCULAR_2019",
+    "verification_status": "verified",
+    "last_verified_at": "2026-10-25",
+    "sort_order": 10
+  },
+  {
+    "id": 11,
+    "category": "Retail & Pricing Regulations",
+    "question": "Can a shopkeeper or vendor charge extra money for chilling cold drinks above the printed MRP?",
+    "answer": "No. Under Rule 18(2) of the Legal Metrology (Packaged Commodities) Rules, 2011, no retailer, packer, or importer can sell pre-packaged goods at a price exceeding the printed Maximum Retail Price (MRP). MRP is legally inclusive of all taxes, packaging, and retailer margins. Adding 'cooling charges', 'chilling fees', or levying GST separately on top of MRP is strictly prohibited and constitutes an unfair trade practice. Note on judicial exception: Under Supreme Court precedent (FHRAI ruling), composite dining service at sit-down hotels and restaurants is considered a service rather than pure retail sale; however, standalone retail stalls, kiosks, takeaway counters, and cinema concession stands must strictly abide by printed MRP.",
+    "source_code": "LEGAL_METROLOGY_2011",
+    "verification_status": "verified",
+    "last_verified_at": "2026-10-25",
+    "sort_order": 11
+  },
+  {
+    "id": 12,
+    "category": "Online Shopping & E-Commerce",
+    "question": "What are 'dark patterns' in online shopping and are they legally prohibited in India?",
+    "answer": "Dark patterns are deceptive user interface (UI) and user experience (UX) designs used on e-commerce websites and mobile apps to mislead, manipulate, or trick consumers into making unintended purchases or subverting their choices. On 30th November 2023, the Central Consumer Protection Authority (CCPA) notified the 'Guidelines for Prevention and Regulation of Dark Patterns, 2023' under Section 18 of CPA 2019. The guidelines explicitly prohibit 13 dark patterns, including: False Urgency, Basket Sneaking (auto-adding items to cart), Confirm Shaming, Forced Action, Subscription Traps, and Drip Pricing (hiding fees until final checkout). Violations are punishable as unfair trade practices.",
+    "source_code": "CCPA_DARK_PATTERNS_2023",
+    "verification_status": "verified",
+    "last_verified_at": "2026-10-25",
+    "sort_order": 12
+  }
+]

@@ -1,0 +1,235 @@
+{% extends "base.html" %}
+
+{% block title %}{{ right.title }} — Consumer Rights Detail{% endblock %}
+{% block meta_description %}{{ right.summary }}{% endblock %}
+
+{% block content %}
+<section class="section" style="padding-top: var(--space-8);">
+  <div class="container">
+    <!-- Breadcrumb -->
+    <nav aria-label="Breadcrumb" style="margin-bottom: var(--space-4); font-size: 0.875rem;">
+      <a href="{{ url_for('index') }}" style="color: var(--teal-700); text-decoration: none;">Home</a>
+      <span style="color: var(--slate-400); margin: 0 var(--space-1);">/</span>
+      <a href="{{ url_for('rights_list') }}" style="color: var(--teal-700); text-decoration: none;">Consumer Rights Library</a>
+      <span style="color: var(--slate-400); margin: 0 var(--space-1);">/</span>
+      <span style="color: var(--slate-600);">{{ right.title }}</span>
+    </nav>
+
+    <div style="display: grid; grid-template-columns: 2fr 1fr; gap: var(--space-8); align-items: start;">
+      <!-- Main Content Column -->
+      <div>
+        <div style="margin-bottom: var(--space-6);">
+          <div style="display: flex; gap: var(--space-2); align-items: center; flex-wrap: wrap; margin-bottom: var(--space-2);">
+            <span class="card-badge" style="font-size: 0.8125rem;">{{ right.statutory_provision }}</span>
+            {% if right.verification_status == 'verified' %}
+              <span style="font-size: 0.75rem; background-color: var(--emerald-50); color: var(--emerald-700); border: 1px solid #A7F3D0; padding: 2px 8px; border-radius: var(--radius-sm); font-weight: 600;">
+                ✓ Verified Source: {{ right.last_verified_at }}
+              </span>
+            {% else %}
+              <span style="font-size: 0.75rem; background-color: var(--amber-50); color: var(--amber-700); border: 1px solid #FDE68A; padding: 2px 8px; border-radius: var(--radius-sm); font-weight: 600;">
+                ⚠ Pending Verification
+              </span>
+            {% endif %}
+          </div>
+          <h1 class="section-title" style="margin-bottom: var(--space-2);">
+            {{ right.title }}
+          </h1>
+          <div style="font-size: 1rem; color: var(--slate-500); font-weight: 500;">
+            {{ right.legal_name }}
+          </div>
+        </div>
+
+        <!-- Plain-Language Explanation -->
+        <div class="card" style="margin-bottom: var(--space-6);">
+          <h2 style="font-size: 1.125rem; color: var(--navy-900); font-weight: 700; margin-bottom: var(--space-2);">
+            Plain-Language Meaning
+          </h2>
+          <p style="color: var(--slate-700); line-height: 1.7; font-size: 1rem;">
+            {{ right.plain_language_explanation or right.summary }}
+          </p>
+        </div>
+
+        <!-- Statutory Scope & Full Description -->
+        <div class="card" style="margin-bottom: var(--space-6);">
+          <h2 style="font-size: 1.125rem; color: var(--navy-900); font-weight: 700; margin-bottom: var(--space-3);">
+            Statutory Scope under CPA 2019
+          </h2>
+          <p style="color: var(--slate-700); line-height: 1.7; font-size: 0.9375rem;">
+            {{ right.full_description }}
+          </p>
+        </div>
+
+        <!-- Why It Matters -->
+        {% if right.why_it_matters %}
+        <div class="card" style="margin-bottom: var(--space-6); background-color: var(--slate-50);">
+          <h2 style="font-size: 1.125rem; color: var(--navy-900); font-weight: 700; margin-bottom: var(--space-2);">
+            Why This Right Matters for Citizens
+          </h2>
+          <p style="color: var(--slate-700); line-height: 1.7; font-size: 0.9375rem;">
+            {{ right.why_it_matters }}
+          </p>
+        </div>
+        {% endif %}
+
+        <!-- Practical Illustrative Scenario -->
+        <div class="card" style="margin-bottom: var(--space-6); border-left: 4px solid var(--teal-700); background-color: var(--teal-50);">
+          <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: var(--space-2);">
+            <h2 style="font-size: 1.0625rem; color: var(--teal-800); font-weight: 700;">
+              Practical Illustrative Scenario
+            </h2>
+            <span style="font-size: 0.6875rem; color: var(--teal-700); text-transform: uppercase; font-weight: 700;">Educational Example</span>
+          </div>
+          <p style="color: var(--slate-700); font-size: 0.9375rem; line-height: 1.6;">
+            {{ right.illustrative_scenario or right.practical_application }}
+          </p>
+          <div style="font-size: 0.75rem; color: var(--slate-500); margin-top: var(--space-2);">
+            *Note: This illustrative scenario serves an educational purpose and does not constitute a guaranteed legal judgment or official decree.
+          </div>
+        </div>
+
+        <!-- Key Legal Protections -->
+        <div class="card" style="margin-bottom: var(--space-6);">
+          <h2 style="font-size: 1.125rem; color: var(--navy-900); font-weight: 700; margin-bottom: var(--space-3);">
+            Key Legal Protections for Consumers
+          </h2>
+          <ul class="evidence-list">
+            {% for item in right.key_protections | from_json %}
+            <li class="evidence-item">
+              <span class="evidence-check" aria-hidden="true">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                  <polyline points="20 6 9 17 4 12"></polyline>
+                </svg>
+              </span>
+              <span>{{ item }}</span>
+            </li>
+            {% endfor %}
+          </ul>
+        </div>
+
+        <!-- Consumer Responsibilities & Precautions -->
+        {% if right.consumer_responsibilities %}
+        <div class="card" style="margin-bottom: var(--space-6);">
+          <h2 style="font-size: 1.125rem; color: var(--navy-900); font-weight: 700; margin-bottom: var(--space-3);">
+            Consumer Responsibilities &amp; Precautions
+          </h2>
+          <ul class="evidence-list">
+            {% for item in right.consumer_responsibilities | from_json %}
+            <li class="evidence-item">
+              <span style="color: var(--teal-700); font-weight: 700; margin-right: 4px;">•</span>
+              <span>{{ item }}</span>
+            </li>
+            {% endfor %}
+          </ul>
+        </div>
+        {% endif %}
+
+        <!-- Related Issue Guides -->
+        {% if related_guides %}
+        <div style="margin-top: var(--space-8);">
+          <h2 style="font-size: 1.25rem; color: var(--navy-900); font-weight: 700; margin-bottom: var(--space-4);">
+            Issue Guides Invoking This Right
+          </h2>
+          <div class="grid-2">
+            {% for guide in related_guides %}
+            <a href="{{ url_for('guidance', slug=guide.slug) }}" class="card card-interactive">
+              <span class="card-badge">{{ guide.category }}</span>
+              <h3 class="card-title" style="font-size: 1.0625rem;">{{ guide.title }}</h3>
+              <p class="card-body" style="font-size: 0.875rem;">{{ guide.summary }}</p>
+              <div class="card-footer">
+                <span>View Step-by-Step Procedure &rarr;</span>
+              </div>
+            </a>
+            {% endfor %}
+          </div>
+        </div>
+        {% endif %}
+      </div>
+
+      <!-- Sidebar Column -->
+      <aside aria-label="Legal Source and Provenance">
+        <!-- Statutory Authority Media Visual -->
+        <div class="sidebar-media-card">
+          {% if right.slug in ['right-to-seek-redressal', 'right-to-be-heard'] %}
+            <img 
+              src="{{ url_for('static', filename='images/justice_background.jpg') }}" 
+              alt="Lady Justice holding scales of justice representing statutory redressal" 
+              class="sidebar-media-img"
+              loading="lazy"
+              width="320"
+              height="180"
+            >
+            <div class="sidebar-media-body">
+              <strong>Judicial Safeguard:</strong> Direct statutory recourse before District, State, and National Consumer Commissions.
+            </div>
+          {% else %}
+            <img 
+              src="{{ url_for('static', filename='images/consumer_rights.jpg') }}" 
+              alt="Symbolic illustration of citizen rights empowerment" 
+              class="sidebar-media-img"
+              style="object-position: center 25%;"
+              loading="lazy"
+              width="320"
+              height="180"
+            >
+            <div class="sidebar-media-body">
+              <strong>Citizen Protection:</strong> Inherent statutory right guaranteed across physical and online commerce.
+            </div>
+          {% endif %}
+        </div>
+
+        <!-- Authoritative Source Badge Box -->
+        <div class="card" style="border-left: 4px solid var(--navy-800); margin-bottom: var(--space-6);">
+          <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: var(--space-2);">
+            <h3 style="font-size: 0.8125rem; text-transform: uppercase; letter-spacing: 0.05em; color: var(--slate-500);">
+              Official Source &amp; Provenance
+            </h3>
+            <span style="font-size: 0.6875rem; background: var(--emerald-50); color: var(--emerald-700); font-weight: 700; padding: 2px 6px; border-radius: 3px;">
+              VERIFIED
+            </span>
+          </div>
+
+          <div style="font-weight: 700; color: var(--navy-900); font-size: 1rem; margin-bottom: var(--space-1);">
+            {{ right.source_name }}
+          </div>
+          <div style="font-size: 0.8125rem; color: var(--slate-600); margin-bottom: var(--space-2);">
+            <strong>Authority:</strong> {{ right.source_org or right.source_authority }}
+          </div>
+          {% if right.source_legal_ref %}
+          <div style="font-size: 0.8125rem; background-color: var(--slate-50); padding: var(--space-2); border-radius: var(--radius-sm); border: 1px solid var(--border-subtle); color: var(--slate-700); margin-bottom: var(--space-3);">
+            <strong>Statutory Reference:</strong><br>{{ right.source_legal_ref }}
+          </div>
+          {% endif %}
+
+          <div style="font-size: 0.75rem; color: var(--slate-500); margin-bottom: var(--space-3);">
+            Last Verified on Official Page: <strong>{{ right.source_v_date or right.last_verified_at }}</strong>
+          </div>
+
+          {% if right.source_url %}
+          <a href="{{ right.source_url }}" target="_blank" rel="noopener noreferrer" class="section-action" style="font-size: 0.8125rem;">
+            <span>Visit Canonical Government Portal</span>
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6M15 3h6v6M10 14L21 3"/></svg>
+          </a>
+          {% endif %}
+        </div>
+
+        <!-- Other Rights Quick Navigation -->
+        <div class="card">
+          <h3 style="font-size: 0.9375rem; font-weight: 700; color: var(--navy-900); margin-bottom: var(--space-3);">
+            Other Statutory Rights (CPA 2019)
+          </h3>
+          <ul style="list-style: none; display: flex; flex-direction: column; gap: var(--space-2);">
+            {% for other in other_rights %}
+            <li>
+              <a href="{{ url_for('right_detail', slug=other.slug) }}" style="color: var(--slate-700); text-decoration: none; font-size: 0.875rem; display: flex; align-items: center; justify-content: space-between; padding: var(--space-2) 0; border-bottom: 1px solid var(--slate-100);">
+                <span>{{ other.title }}</span>
+                <span style="color: var(--teal-700);">&rarr;</span>
+              </a>
+            </li>
+            {% endfor %}
+          </ul>
+        </div>
+      </aside>
+    </div>
+  </div>
+</section>
+{% endblock %}

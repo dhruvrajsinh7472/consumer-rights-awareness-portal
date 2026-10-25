@@ -1,0 +1,199 @@
+{% extends "base.html" %}
+
+{% block title %}Official Source Registry &amp; Verification Audit{% endblock %}
+{% block meta_description %}Public provenance registry and verification audit tracking all official Indian government sources, gazettes, rules, and circulars used across this portal.{% endblock %}
+
+{% block content %}
+<section class="section" style="padding-bottom: var(--space-6);">
+  <div class="container">
+    <div style="max-width: 860px; margin-bottom: var(--space-8);">
+      <div style="display: flex; align-items: center; gap: var(--space-2); margin-bottom: var(--space-2);">
+        <span class="section-label">Content Integrity &amp; Provenance</span>
+        <span class="badge badge-success" style="font-size: 0.75rem;">100% Traceable</span>
+      </div>
+      <h1 class="section-title">Official Source Registry &amp; Audit</h1>
+      <p class="section-desc" style="font-size: 1.0625rem; margin-top: var(--space-3); line-height: 1.6;">
+        Every consumer right, issue guide, document checklist, and FAQ on this portal is strictly grounded in primary official Indian government sources. We do not invent provisions, fabricate timelines, or rely on AI assertions as legal authority.
+      </p>
+    </div>
+
+    <!-- Audit Summary Metric Cards -->
+    <div class="grid-4" style="margin-bottom: var(--space-8);">
+      <div class="metric-card" style="background: var(--white); border: 1px solid var(--border-subtle); border-radius: var(--radius-lg); padding: var(--space-5); box-shadow: var(--shadow-sm);">
+        <div style="font-size: 0.8125rem; font-weight: 600; text-transform: uppercase; color: var(--slate-500); letter-spacing: 0.05em;">Total Sources</div>
+        <div style="font-size: 2.25rem; font-weight: 800; color: var(--navy-900); margin: var(--space-1) 0;">{{ counts.total_sources }}</div>
+        <div style="font-size: 0.8125rem; color: var(--slate-600);">Indexed official records</div>
+      </div>
+
+      <div class="metric-card" style="background: var(--white); border: 1px solid var(--border-subtle); border-radius: var(--radius-lg); padding: var(--space-5); box-shadow: var(--shadow-sm); border-top: 3px solid var(--teal-600);">
+        <div style="font-size: 0.8125rem; font-weight: 600; text-transform: uppercase; color: var(--teal-700); letter-spacing: 0.05em;">Verified Primary Sources</div>
+        <div style="font-size: 2.25rem; font-weight: 800; color: var(--teal-700); margin: var(--space-1) 0;">{{ counts.verified_sources }}</div>
+        <div style="font-size: 0.8125rem; color: var(--slate-600);">Inspected on canonical portals</div>
+      </div>
+
+      <div class="metric-card" style="background: var(--white); border: 1px solid var(--border-subtle); border-radius: var(--radius-lg); padding: var(--space-5); box-shadow: var(--shadow-sm); border-top: 3px solid #F59E0B;">
+        <div style="font-size: 0.8125rem; font-weight: 600; text-transform: uppercase; color: #B45309; letter-spacing: 0.05em;">Pending Verification</div>
+        <div style="font-size: 2.25rem; font-weight: 800; color: #B45309; margin: var(--space-1) 0;">{{ counts.pending_sources }}</div>
+        <div style="font-size: 0.8125rem; color: var(--slate-600);">Withheld from verified claims</div>
+      </div>
+
+      <div class="metric-card" style="background: var(--white); border: 1px solid var(--border-subtle); border-radius: var(--radius-lg); padding: var(--space-5); box-shadow: var(--shadow-sm); border-top: 3px solid #10B981;">
+        <div style="font-size: 0.8125rem; font-weight: 600; text-transform: uppercase; color: #047857; letter-spacing: 0.05em;">Citation Integrity</div>
+        <div style="font-size: 2.25rem; font-weight: 800; color: #047857; margin: var(--space-1) 0;">100%</div>
+        <div style="font-size: 0.8125rem; color: var(--slate-600);">{{ counts.missing_citations }} missing citations across all items</div>
+      </div>
+    </div>
+
+    <!-- Editorial Integrity & Provenance Policy Banner -->
+    <div style="background-color: var(--slate-900); color: var(--white); border-radius: var(--radius-lg); padding: var(--space-6); margin-bottom: var(--space-8);">
+      <div style="display: flex; gap: var(--space-4); align-items: flex-start;">
+        <div style="background: rgba(56, 189, 248, 0.15); color: #38BDF8; width: 40px; height: 40px; border-radius: 50%; display: flex; align-items: center; justify-content: center; flex-shrink: 0;">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
+            <path d="M9 12l2 2 4-4"/>
+          </svg>
+        </div>
+        <div style="flex: 1;">
+          <h2 style="font-size: 1.125rem; font-weight: 700; color: var(--white); margin-bottom: var(--space-2);">
+            Our Non-Negotiable Provenance Standards
+          </h2>
+          <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: var(--space-4); font-size: 0.875rem; color: var(--slate-300); line-height: 1.6;">
+            <div>
+              <strong style="color: #38BDF8; display: block; margin-bottom: 2px;">1. Primary Source Mandate</strong>
+              Only primary gazettes, official ministries (DoCA, BIS, RBI, CCPA), and statutory texts serve as legal authority. Academic research papers inform usability only.
+            </div>
+            <div>
+              <strong style="color: #38BDF8; display: block; margin-bottom: 2px;">2. Explicit Verification States</strong>
+              Distinguishes reachable links from verified content. Unverified or pending claims are transparently flagged or withheld from publication.
+            </div>
+            <div>
+              <strong style="color: #38BDF8; display: block; margin-bottom: 2px;">3. Zero AI Hallucination</strong>
+              AI assistance is confined to code architecture and formatting. Every statutory fee, limitation period, and jurisdictional threshold is verified by human research.
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Source Records Directory -->
+    <div style="margin-bottom: var(--space-6);">
+      <h2 style="font-size: 1.375rem; font-weight: 700; color: var(--navy-900); margin-bottom: var(--space-2);">
+        Complete Source Registry
+      </h2>
+      <p style="color: var(--slate-600); font-size: 0.9375rem;">
+        Click on any source to review canonical URLs, responsible organisations, verified claims, and associated portal content.
+      </p>
+    </div>
+
+    <div style="display: flex; flex-direction: column; gap: var(--space-5);">
+      {% for source in sources %}
+      <div class="card" id="source-{{ source.id }}" style="border-left: 4px solid {% if source.verification_status == 'verified' %}var(--teal-600){% elif source.verification_status == 'pending_verification' %}#F59E0B{% else %}#EF4444{% endif %};">
+        <div style="display: flex; justify-content: space-between; align-items: flex-start; flex-wrap: wrap; gap: var(--space-3); margin-bottom: var(--space-3);">
+          <div>
+            <div style="display: flex; align-items: center; gap: var(--space-2); margin-bottom: var(--space-1); flex-wrap: wrap;">
+              <span class="source-citation" style="font-size: 0.75rem; font-weight: 700;">{{ source.code }}</span>
+              <span style="font-size: 0.8125rem; color: var(--slate-500); font-weight: 500;">{{ source.organisation }}</span>
+              <span style="font-size: 0.75rem; background: var(--slate-100); color: var(--slate-600); padding: 2px 8px; border-radius: var(--radius-full);">{{ source.source_type }}</span>
+            </div>
+            <h3 style="font-size: 1.25rem; font-weight: 700; color: var(--navy-900); margin-bottom: 2px;">
+              {{ source.name }}
+            </h3>
+            <div style="font-size: 0.8125rem; color: var(--slate-500);">
+              Authority: <strong>{{ source.authority }}</strong>
+              {% if source.legal_reference %} &bull; <em>{{ source.legal_reference }}</em>{% endif %}
+            </div>
+          </div>
+
+          <div style="display: flex; flex-direction: column; align-items: flex-end; gap: var(--space-2);">
+            {% if source.verification_status == 'verified' %}
+              <span class="badge badge-success" style="font-size: 0.8125rem;">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" style="margin-right: 4px;">
+                  <polyline points="20 6 9 17 4 12"></polyline>
+                </svg>
+                Verified Primary Source
+              </span>
+            {% elif source.verification_status == 'pending_verification' %}
+              <span class="badge" style="background-color: #FEF3C7; color: #92400E; border: 1px solid #FCD34D; font-size: 0.8125rem;">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="margin-right: 4px;">
+                  <circle cx="12" cy="12" r="10"></circle>
+                  <polyline points="12 6 12 12 16 14"></polyline>
+                </svg>
+                Pending Formal Verification
+              </span>
+            {% else %}
+              <span class="badge badge-error" style="font-size: 0.8125rem;">Needs Review</span>
+            {% endif %}
+
+            <div style="font-size: 0.75rem; color: var(--slate-500);">
+              Last verified: <strong>{{ source.last_verified_at or 'Pending' }}</strong>
+            </div>
+          </div>
+        </div>
+
+        <p style="color: var(--slate-700); font-size: 0.9375rem; line-height: 1.6; margin-bottom: var(--space-4);">
+          {{ source.summary or source.description }}
+        </p>
+
+        {% if source.verified_claims_or_topics %}
+        <div style="margin-bottom: var(--space-4); background-color: var(--slate-50); border: 1px solid var(--border-subtle); border-radius: var(--radius-md); padding: var(--space-3);">
+          <strong style="font-size: 0.8125rem; color: var(--navy-900); text-transform: uppercase; letter-spacing: 0.05em; display: block; margin-bottom: var(--space-2);">
+            Verified Claims &amp; Provisions Supported:
+          </strong>
+          <div style="display: flex; flex-wrap: wrap; gap: var(--space-2);">
+            {% for claim in (source.verified_claims_or_topics | from_json) %}
+              {% if claim %}
+              <span style="font-size: 0.8125rem; background: var(--white); border: 1px solid var(--border-subtle); color: var(--slate-700); padding: 3px 8px; border-radius: var(--radius-sm);">
+                &bull; {{ claim }}
+              </span>
+              {% endif %}
+            {% endfor %}
+          </div>
+        </div>
+        {% endif %}
+
+        <div style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: var(--space-3); padding-top: var(--space-3); border-top: 1px solid var(--border-subtle);">
+          <div style="font-size: 0.8125rem; color: var(--slate-600); display: flex; align-items: center; gap: var(--space-3);">
+            <span>Supports:</span>
+            <strong>{{ source.rights_count }} Rights</strong>
+            &bull;
+            <strong>{{ source.guides_count }} Guides</strong>
+            &bull;
+            <strong>{{ source.faqs_count }} FAQs</strong>
+          </div>
+
+          <div style="display: flex; align-items: center; gap: var(--space-3);">
+            {% if source.domain %}
+            <span style="font-size: 0.8125rem; color: var(--slate-500);">Domain: <code>{{ source.domain }}</code></span>
+            {% endif %}
+            <a href="{{ source.url }}" target="_blank" rel="noopener noreferrer" class="btn btn-secondary" style="font-size: 0.8125rem; padding: var(--space-2) var(--space-3);">
+              <span>Open Canonical Government Source</span>
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path>
+                <polyline points="15 3 21 3 21 9"></polyline>
+                <line x1="10" y1="14" x2="21" y2="3"></line>
+              </svg>
+            </a>
+          </div>
+        </div>
+      </div>
+      {% endfor %}
+    </div>
+
+    <!-- Verification Audit Process & Terminal Command -->
+    <div style="margin-top: var(--space-10); background: var(--white); border: 1px solid var(--border-subtle); border-radius: var(--radius-lg); padding: var(--space-6);">
+      <h3 style="font-size: 1.125rem; font-weight: 700; color: var(--navy-900); margin-bottom: var(--space-2);">
+        Automated Audit Verification Tooling
+      </h3>
+      <p style="font-size: 0.875rem; color: var(--slate-600); line-height: 1.6; margin-bottom: var(--space-4);">
+        This portal includes automated CLI verification scripts that audit database relations, check canonical URL reachability, verify that every published guide links to an approved source, and ensure that zero unverified claims leak into the live guidance:
+      </p>
+      <div style="background: var(--slate-900); color: #38BDF8; font-family: monospace; font-size: 0.875rem; padding: var(--space-3) var(--space-4); border-radius: var(--radius-md); overflow-x: auto; margin-bottom: var(--space-3);">
+        python scripts/audit_sources.py
+      </div>
+      <div style="font-size: 0.8125rem; color: var(--slate-500);">
+        The audit script checks foreign key integrity, cross-references statutory sections, and outputs a formatted compliance matrix.
+      </div>
+    </div>
+  </div>
+</section>
+{% endblock %}

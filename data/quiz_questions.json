@@ -1,0 +1,98 @@
+[
+  {
+    "id": 1,
+    "scenario": "Rohan purchased a smart television that stopped functioning within 3 months of purchase. The company refused warranty service citing arbitrary grounds.",
+    "question": "What is the limitation period within which Rohan must file a complaint before the Consumer Commission?",
+    "option_a": "Within 6 months from purchase date",
+    "option_b": "Within 1 year from the date of the defect",
+    "option_c": "Within 2 years from the date on which the cause of action arose",
+    "option_d": "Within 5 years from purchase date",
+    "correct_option": "C",
+    "explanation": "Under Section 69 of the Consumer Protection Act, 2019, the District Commission, State Commission, or National Commission will not admit a complaint unless it is filed within TWO (2) YEARS from the date on which the cause of action arose.",
+    "source_code": "CPA_2019"
+  },
+  {
+    "id": 2,
+    "scenario": "Pooja lives in Jaipur and ordered a laptop online from a seller based in Bengaluru. The laptop delivered was defective and the seller refused a refund.",
+    "question": "Under the Consumer Protection Act, 2019, where can Pooja file her consumer complaint?",
+    "option_a": "Only in Bengaluru where the seller's registered office is situated",
+    "option_b": "In Jaipur where Pooja resides or personally works for gain",
+    "option_c": "Only in New Delhi before the National Commission",
+    "option_d": "She must travel to the state capital where the company was incorporated",
+    "correct_option": "B",
+    "explanation": "Section 34(2)(d) of CPA 2019 introduced a key reform: a consumer can file a complaint in the District Commission within the local limits of whose jurisdiction the complainant resides or personally works for gain.",
+    "source_code": "CPA_2019"
+  },
+  {
+    "id": 3,
+    "scenario": "A store owner charged Ananya ₹35 for a cold drink bottle with a printed Maximum Retail Price (MRP) of ₹30, claiming ₹5 extra as 'chilling / cooling charges'.",
+    "question": "Is the shopkeeper legally permitted to charge more than MRP for refrigeration?",
+    "option_a": "Yes, cooling charges are allowed if refrigerated electricity is consumed",
+    "option_b": "Yes, shopkeepers have the freedom to set any final retail price",
+    "option_c": "No, charging above MRP for chilling is strictly illegal under Legal Metrology Rules and constitutes an unfair trade practice",
+    "option_d": "Yes, but only in summer months",
+    "correct_option": "C",
+    "explanation": "Under Rule 18(2) of the Legal Metrology (Packaged Commodities) Rules, 2011, MRP is inclusive of all taxes and profit margins. Charging extra for chilling, refrigeration, or carrying is strictly prohibited and constitutes an unfair trade practice under CPA 2019.",
+    "source_code": "LEGAL_METROLOGY_2011"
+  },
+  {
+    "id": 4,
+    "scenario": "Vikram wants to file a case in the District Consumer Disputes Redressal Commission for an unrefunded gym membership worth ₹25,000.",
+    "question": "Is Vikram legally required to hire an advocate or lawyer to represent him in the consumer commission?",
+    "option_a": "Yes, every court in India strictly mandates an advocate",
+    "option_b": "No, consumer commissions allow consumers to appear, draft, and argue their own cases in person without a lawyer",
+    "option_c": "Yes, unless the claim is under ₹5,000",
+    "option_d": "No, but only if he holds a law degree",
+    "correct_option": "B",
+    "explanation": "Consumer forums are designed to be accessible, informal quasi-judicial bodies. A complainant can argue their case in person without having to incur legal fees for an advocate.",
+    "source_code": "CPA_2019"
+  },
+  {
+    "id": 5,
+    "scenario": "A pressure cooker exploded due to a manufacturing flaw and caused burn injuries to Meera in her kitchen.",
+    "question": "Under CPA 2019, what legal doctrine allows Meera to claim compensation from the manufacturer for bodily harm caused by the defective product?",
+    "option_a": "Force Majeure",
+    "option_b": "Caveat Emptor (Buyer Beware)",
+    "option_c": "Product Liability",
+    "option_d": "Promissory Estoppel",
+    "correct_option": "C",
+    "explanation": "Chapter VI of CPA 2019 established Product Liability, enabling consumers to claim compensation from manufacturers, sellers, or service providers for harm, bodily injury, or property damage caused by defective products.",
+    "source_code": "CPA_2019"
+  },
+  {
+    "id": 6,
+    "scenario": "Sunil wants to register a quick pre-litigation grievance against an e-commerce marketplace for non-delivery of an item.",
+    "question": "What is the official toll-free short code for the Department of Consumer Affairs National Consumer Helpline?",
+    "option_a": "100",
+    "option_b": "1098",
+    "option_c": "1915",
+    "option_d": "1800",
+    "correct_option": "C",
+    "explanation": "1915 is the official National Consumer Helpline (NCH) short code operated by the Department of Consumer Affairs, Government of India, along with portal consumerhelpline.gov.in.",
+    "source_code": "NCH_PORTAL"
+  },
+  {
+    "id": 7,
+    "scenario": "Aman is filing a complaint before the District Consumer Commission for a defective washing machine costing ₹45,000.",
+    "question": "Under the Consumer Commission Procedure Regulations, what is the court filing fee for claims up to ₹5 Lakh?",
+    "option_a": "₹500",
+    "option_b": "10% of the claim value",
+    "option_c": "NIL (Complete Fee Exemption)",
+    "option_d": "₹2,000 fixed fee",
+    "correct_option": "C",
+    "explanation": "Under the Consumer Protection (Consumer Commission Procedure) Regulations, complaints filed before the District Commission where the value of goods or services paid as consideration is up to ₹5 Lakh enjoy a complete fee exemption (NIL fee).",
+    "source_code": "COMMISSION_FEE_REGULATIONS"
+  },
+  {
+    "id": 8,
+    "scenario": "Kavita transferred ₹4,000 via UPI to a grocer, but the transaction failed. The money was debited from her bank account and was not credited back for 6 days.",
+    "question": "Under RBI Circular DPSS.CO.PD No.629/02.01.014/2019-20, what compensation is the bank statutorily mandated to pay Kavita for the delay beyond T+1 day?",
+    "option_a": "1% interest per annum",
+    "option_b": "₹100 per day of delay payable automatically without a separate claim",
+    "option_c": "A ₹50 gift voucher",
+    "option_d": "No compensation is payable for digital payment glitches",
+    "correct_option": "B",
+    "explanation": "Under the RBI Harmonisation of Turn Around Time (TAT) circular, failed UPI transactions must be reversed within T+1 day. If delayed beyond T+1 day, the bank is statutorily mandated to pay compensation of ₹100 per day of delay directly into the customer's account automatically (suo motu).",
+    "source_code": "RBI_TAT_CIRCULAR_2019"
+  }
+]

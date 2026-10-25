@@ -1,0 +1,615 @@
+[
+  {
+    "id": 1,
+    "slug": "e-commerce-refund-delays",
+    "title": "E-Commerce Refund Delays & Return Denials",
+    "category": "Online Shopping & E-Commerce",
+    "source_code": "ECOMM_RULES_2020",
+    "additional_sources": ["CPA_2019", "NCH_PORTAL", "E_JAGRITI"],
+    "summary": "Procedural roadmap when an online marketplace or seller delays processing your return or stalls your refund beyond statutory time limits.",
+    "typical_situation": "An online order arrives wrong, defective, or damaged, or was cancelled within the platform's return window. Despite courier pickup or order cancellation, the marketplace fails to initiate the monetary refund or customer care repeatedly defers the turnaround date.",
+    "problem_statement": "An online shopping platform or merchant delays processing a valid monetary refund for returned or cancelled merchandise beyond committed timelines, or customer support provides evasive responses without issuing a resolution.",
+    "step_by_step_procedure": [
+      {
+        "step_number": 1,
+        "title": "Log Formal Return on Platform & Record Ticket ID",
+        "description": "Initiate return/refund request within the platform's return window via the mobile application or website. Take clear screenshots of the return request confirmation, pickup status, and cited return reason.",
+        "timeline": "Within platform's return window (typically 7–10 days of delivery)"
+      },
+      {
+        "step_number": 2,
+        "title": "Issue Written Escalation to Platform Grievance Officer",
+        "description": "If customer care fails to process refund within 48–72 hours after return pickup, email the designated Grievance Officer (mandatory under Rule 4(5) of the Consumer Protection E-Commerce Rules, 2020). State order number, dates, courier tracking slip number, and demand refund within a specific timeframe.",
+        "timeline": "Grievance Officer must acknowledge receipt within 48 hours and dispose within 1 month"
+      },
+      {
+        "step_number": 3,
+        "title": "Register Pre-Litigation Grievance on National Consumer Helpline (1915)",
+        "description": "If company grievance desk does not respond or denies refund unfairly, register a grievance on the National Consumer Helpline portal (consumerhelpline.gov.in) or call toll-free 1915. Major Indian e-commerce entities are convergence partners and actively resolve tickets here.",
+        "timeline": "Typically processed within 15 to 30 days under convergence"
+      },
+      {
+        "step_number": 4,
+        "title": "File Formal Consumer Case via e-Jagriti Portal",
+        "description": "If NCH convergence does not yield resolution, file an electronic complaint petition before the District Consumer Disputes Redressal Commission via e-Jagriti (e-jagriti.gov.in). Under Section 34(2)(d) of CPA 2019, you can institute the case in the District Commission where you reside.",
+        "timeline": "Must be instituted within 2 years from date on which cause of action arose (Section 69 CPA 2019)"
+      }
+    ],
+    "evidence_checklist": {
+      "officially_specified_documents": [
+        "Retail tax invoice / bill with GSTIN, seller address, and order ID (mandatory for e-Jagriti commission filing)",
+        "Affidavit of complaint and verification in prescribed e-Jagriti format if filing formally before consumer commission"
+      ],
+      "useful_to_preserve": [
+        "Courier return pickup receipt or digital tracking screenshot showing item handed over to logistics agent",
+        "Unboxing video and high-resolution photographs taken immediately upon package arrival showing defect or wrong item",
+        "Full email correspondence and customer support chat transcripts with ticket reference numbers",
+        "Bank or payment wallet statement showing original debit and non-receipt of refund credit"
+      ],
+      "conditional_documents": [
+        "Manufacturer or brand authorized inspection report (applicable if seller claims customer caused damage)",
+        "Bank transaction dispute / chargeback request confirmation (if dispute was also escalated to card-issuing bank)"
+      ]
+    },
+    "required_evidence": [
+      "Retail tax invoice / bill with GSTIN, seller address, and order ID",
+      "Courier return pickup receipt or tracking screenshot showing package handed over",
+      "Unboxing video / photos capturing product condition upon delivery",
+      "Transcript or screenshots of customer support chat tickets and emails",
+      "Bank/card account statement demonstrating debit and non-receipt of refund"
+    ],
+    "relevant_legal_rights": [
+      "right-to-seek-redressal",
+      "right-to-be-informed",
+      "right-to-be-heard"
+    ],
+    "official_remedy_channel": "National Consumer Helpline (NCH 1915) followed by District Consumer Commission via e-Jagriti",
+    "caveats_and_escalation": "Educational Notice: Filing a grievance on NCH or e-Jagriti does not guarantee an automatic refund or monetary outcome. Commission proceedings are quasi-judicial. Under Section 69 of CPA 2019, formal court claims must be instituted within two (2) years of the cause of action. Claims claiming consideration up to ₹5 Lakh enjoy complete court fee exemption.",
+    "is_published": 1,
+    "verification_status": "verified",
+    "last_reviewed_at": "2026-10-25"
+  },
+  {
+    "id": 2,
+    "slug": "defective-goods-warranty",
+    "title": "Defective Consumer Goods & Warranty Denial",
+    "category": "Electronics & Consumer Goods",
+    "source_code": "CPA_2019",
+    "additional_sources": ["BIS_PORTAL", "NCH_PORTAL", "E_JAGRITI"],
+    "summary": "Statutory procedure when an electronic gadget, appliance, or household product develops manufacturing faults and the brand refuses warranty repair or replacement.",
+    "typical_situation": "An appliance or smartphone malfunctions during the manufacturer's warranty period. The authorized service center rejects free warranty repair citing unsubstantiated grounds (such as alleged internal moisture or customer mishandling) or keeps the unit indefinitely without spare parts.",
+    "problem_statement": "A manufactured consumer item develops functional or hardware defects within the contractual or statutory warranty period, and the brand or authorized service center refuses repair, replacement, or refund.",
+    "step_by_step_procedure": [
+      {
+        "step_number": 1,
+        "title": "Deposit Item at Authorized Center & Obtain Printed Job Sheet",
+        "description": "Submit device only to the manufacturer's officially authorized service center. Insist on a printed or digitally acknowledged Service Job Sheet documenting exact serial number, intake physical condition, and reported defect.",
+        "timeline": "Immediate upon fault discovery"
+      },
+      {
+        "step_number": 2,
+        "title": "Issue Written Legal Notice to Brand Customer Relations Head",
+        "description": "If service is delayed beyond a reasonable window (typically 14–21 days) or warranty is arbitrarily denied, send a formal written notice via registered email to the brand's customer relations head demanding repair, replacement, or refund within 15 days under Section 39 of CPA 2019.",
+        "timeline": "Allow 15 days for formal response"
+      },
+      {
+        "step_number": 3,
+        "title": "Lodge Grievance on National Consumer Helpline (1915)",
+        "description": "Call NCH at 1915 or register an online ticket on consumerhelpline.gov.in quoting job sheet number and brand warranty policy. Most established electronics brands participate in NCH convergence.",
+        "timeline": "15 to 30 days for company convergence outcome"
+      },
+      {
+        "step_number": 4,
+        "title": "File Product Defect Complaint on e-Jagriti",
+        "description": "File petition before the District Consumer Commission via e-Jagriti (e-jagriti.gov.in) praying for free replacement with defect-free unit, or full refund with interest and compensation for mental harassment.",
+        "timeline": "Within 2 years of cause of action (Section 69 CPA 2019)"
+      }
+    ],
+    "evidence_checklist": {
+      "officially_specified_documents": [
+        "Retail purchase tax invoice showing GSTIN, serial number/IMEI, and purchase date",
+        "Signed complaint petition and verification affidavit (for e-Jagriti filing)"
+      ],
+      "useful_to_preserve": [
+        "Physical warranty card or digital warranty registration email",
+        "Authorized Service Center Job Sheets (both intake diagnosis note and return slips)",
+        "Photographic or video evidence capturing the device malfunction or defect clearly",
+        "Email correspondence with corporate customer escalation desk"
+      ],
+      "conditional_documents": [
+        "Independent technical expert inspection report (applicable if brand disputes manufacturing flaw and Commission orders lab testing under Section 38(2)(c) CPA 2019)"
+      ]
+    },
+    "required_evidence": [
+      "Retail purchase invoice with GSTIN, serial number, and date",
+      "Physical warranty card or digital warranty confirmation",
+      "Authorized service center job sheets with diagnostic observations",
+      "Photographic or video evidence capturing device defect",
+      "Email correspondence with brand customer relations"
+    ],
+    "relevant_legal_rights": [
+      "right-to-safety",
+      "right-to-seek-redressal",
+      "right-to-be-heard"
+    ],
+    "official_remedy_channel": "National Consumer Helpline (1915) & District Consumer Commission (e-Jagriti)",
+    "caveats_and_escalation": "Educational Notice: Consumer Commissions assess evidence quasi-judicially. If the company claims physical accidental damage, the commission may refer the product to an accredited testing laboratory under Section 38(2)(c) of CPA 2019. Claims up to ₹5 Lakh have NIL court fee.",
+    "is_published": 1,
+    "verification_status": "verified",
+    "last_reviewed_at": "2026-10-25"
+  },
+  {
+    "id": 3,
+    "slug": "wrong-product-delivered",
+    "title": "Wrong Product or Spurious Item Delivered",
+    "category": "Online Shopping & E-Commerce",
+    "source_code": "ECOMM_RULES_2020",
+    "additional_sources": ["CPA_2019", "NCH_PORTAL"],
+    "summary": "Actions to take when an e-commerce parcel delivers an incorrect item, empty box, or suspected counterfeit product.",
+    "typical_situation": "An online order arrives, but inside the parcel is a completely different product (e.g. soap or detergent instead of an expensive smartphone) or a counterfeit knockoff lacking genuine brand packaging.",
+    "problem_statement": "A customer receives a product that does not match the product description, brand, or specifications ordered on an e-commerce platform.",
+    "step_by_step_procedure": [
+      {
+        "step_number": 1,
+        "title": "Capture Unboxing Evidence & Preserve Outer Packaging",
+        "description": "Preserve outer carton, shipping label, airway bill (AWB) barcode, and tamper-evident seal. Take clear photographs from multiple angles and keep uncut unboxing video.",
+        "timeline": "Immediately upon opening delivery package"
+      },
+      {
+        "step_number": 2,
+        "title": "Report Wrong Item on Platform Within 24 Hours",
+        "description": "Log an immediate return request under 'Wrong Item Delivered' on the platform app. Upload photographs showing barcode label and the mismatch.",
+        "timeline": "Within 24–48 hours of delivery timestamp"
+      },
+      {
+        "step_number": 3,
+        "title": "Escalate to E-Commerce Nodal Grievance Officer",
+        "description": "If delivery agent refuses pickup or platform closes ticket claiming 'delivered successfully', email the Grievance Officer with invoice, shipping barcode photo, and unboxing proof. Cite Rule 4(5) of E-Commerce Rules, 2020.",
+        "timeline": "Grievance Officer must acknowledge within 48 hours"
+      },
+      {
+        "step_number": 4,
+        "title": "Lodge Grievance with National Consumer Helpline & Cyber Portal if Fraud",
+        "description": "Register grievance on NCH 1915 (consumerhelpline.gov.in). If deliberate e-commerce seller fraud or empty parcel scam is suspected, also flag transaction on cybercrime.gov.in.",
+        "timeline": "Immediate escalation upon seller denial"
+      }
+    ],
+    "evidence_checklist": {
+      "officially_specified_documents": [
+        "Retail tax invoice showing order details and payment mode",
+        "Complaint statement specifying mismatch between ordered and delivered product"
+      ],
+      "useful_to_preserve": [
+        "Uncut, continuous video recording showing package unboxing and seal breakage",
+        "Photographs of outer box showing courier shipping label, AWB barcode, and gross weight",
+        "Photographs of incorrect item received alongside original order listing specifications",
+        "SMS and email delivery notifications indicating exact delivery timestamp"
+      ],
+      "conditional_documents": [
+        "Courier delivery run-sheet or OTP verification log (applicable if courier claims package was inspected before handover)"
+      ]
+    },
+    "required_evidence": [
+      "Tax invoice and online order summary screenshot",
+      "Photographs of outer packaging, shipping barcode, and courier label",
+      "Uncut unboxing video showing seal breakage and contents",
+      "Written customer service complaint ticket number"
+    ],
+    "relevant_legal_rights": [
+      "right-to-be-informed",
+      "right-to-seek-redressal",
+      "right-to-safety"
+    ],
+    "official_remedy_channel": "National Consumer Helpline (1915) & District Consumer Commission (e-Jagriti)",
+    "caveats_and_escalation": "Educational Notice: Open-box delivery services (where offered by platforms) require inspection before sharing OTP. If open-box delivery was accepted with OTP, platforms often contest claims. Preserving uncut unboxing videos remains crucial supporting evidence.",
+    "is_published": 1,
+    "verification_status": "verified",
+    "last_reviewed_at": "2026-10-25"
+  },
+  {
+    "id": 4,
+    "slug": "overcharging-above-mrp",
+    "title": "Overcharging Above Maximum Retail Price (MRP)",
+    "category": "Retail & Pricing Disputes",
+    "source_code": "LEGAL_METROLOGY_2011",
+    "additional_sources": ["CPA_2019", "NCH_PORTAL"],
+    "summary": "Remedies when a retailer, airport stall, or convenience vendor charges more than printed MRP or adds illegal cooling/refrigeration fees.",
+    "typical_situation": "A vendor charges ₹5 to ₹10 extra on a cold drink bottle or packaged snack, claiming 'chilling charges', 'handling fee', or adds tax separately on top of an MRP that is already tax-inclusive.",
+    "problem_statement": "A pre-packaged commodity is sold at a price exceeding the Maximum Retail Price (MRP) printed on the package, in direct violation of Legal Metrology regulations.",
+    "step_by_step_procedure": [
+      {
+        "step_number": 1,
+        "title": "Inspect Package MRP Label for Re-stickering or Tampering",
+        "description": "Check printed MRP label on package. Note whether an unauthorized price sticker has been pasted over the original manufacturer print. Ensure MRP includes 'inclusive of all taxes'.",
+        "timeline": "At the point of transaction"
+      },
+      {
+        "step_number": 2,
+        "title": "Demand Itemized Printed Bill Clearly Stating Price Charged",
+        "description": "Insist on a printed cash memo or tax invoice showing the exact amount demanded and paid for the specific item.",
+        "timeline": "Before completing transaction"
+      },
+      {
+        "step_number": 3,
+        "title": "Object to Cooling Charges Citing Rule 18(2)",
+        "description": "Politely inform vendor that under Rule 18(2) of the Legal Metrology (Packaged Commodities) Rules, 2011, charging above MRP for chilling is strictly illegal and constitutes an unfair trade practice.",
+        "timeline": "Immediate point of sale"
+      },
+      {
+        "step_number": 4,
+        "title": "Report to State Legal Metrology Department & NCH (1915)",
+        "description": "Lodge complaint on National Consumer Helpline (consumerhelpline.gov.in / 1915) or directly with the local Controller / Inspector of Legal Metrology (Weights & Measures Department). Legal Metrology inspectors have statutory authority to conduct surprise inspections and levy compounding fines.",
+        "timeline": "Within 7 to 15 days of incident"
+      }
+    ],
+    "evidence_checklist": {
+      "officially_specified_documents": [
+        "Printed retail receipt or tax invoice indicating higher price charged",
+        "Clear photograph of the package showing manufacturer stamped MRP and batch number"
+      ],
+      "useful_to_preserve": [
+        "Photographs of the shop front, signboard, and address / location pin",
+        "Physical packaged container (preserve unopened if re-stickered or tampered)"
+      ],
+      "conditional_documents": [
+        "Dining menu card (applicable only if vendor is a sit-down restaurant claiming composite dining service exception)"
+      ]
+    },
+    "required_evidence": [
+      "Clear photograph of packaging displaying stamped MRP and batch number",
+      "Itemized retail receipt / invoice showing amount charged exceeding MRP",
+      "Store name, address, and location details"
+    ],
+    "relevant_legal_rights": [
+      "right-to-be-informed",
+      "right-to-seek-redressal",
+      "right-to-choose"
+    ],
+    "official_remedy_channel": "State Legal Metrology Department & National Consumer Helpline (1915)",
+    "caveats_and_escalation": "Crucial Legal Caveat: Under established Supreme Court jurisprudence (FHRAI ruling), when packaged beverages are served as part of composite dining service inside sit-down hotels and restaurants (with seating, cutlery, service, and ambiance), establishments are exempt from retail MRP restrictions and can charge menu rates. However, standalone kiosks, takeaway counters, cinema concession stands, and airport retail stalls selling raw sealed bottles are NOT exempt and must strictly adhere to printed MRP.",
+    "is_published": 1,
+    "verification_status": "verified",
+    "last_reviewed_at": "2026-10-25"
+  },
+  {
+    "id": 5,
+    "slug": "digital-payment-failures",
+    "title": "Failed UPI & Digital Payments Debited but Not Credited",
+    "category": "Banking & Digital Payments",
+    "source_code": "RBI_TAT_CIRCULAR_2019",
+    "additional_sources": ["CPA_2019", "NCH_PORTAL"],
+    "summary": "Rights and mandatory compensation when money is debited from your bank account during a failed UPI, card, or ATM transaction without timely auto-reversal.",
+    "typical_situation": "You scan a merchant QR code or initiate a UPI fund transfer. The transaction fails on screen, but your bank account is debited immediately. The merchant does not receive credit, and the reversal does not happen within 24 hours.",
+    "problem_statement": "An authorized electronic payment fails due to technical or communication glitches, but the customer account is debited without automated reversal within prescribed regulatory timelines.",
+    "step_by_step_procedure": [
+      {
+        "step_number": 1,
+        "title": "Record 12-Digit UTR Number on UPI Application",
+        "description": "Open payment history in your UPI app (BHIM, PhonePe, Google Pay, Paytm). Note down the 12-digit Unique Transaction Reference (UTR) number and exact timestamp.",
+        "timeline": "Immediate upon transaction failure"
+      },
+      {
+        "step_number": 2,
+        "title": "Raise In-App Dispute Ticket",
+        "description": "Submit a dispute ticket directly within the UPI application quoting the UTR number. The app communicates with the Remitter Bank and NPCI.",
+        "timeline": "Day of transaction (T)"
+      },
+      {
+        "step_number": 3,
+        "title": "Check Auto-Reversal Within Mandatory TAT (T+1 Day)",
+        "description": "Under RBI Circular DPSS.CO.PD No.629/02.01.014/2019-20, the remitter bank must automatically reverse a failed UPI transaction by T+1 business day.",
+        "timeline": "T+1 business day"
+      },
+      {
+        "step_number": 4,
+        "title": "Claim Mandatory Delay Compensation (₹100/Day)",
+        "description": "If reversal takes longer than T+1 business day, the bank is statutorily liable to pay compensation of ₹100 per day of delay directly into your bank account suo motu (without requiring a separate claim).",
+        "timeline": "Accrues automatically from date T+2"
+      },
+      {
+        "step_number": 5,
+        "title": "Escalate to Bank Grievance Redressal Officer & RBI Ombudsman",
+        "description": "If unresolved after 30 days of filing with bank, lodge complaint on the RBI Integrated Ombudsman portal (cms.rbi.org.in) or call toll-free 14448.",
+        "timeline": "Within 1 year of bank's final response or 30 days after lodging complaint"
+      }
+    ],
+    "evidence_checklist": {
+      "officially_specified_documents": [
+        "12-digit UTR (Unique Transaction Reference) number and transaction timestamp",
+        "Bank account statement showing debit entry and absence of reversal credit"
+      ],
+      "useful_to_preserve": [
+        "Screenshot of failed transaction error screen on payment app",
+        "In-app dispute ticket reference number and acknowledgement email from payment app",
+        "Written grievance email sent to bank nodal officer"
+      ],
+      "conditional_documents": [
+        "Merchant confirmation statement (applicable if merchant claims money was received but goods not handed over)"
+      ]
+    },
+    "required_evidence": [
+      "12-digit UTR number and transaction date/time",
+      "Bank account statement showing debit entry",
+      "UPI payment application failure screenshot",
+      "Bank customer complaint ticket reference number"
+    ],
+    "relevant_legal_rights": [
+      "right-to-seek-redressal",
+      "right-to-be-informed",
+      "right-to-be-heard"
+    ],
+    "official_remedy_channel": "Remitter Bank Grievance Desk, then RBI Integrated Ombudsman (cms.rbi.org.in / 14448)",
+    "caveats_and_escalation": "Educational Notice: The RBI turnaround timeline applies to technical failures where the customer did not intentionally authorize payment to an incorrect account number/VPA. If a customer was coerced into an online cyber scam, report immediately on cybercrime.gov.in or call 1930.",
+    "is_published": 1,
+    "verification_status": "verified",
+    "last_reviewed_at": "2026-10-25"
+  },
+  {
+    "id": 6,
+    "slug": "online-shopping-dark-patterns",
+    "title": "Deceptive UI & Dark Patterns in Online Shopping",
+    "category": "Online Shopping & E-Commerce",
+    "source_code": "CCPA_DARK_PATTERNS_2023",
+    "additional_sources": ["CPA_2019", "NCH_PORTAL"],
+    "summary": "How to identify and challenge deceptive digital interfaces like sneak-in-basket, subscription traps, false urgency timers, and hidden drip pricing.",
+    "typical_situation": "An online platform shows an attractive airfare or product price of ₹1,000. At the final checkout screen, undisclosed fees inflate the total to ₹1,600 (drip pricing), an unrequested donation is sneaked into the cart (basket sneaking), or cancellation is blocked by complex multi-step menus (subscription trap).",
+    "problem_statement": "An e-commerce website or mobile application uses deceptive user interface designs (dark patterns) to trick or coerce consumers into unwanted expenditures or subvert free choice.",
+    "step_by_step_procedure": [
+      {
+        "step_number": 1,
+        "title": "Identify the Specific Dark Pattern Category",
+        "description": "Check if the deceptive element matches one of the 13 prohibited patterns under CCPA 2023 Guidelines (e.g., False Urgency, Basket Sneaking, Confirm Shaming, Forced Action, Subscription Trap, Drip Pricing).",
+        "timeline": "During browsing and checkout"
+      },
+      {
+        "step_number": 2,
+        "title": "Capture Screen Recordings & Sequential Screenshots",
+        "description": "Take timestamped screenshots of every step from product listing to checkout cart, capturing how hidden charges appeared or how pre-ticked boxes were configured.",
+        "timeline": "Before completing transaction"
+      },
+      {
+        "step_number": 3,
+        "title": "Manually Deselect Sneaked Items & Demand Refund if Charged",
+        "description": "If an unrequested item was sneaked into the billing without explicit affirmative consent, demand immediate refund from the platform's Grievance Officer citing CCPA Guidelines.",
+        "timeline": "Within 24 hours of transaction"
+      },
+      {
+        "step_number": 4,
+        "title": "Report Platform Practice to CCPA & National Consumer Helpline",
+        "description": "Lodge report on consumerhelpline.gov.in (NCH 1915) or directly email Central Consumer Protection Authority (cp-da@nic.in) for investigation into unfair trade practices.",
+        "timeline": "Prompt submission assists regulatory enforcement"
+      }
+    ],
+    "evidence_checklist": {
+      "officially_specified_documents": [
+        "Final invoice or payment confirmation demonstrating added unauthorized charge",
+        "Formal complaint detailing the deceptive interface mechanism encountered"
+      ],
+      "useful_to_preserve": [
+        "Full-screen screenshots or screen recordings showing deceptive countdown timers, hidden fees, or pre-ticked checkboxes",
+        "URL of the specific checkout page and timestamp of transaction",
+        "Email sent to platform grievance officer demanding removal or refund"
+      ],
+      "conditional_documents": [
+        "Terms of service or subscription cancellation policy text copied from platform"
+      ]
+    },
+    "required_evidence": [
+      "Screenshots of initial price display vs final checkout billing",
+      "Screenshot or video recording of pre-ticked add-on / dark pattern interface",
+      "Order invoice showing added unrequested charge",
+      "Correspondence with company grievance officer"
+    ],
+    "relevant_legal_rights": [
+      "right-to-choose",
+      "right-to-be-informed",
+      "right-to-seek-redressal"
+    ],
+    "official_remedy_channel": "Central Consumer Protection Authority (CCPA) & National Consumer Helpline (1915)",
+    "caveats_and_escalation": "Educational Notice: The CCPA Guidelines for Prevention and Regulation of Dark Patterns, 2023 came into force on November 30, 2023. Individual monetary refund claims must still be pursued through the company or Consumer Commission.",
+    "is_published": 1,
+    "verification_status": "verified",
+    "last_reviewed_at": "2026-10-25"
+  },
+  {
+    "id": 7,
+    "slug": "misleading-advertisements",
+    "title": "Misleading Advertisements & False Marketing Claims",
+    "category": "Advertising & Trade Practices",
+    "source_code": "CPA_2019",
+    "additional_sources": ["CCPA_DARK_PATTERNS_2023", "NCH_PORTAL"],
+    "summary": "Recourse against deceptive commercial ads, unverified product performance claims, bait advertising, and false celebrity endorsements.",
+    "typical_situation": "A commercial brand guarantees '100% cure for hair loss in 7 days' or advertises an electronic device with '24-hour battery backup' that in reality lasts only 3 hours under normal use.",
+    "problem_statement": "A commercial advertisement conveys false, exaggerated, or scientifically unsubstantiated claims regarding product efficacy, durability, or price.",
+    "step_by_step_procedure": [
+      {
+        "step_number": 1,
+        "title": "Preserve the Original Advertisement Copy",
+        "description": "Capture unedited screen recording, high-resolution screenshot, video clip, or newspaper clipping of the promotional advertisement including dates, fine-print disclaimers, and URL.",
+        "timeline": "Immediately before advertisement is pulled down or altered"
+      },
+      {
+        "step_number": 2,
+        "title": "Document Mismatch with Actual Product Experience",
+        "description": "Retain purchase invoice and document clear contradictions between advertised claims and actual product performance.",
+        "timeline": "Following product trial/usage"
+      },
+      {
+        "step_number": 3,
+        "title": "Submit Complaint to Central Consumer Protection Authority (CCPA)",
+        "description": "Under Section 18 of CPA 2019, CCPA has statutory powers to investigate misleading advertisements, order discontinuation, impose fines up to ₹10 Lakh (up to ₹50 Lakh for repeat offenses), and ban misleading endorsers.",
+        "timeline": "Direct email to CCPA (cp-da@nic.in) or Department of Consumer Affairs"
+      },
+      {
+        "step_number": 4,
+        "title": "File Consumer Claim for Compensation in District Commission",
+        "description": "If you suffered direct financial loss or physical damage based on reliance on the deceptive advertisement, file a formal complaint on e-Jagriti for refund and damages.",
+        "timeline": "Within 2 years of purchase"
+      }
+    ],
+    "evidence_checklist": {
+      "officially_specified_documents": [
+        "Original advertisement copy (video, social media link, or print advertisement clipping)",
+        "Purchase invoice proving transaction occurred subsequent to advertisement exposure"
+      ],
+      "useful_to_preserve": [
+        "Product packaging and instruction leaflet showing disparity with advertised specifications",
+        "Photographic or diagnostic proof showing product failure to deliver advertised capabilities",
+        "Written notice sent to company pointing out the misleading representation"
+      ],
+      "conditional_documents": [
+        "Independent laboratory test report (if claiming health hazard or chemical composition mismatch)"
+      ]
+    },
+    "required_evidence": [
+      "Original advertisement copy with publication date and platform",
+      "Retail purchase invoice with date",
+      "Photographic or technical proof of performance disparity",
+      "Communication sent to manufacturer regarding the misleading claim"
+    ],
+    "relevant_legal_rights": [
+      "right-to-be-informed",
+      "right-to-safety",
+      "right-to-seek-redressal"
+    ],
+    "official_remedy_channel": "Central Consumer Protection Authority (CCPA) & e-Jagriti District Commission",
+    "caveats_and_escalation": "Educational Notice: Commercial 'puffery' (generalized subjective praise like 'the best taste in the world') is distinguished legally from specific objective factual claims (e.g. 'reduces cholesterol by 40%'). Only objective, testable factual representations can be challenged as misleading.",
+    "is_published": 1,
+    "verification_status": "verified",
+    "last_reviewed_at": "2026-10-25"
+  },
+  {
+    "id": 8,
+    "slug": "product-certification-hallmark",
+    "title": "Product Quality, ISI Standards & Gold Hallmarking (HUID)",
+    "category": "Product Standards & Safety",
+    "source_code": "BIS_PORTAL",
+    "additional_sources": ["CPA_2019", "NCH_PORTAL"],
+    "summary": "How to verify genuine ISI marks on consumer appliances and 6-digit Hallmark Unique Identification (HUID) on gold jewellery using official BIS tools.",
+    "typical_situation": "A jeweller sells gold jewellery claiming 22-karat purity without a 6-digit HUID laser mark, or a retailer sells an electric immersion rod bearing a dubious or forged ISI mark.",
+    "problem_statement": "Consumer goods lack mandatory Bureau of Indian Standards (BIS) quality certification, or precious metal jewellery is sold without statutory 6-digit Hallmark Unique Identification (HUID).",
+    "step_by_step_procedure": [
+      {
+        "step_number": 1,
+        "title": "Inspect the 3 Mandatory Hallmarking Signs on Gold Jewellery",
+        "description": "Every hallmarked gold item must feature: (1) BIS Logo (triangular mark), (2) Purity/Fineness (e.g., 22K916 for 22 karat), and (3) a unique 6-digit alphanumeric Hallmark Unique Identification (HUID) code laser-engraved on the article.",
+        "timeline": "At the jeweller counter before purchasing"
+      },
+      {
+        "step_number": 2,
+        "title": "Verify HUID on Official BIS Care Mobile Application",
+        "description": "Open official BIS Care App (available on Android and iOS). Tap 'Verify HUID' and enter the 6-digit code. The app instantly displays jeweller registration number, assaying center details, article type, and date of hallmarking.",
+        "timeline": "Instant verification before bill settlement"
+      },
+      {
+        "step_number": 3,
+        "title": "Verify ISI Mark License Number (CML / R-Number)",
+        "description": "For electronics and electrical goods, open BIS Care App under 'Verify License Details' and enter the 7 or 8-digit CML number printed below the ISI logo to check validity and manufacturing address.",
+        "timeline": "Prior to purchase"
+      },
+      {
+        "step_number": 4,
+        "title": "Lodge Complaint on BIS Portal Against Fake Marks",
+        "description": "If HUID is invalid or an uncertified product uses a fake ISI mark, file a complaint on the BIS portal (bis.gov.in) or via BIS Care app under 'Complaints'. BIS conducts statutory raids, seizes counterfeit goods, and initiates criminal prosecution under the BIS Act, 2016.",
+        "timeline": "Prompt reporting prevents marketplace circulation of unsafe goods"
+      }
+    ],
+    "evidence_checklist": {
+      "officially_specified_documents": [
+        "Tax invoice from jeweller or retailer explicitly stating the 6-digit HUID code and purity of each item",
+        "Itemized bill showing weight of precious metal and making charges separately"
+      ],
+      "useful_to_preserve": [
+        "High-resolution magnified photograph of the laser-engraved hallmarking signs on the article",
+        "Screenshot of BIS Care App verification result showing 'Invalid' or disparate details",
+        "Original jewellery tag and authenticity guarantee certificate"
+      ],
+      "conditional_documents": [
+        "Assaying laboratory testing certificate (applicable if purity is contested through a BIS-recognized testing center)"
+      ]
+    },
+    "required_evidence": [
+      "Tax invoice mentioning article description, weight, and 6-digit HUID code",
+      "Clear photograph of hallmarking stamp on the jewellery article",
+      "BIS Care app verification output screenshot",
+      "Store name and full address"
+    ],
+    "relevant_legal_rights": [
+      "right-to-safety",
+      "right-to-be-informed",
+      "right-to-seek-redressal"
+    ],
+    "official_remedy_channel": "Bureau of Indian Standards (BIS Portal / BIS Care App) & National Consumer Helpline (1915)",
+    "caveats_and_escalation": "Educational Notice: Hallmarking is mandatory in designated districts across India for 14k, 18k, 20k, 22k, 23k, and 24k gold jewellery. Consumers can get hallmarked jewellery tested at any BIS-recognized Assaying and Hallmarking Centre (AHC) upon paying a nominal statutory testing fee.",
+    "is_published": 1,
+    "verification_status": "verified",
+    "last_reviewed_at": "2026-10-25"
+  },
+  {
+    "id": 9,
+    "slug": "service-deficiency-telecom",
+    "title": "Deficiency in Telecom & Internet Broadband Services",
+    "category": "Telecom & Digital Services",
+    "source_code": "TRAI_CONSUMER_REGULATIONS",
+    "additional_sources": ["CPA_2019", "NCH_PORTAL"],
+    "summary": "Procedural actions when an internet service provider or mobile operator experiences prolonged downtime, wrongful billing, or refuses mobile portability.",
+    "typical_situation": "A broadband connection remains disconnected for weeks despite recurring subscription payments, customer care tickets are closed without on-site visits, or value-added services are billed without consent.",
+    "problem_statement": "A telecommunication or internet service provider fails to deliver committed network uptime, levies unauthorized billing charges, or fails to resolve service outages within committed timelines.",
+    "step_by_step_procedure": [
+      {
+        "step_number": 1,
+        "title": "Register Complaint and Demand Unique Docket Number",
+        "description": "Lodge complaint via official service provider application or call center. It is mandatory under TRAI regulations for the operator to register the complaint and send an SMS with a unique Docket Number and committed resolution time.",
+        "timeline": "Immediate upon outage"
+      },
+      {
+        "step_number": 2,
+        "title": "Escalate to Telecom Operator Appellate Authority",
+        "description": "If unresolved within committed docket timeline, file an appeal before the operator's designated Appellate Authority (details published on operator website) quoting original docket number.",
+        "timeline": "Within 30 days of docket resolution expiry"
+      },
+      {
+        "step_number": 3,
+        "title": "Lodge Pre-Litigation Ticket on National Consumer Helpline (1915)",
+        "description": "Register grievance on NCH 1915 (consumerhelpline.gov.in). Major telecom operators (Jio, Airtel, Vodafone Idea, BSNL) are convergence partners.",
+        "timeline": "15 to 30 days for convergence outcome"
+      },
+      {
+        "step_number": 4,
+        "title": "File Consumer Claim for Bill Waiver and Compensation",
+        "description": "If severe outage disrupted work-from-home or caused direct financial loss, file claim before District Consumer Commission via e-Jagriti for billing waiver and compensation for deficiency in service under Section 35 CPA 2019.",
+        "timeline": "Within 2 years of cause of action"
+      }
+    ],
+    "evidence_checklist": {
+      "officially_specified_documents": [
+        "Customer broadband account number / subscriber ID and billing statements",
+        "Complaint docket number and SMS confirmations received from operator"
+      ],
+      "useful_to_preserve": [
+        "Network diagnostic logs, speed test reports with timestamps, or router optical LOS red light photos",
+        "Payment receipts and bank statements showing uninterrupted monthly fee deductions",
+        "Correspondence with telecom appellate desk"
+      ],
+      "conditional_documents": [
+        "Proof of financial or professional loss suffered due to continuous internet outage (for compensation prayer in Consumer Commission)"
+      ]
+    },
+    "required_evidence": [
+      "Broadband subscriber account ID and billing statements",
+      "SMS confirmations containing complaint docket numbers",
+      "Speed test logs or photos of router downtime indicator",
+      "Payment receipts proving current paid status"
+    ],
+    "relevant_legal_rights": [
+      "right-to-be-heard",
+      "right-to-seek-redressal",
+      "right-to-be-informed"
+    ],
+    "official_remedy_channel": "Operator Appellate Authority, National Consumer Helpline (1915) & District Consumer Commission",
+    "caveats_and_escalation": "Educational Notice: TRAI acts as an industry regulator and does not entertain individual consumer billing complaints directly. Individual dispute redressal proceeds through operator internal channels, NCH, and Consumer Commissions.",
+    "is_published": 1,
+    "verification_status": "pending_verification",
+    "last_reviewed_at": "2026-10-25"
+  }
+]

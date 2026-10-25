@@ -1,0 +1,164 @@
+{% extends "base.html" %}
+
+{% block title %}Consumer Awareness Quiz — Test Your Rights Knowledge{% endblock %}
+{% block meta_description %}Interactive scenario-based quiz testing knowledge of the Consumer Protection Act, 2019, limitation periods, and consumer remedies.{% endblock %}
+
+{% block content %}
+<section class="page-header">
+  <div class="container">
+    <div class="page-header-content">
+      <div class="breadcrumbs">
+        <a href="{{ url_for('index') }}">Home</a>
+        <span class="sep">/</span>
+        <span aria-current="page">Awareness Quiz</span>
+      </div>
+      <h1 class="page-title">Consumer Rights Awareness Quiz</h1>
+      <p class="page-subtitle">
+        Evaluate your practical consumer rights awareness across 8 verified statutory scenarios under the Consumer Protection Act, 2019. Scoring is verified directly by backend database records.
+      </p>
+    </div>
+  </div>
+</section>
+
+<div class="container section">
+  <div class="quiz-container" style="max-width: 840px; margin: 0 auto;">
+
+    <!-- Evaluation Results Card (Server-rendered fallback or populated by JS) -->
+    <div id="quiz-results-banner" class="card" style="{% if not results %}display: none;{% endif %} margin-bottom: var(--space-8); padding: var(--space-8); background: linear-gradient(135deg, var(--navy-900), var(--navy-800)); color: var(--white); border-radius: var(--radius-lg); box-shadow: var(--shadow-lg);">
+      <div style="display: flex; justify-content: space-between; align-items: flex-start; flex-wrap: wrap; gap: var(--space-4); margin-bottom: var(--space-4);">
+        <div>
+          <span id="res-badge" class="badge" style="background-color: var(--teal-600); color: var(--white); font-weight: 700; margin-bottom: var(--space-2);">
+            {{ results.level if results else 'Assessment Complete' }}
+          </span>
+          <h2 style="font-size: 1.75rem; color: var(--white); margin: 0;">Your Consumer Rights Score</h2>
+        </div>
+        <div style="text-align: right;">
+          <div id="res-score-number" style="font-size: 2.75rem; font-weight: 800; color: #38BDF8; line-height: 1;">
+            {{ results.score if results else 0 }} / {{ results.total if results else (questions|length) }}
+          </div>
+          <div id="res-percentage" style="font-size: 0.9375rem; color: var(--slate-300); margin-top: 4px;">
+            {{ results.percentage if results else 0 }}% Correct
+          </div>
+        </div>
+      </div>
+
+      <p id="res-message" style="font-size: 1.0625rem; line-height: 1.6; color: var(--slate-200); margin-bottom: var(--space-6);">
+        {{ results.message if results else '' }}
+      </p>
+
+      <div style="display: flex; gap: var(--space-3); flex-wrap: wrap;">
+        <button type="button" id="quiz-retake-btn" class="btn btn-secondary">
+          Retake Quiz
+        </button>
+        <a href="{{ url_for('rights_list') }}" class="btn btn-teal" style="background: var(--teal-600); border: none;">
+          Explore Statutory Rights
+        </a>
+        <a href="{{ url_for('wizard') }}" class="btn btn-outline" style="border-color: rgba(255,255,255,0.4); color: var(--white);">
+          Problem Guidance Wizard
+        </a>
+      </div>
+    </div>
+
+    <!-- Live Progress Bar -->
+    <div class="card" id="quiz-progress-bar-card" style="padding: var(--space-4) var(--space-6); margin-bottom: var(--space-6); background: var(--white);">
+      <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: var(--space-2);">
+        <span style="font-size: 0.875rem; font-weight: 600; color: var(--slate-700);">
+          Questions Completed: <strong id="progress-count">0</strong> of {{ questions|length }}
+        </span>
+        <span id="progress-percent-label" style="font-size: 0.8125rem; color: var(--slate-500); font-weight: 600;">
+          0%
+        </span>
+      </div>
+      <div style="width: 100%; height: 8px; background-color: var(--slate-200); border-radius: var(--radius-full); overflow: hidden;">
+        <div id="quiz-progress-fill" style="width: 0%; height: 100%; background-color: var(--teal-600); transition: width 0.3s ease;"></div>
+      </div>
+    </div>
+
+    <!-- The Quiz Form -->
+    <form id="quiz-evaluation-form" method="POST" action="{{ url_for('quiz') }}">
+      <div style="display: flex; flex-direction: column; gap: var(--space-6);">
+        {% for q in questions %}
+          {% set qid_str = q.id|string %}
+          {% set user_ans = user_answers.get(qid_str) if user_answers else None %}
+          <div class="card quiz-card" id="quiz-card-{{ q.id }}" data-qid="{{ q.id }}" style="padding: var(--space-6); border: 2px solid var(--border-subtle); transition: all 0.2s ease;">
+            
+            <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: var(--space-3); flex-wrap: wrap; gap: var(--space-2);">
+              <span class="badge" style="background: var(--navy-100); color: var(--navy-800); font-weight: 700;">
+                Question {{ loop.index }} of {{ questions|length }}
+              </span>
+              {% if q.source_code %}
+                <span class="badge badge-subtle" title="Statutory reference source">
+                  Source: {{ q.source_code }}
+                </span>
+              {% endif %}
+            </div>
+
+            {% if q.scenario %}
+              <div class="quiz-scenario" style="background: var(--slate-50); border-left: 3px solid var(--teal-600); padding: var(--space-3) var(--space-4); border-radius: 0 var(--radius-sm) var(--radius-sm) 0; margin-bottom: var(--space-4); font-size: 0.9375rem; color: var(--slate-700);">
+                <strong style="color: var(--teal-800);">Practical Scenario:</strong> {{ q.scenario }}
+              </div>
+            {% endif %}
+
+            <h2 style="font-size: 1.1875rem; color: var(--navy-900); margin-bottom: var(--space-4); font-weight: 700;">
+              {{ q.question }}
+            </h2>
+
+            <!-- Options Radio Group -->
+            <div class="quiz-options-group" role="radiogroup" aria-label="Question {{ loop.index }} options" style="display: flex; flex-direction: column; gap: var(--space-2);">
+              {% for opt_key, opt_text in [('A', q.option_a), ('B', q.option_b), ('C', q.option_c), ('D', q.option_d)] %}
+                <label class="quiz-option-label" id="label-{{ q.id }}-{{ opt_key }}" style="display: flex; align-items: flex-start; gap: var(--space-3); padding: var(--space-3) var(--space-4); border: 1px solid var(--border-subtle); border-radius: var(--radius-md); cursor: pointer; transition: all 0.15s ease;">
+                  <input 
+                    type="radio" 
+                    name="question_{{ q.id }}" 
+                    value="{{ opt_key }}" 
+                    class="quiz-radio" 
+                    data-qid="{{ q.id }}"
+                    style="margin-top: 4px; accent-color: var(--teal-700); width: 17px; height: 17px;"
+                    {% if user_ans == opt_key %}checked{% endif %}
+                  >
+                  <div style="flex: 1; font-size: 0.9375rem; color: var(--slate-800); line-height: 1.5;">
+                    <strong style="color: var(--slate-600); margin-right: var(--space-1);">{{ opt_key }}.</strong> {{ opt_text }}
+                  </div>
+                </label>
+              {% endfor %}
+            </div>
+
+            <!-- Feedback / Explanation container (Revealed after submission) -->
+            <div class="quiz-feedback-box" id="feedback-{{ q.id }}" style="{% if not results %}display: none;{% endif %} margin-top: var(--space-4); padding: var(--space-4); border-radius: var(--radius-md); background-color: var(--slate-50); border: 1px solid var(--border-subtle);">
+              <div class="feedback-heading" style="font-weight: 700; margin-bottom: var(--space-2); display: flex; align-items: center; gap: var(--space-2);">
+                <span class="feedback-status-badge"></span>
+                <span>Statutory Explanation</span>
+              </div>
+              <p class="feedback-explanation" style="font-size: 0.875rem; color: var(--slate-700); line-height: 1.6; margin: 0;">
+                {% if results %}
+                  {% for b in results.breakdown %}
+                    {% if b.id == q.id %}{{ b.explanation }}{% endif %}
+                  {% endfor %}
+                {% endif %}
+              </p>
+            </div>
+          </div>
+        {% endfor %}
+      </div>
+
+      <!-- Submit & Restart Actions -->
+      <div id="quiz-submit-bar" style="margin-top: var(--space-8); display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: var(--space-4); padding: var(--space-6); background: var(--white); border-radius: var(--radius-md); border: 1px solid var(--border-subtle);">
+        <div>
+          <span id="submit-hint" style="font-size: 0.875rem; color: var(--slate-500);">
+            Please answer all questions before submitting for evaluation.
+          </span>
+        </div>
+        <div style="display: flex; gap: var(--space-3);">
+          <button type="submit" id="quiz-submit-btn" class="btn btn-primary" style="font-weight: 700; padding: 0.75rem 1.75rem;">
+            Submit Answers for Evaluation &rarr;
+          </button>
+        </div>
+      </div>
+    </form>
+  </div>
+</div>
+{% endblock %}
+
+{% block extra_scripts %}
+<script src="{{ url_for('static', filename='js/quiz.js') }}"></script>
+{% endblock %}

@@ -1,0 +1,113 @@
+{% extends "base.html" %}
+
+{% block title %}About the Project — Technology for Consumer Rights Awareness{% endblock %}
+{% block meta_description %}Academic overview, objectives, methodology, and legal framework of the Community Engagement Project: Technology for Consumer Rights Awareness.{% endblock %}
+
+{% block content %}
+<section class="section">
+  <div class="container" style="max-width: 860px;">
+    <div class="header-with-visual" style="margin-bottom: var(--space-8);">
+      <div>
+        <span class="section-label">Community Engagement Project (CEP)</span>
+        <h1 class="section-title">Technology for Consumer Rights Awareness</h1>
+        <p class="section-desc" style="font-size: 1.125rem; margin-top: var(--space-3); line-height: 1.6;">
+          A student-led civic technology initiative bridging statutory consumer protection laws in India with accessible digital navigation tools for everyday citizens.
+        </p>
+        <div style="margin-top: var(--space-3); display: flex; gap: var(--space-2); flex-wrap: wrap;">
+          <span style="font-size: 0.8125rem; background: var(--teal-50); color: var(--teal-800); border: 1px solid var(--teal-100); padding: 4px 10px; border-radius: var(--radius-full); font-weight: 600;">
+            Academic Civic Tech
+          </span>
+          <span style="font-size: 0.8125rem; background: var(--navy-50); color: var(--navy-800); border: 1px solid var(--navy-100); padding: 4px 10px; border-radius: var(--radius-full); font-weight: 600;">
+            Open Source &amp; Self-Contained
+          </span>
+        </div>
+      </div>
+      <div class="header-visual-card" style="border: 1px solid var(--border-subtle); max-width: 210px;">
+        <img 
+          src="{{ url_for('static', filename='images/about_background.jpg') }}" 
+          alt="Community Engagement Project educational campaign bulletin with news clippings and announcement megaphone" 
+          class="header-visual-img portrait"
+          loading="lazy"
+          width="210"
+          height="280"
+        >
+      </div>
+    </div>
+
+    <!-- Project Context Card -->
+    <div class="card" style="margin-bottom: var(--space-8); padding: var(--space-6);">
+      <h2 style="font-size: 1.25rem; color: var(--navy-900); font-weight: 700; margin-bottom: var(--space-3);">
+        1. Community Problem &amp; Project Motivation
+      </h2>
+      <p style="color: var(--slate-700); line-height: 1.7; font-size: 0.9375rem; margin-bottom: var(--space-3);">
+        Despite the enactment of the progressive <strong>Consumer Protection Act, 2019</strong>, millions of Indian consumers remain unaware of their statutory remedies when confronted with e-commerce refund denials, defective goods, unfair contract terms, or deceptive marketing claims.
+      </p>
+      <p style="color: var(--slate-700); line-height: 1.7; font-size: 0.9375rem; margin-bottom: var(--space-3);">
+        Surveys reveal that most citizens wrongly believe filing a dispute requires hiring an advocate, paying substantial legal retainers, or physically traveling to court buildings. Additionally, confusion between the <strong>National Consumer Helpline (NCH 1915)</strong> for pre-litigation and the <strong>e-Daakhil</strong> digital court filing system prevents timely redressal within the statutory two-year limitation period.
+      </p>
+    </div>
+
+    <!-- Objectives -->
+    <div class="card" style="margin-bottom: var(--space-8); padding: var(--space-6);">
+      <h2 style="font-size: 1.25rem; color: var(--navy-900); font-weight: 700; margin-bottom: var(--space-3);">
+        2. Core Academic Objectives
+      </h2>
+      <div style="display: flex; flex-direction: column; gap: var(--space-3);">
+        <div style="display: flex; gap: var(--space-3); align-items: flex-start;">
+          <div style="width: 28px; height: 28px; border-radius: 50%; background: var(--teal-50); color: var(--teal-800); display: flex; align-items: center; justify-content: center; font-weight: 700; flex-shrink: 0;">1</div>
+          <div>
+            <strong style="color: var(--navy-900); display: block;">Decode Statutory Consumer Rights:</strong>
+            <span style="color: var(--slate-600); font-size: 0.9375rem;">Translate complex legislative provisions under Section 2(9) of CPA 2019 into practical, plain-language guidance accessible to non-lawyers.</span>
+          </div>
+        </div>
+
+        <div style="display: flex; gap: var(--space-3); align-items: flex-start;">
+          <div style="width: 28px; height: 28px; border-radius: 50%; background: var(--teal-50); color: var(--teal-800); display: flex; align-items: center; justify-content: center; font-weight: 700; flex-shrink: 0;">2</div>
+          <div>
+            <strong style="color: var(--navy-900); display: block;">Document Repeatable Resolution Workflows:</strong>
+            <span style="color: var(--slate-600); font-size: 0.9375rem;">Provide step-by-step resolution roadmaps and required evidence checklists for frequent real-world issues (e-commerce, warranty, MRP overcharging, UPI debits).</span>
+          </div>
+        </div>
+
+        <div style="display: flex; gap: var(--space-3); align-items: flex-start;">
+          <div style="width: 28px; height: 28px; border-radius: 50%; background: var(--teal-50); color: var(--teal-800); display: flex; align-items: center; justify-content: center; font-weight: 700; flex-shrink: 0;">3</div>
+          <div>
+            <strong style="color: var(--navy-900); display: block;">Direct Citizens to Verified Official Channels:</strong>
+            <span style="color: var(--slate-600); font-size: 0.9375rem;">Prevent fraudulent intermediary services by maintaining a direct directory of legitimate government portals (.gov.in / .nic.in).</span>
+          </div>
+        </div>
+
+        <div style="display: flex; gap: var(--space-3); align-items: flex-start;">
+          <div style="width: 28px; height: 28px; border-radius: 50%; background: var(--teal-50); color: var(--teal-800); display: flex; align-items: center; justify-content: center; font-weight: 700; flex-shrink: 0;">4</div>
+          <div>
+            <strong style="color: var(--navy-900); display: block;">Promote Accessible, Self-Sufficient Civic Tech:</strong>
+            <span style="color: var(--slate-600); font-size: 0.9375rem;">Build using lightweight, privacy-respecting technology (Python/Flask, SQLite, Semantic HTML) that requires zero paid cloud lock-ins or third-party user tracking.</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Methodology -->
+    <div class="card" style="margin-bottom: var(--space-8); padding: var(--space-6);">
+      <h2 style="font-size: 1.25rem; color: var(--navy-900); font-weight: 700; margin-bottom: var(--space-3);">
+        3. Research &amp; Architectural Methodology
+      </h2>
+      <ul style="padding-left: var(--space-5); color: var(--slate-700); font-size: 0.9375rem; line-height: 1.8;">
+        <li><strong>Traceability:</strong> Every legal right, guide, and FAQ is mapped directly to a statutory source record in our relational SQLite database.</li>
+        <li><strong>Idempotent Versioning:</strong> Core datasets are version-controlled in structured JSON format, enabling continuous collaborative review.</li>
+        <li><strong>Zero Commercial Incentives:</strong> No sponsored links, advertisements, monetization, or vendor partnerships exist on this platform.</li>
+      </ul>
+    </div>
+
+    <!-- Official Project Disclaimer Box -->
+    <div class="card" style="border-left: 4px solid var(--amber-600); background-color: var(--amber-50);">
+      <h3 style="font-size: 1rem; font-weight: 700; color: var(--amber-700); margin-bottom: var(--space-2);">
+        Academic Legal Disclaimer
+      </h3>
+      <p style="font-size: 0.875rem; color: var(--slate-700); line-height: 1.6;">
+        This portal is an educational and public-awareness tool created strictly for academic and community engagement purposes. The information provided does NOT constitute legal advice or formal representation. Consumers seeking judicial redressal must consult official government portals (such as <strong>consumerhelpline.gov.in</strong> or <strong>edaakhil.nic.in</strong>) or seek independent professional counsel.
+      </p>
+    </div>
+  </div>
+</section>
+{% endblock %}
